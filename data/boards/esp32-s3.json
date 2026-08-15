@@ -1,0 +1,23 @@
+{
+  "schema_version": 0,
+  "id": "boards/esp32-s3",
+  "namespace": "boards",
+  "name": "esp32-s3",
+  "description": "Espressif ESP32-S3 dev board (native USB).",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "vid": 12346,
+    "pid": 4097,
+    "architecture": "ESP32-S3 Xtensa LX7 @ 240 MHz (native USB)",
+    "transport": "serial",
+    "capabilities": ["gpio", "camera_capture", "audio_sample", "sensor_read"],
+    "vendor": "Espressif",
+    "ecosystem": "ESP32-S3",
+    "connectors": ["bare"]
+  },
+  "links": {}
+}
