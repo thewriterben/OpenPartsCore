@@ -8,7 +8,8 @@
 ## Next
 - [x] Codegen ADR (ADR-0003) and first generated binding: `bindings/typescript/parts.ts`, `--check` staleness gate, compiles under `tsc --strict` (2026-08-15)
 - [ ] Report upstream: duplicate board names make name-based selection ambiguous (`esp32-s3`, `arduino-uno`)
-- [ ] Rust binding, so Oh-Ben-Claw can consume this registry rather than own it
+- [x] Rust binding (`openpartscore`, zero deps, 7 tests) so Oh-Ben-Claw *can* consume this registry rather than own it (2026-08-15)
+- [ ] Oh-Ben-Claw actually switching to it — the other half, and upstream's call
 - [ ] `electronic` namespace: first cited entries with KiCad footprint/symbol + atopile package links (for OpenCircuitCore)
 - [ ] `material` namespace: first filament entries (for the OpenDesignCore thin thread)
 
