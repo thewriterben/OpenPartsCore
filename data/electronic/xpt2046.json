@@ -1,0 +1,24 @@
+{
+  "schema_version": 0,
+  "id": "electronic/xpt2046",
+  "namespace": "electronic",
+  "name": "xpt2046",
+  "description": "XPT2046 — resistive touch-screen controller (SPI)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "spi",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "touch"
+    ],
+    "compatible_boards": [
+      "cyd-esp32-2432s028r"
+    ],
+    "connector": "bare"
+  },
+  "links": {}
+}

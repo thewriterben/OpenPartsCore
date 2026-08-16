@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/teensy-4.1",
+  "namespace": "boards",
+  "name": "teensy-4.1",
+  "description": "NXP i.MX RT1062 ARM Cortex-M7 @ 600 MHz",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 5824,
+        "pid": 1155,
+        "architecture": "NXP i.MX RT1062 ARM Cortex-M7 @ 600 MHz"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "can",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "PJRC",
+    "ecosystem": "Teensy",
+    "transport": "serial"
+  },
+  "links": {}
+}

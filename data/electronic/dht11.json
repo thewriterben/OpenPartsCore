@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/dht11",
+  "namespace": "electronic",
+  "name": "dht11",
+  "description": "AOSONG DHT11 — basic humidity and temperature sensor, single-wire protocol",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "gpio",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

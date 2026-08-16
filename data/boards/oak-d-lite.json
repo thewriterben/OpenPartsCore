@@ -1,0 +1,32 @@
+{
+  "schema_version": 0,
+  "id": "boards/oak-d-lite",
+  "namespace": "boards",
+  "name": "oak-d-lite",
+  "description": "Intel Movidius Myriad X VPU, 1.4 TOPS; 12.3MP RGB + 2x 480p stereo depth (USB 3)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 999,
+        "pid": 9349,
+        "architecture": "Intel Movidius Myriad X VPU, 1.4 TOPS; 12.3MP RGB + 2x 480p stereo depth (USB 3)"
+      }
+    ],
+    "capabilities": [
+      "camera_capture",
+      "vpu"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Luxonis",
+    "ecosystem": "OAK",
+    "transport": "serial"
+  },
+  "links": {}
+}

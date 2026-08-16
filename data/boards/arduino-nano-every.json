@@ -1,0 +1,33 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-nano-every",
+  "namespace": "boards",
+  "name": "arduino-nano-every",
+  "description": "AVR ATmega4809 @ 20 MHz",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9025,
+        "pid": 88,
+        "architecture": "AVR ATmega4809 @ 20 MHz"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Nano",
+    "transport": "serial"
+  },
+  "links": {}
+}

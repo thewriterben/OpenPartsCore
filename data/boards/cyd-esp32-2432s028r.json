@@ -1,0 +1,38 @@
+{
+  "schema_version": 0,
+  "id": "boards/cyd-esp32-2432s028r",
+  "namespace": "boards",
+  "name": "cyd-esp32-2432s028r",
+  "description": "ESP32 'Cheap Yellow Display' (ESP32-2432S028R): ILI9341 320x240 + XPT2046 resistive touch, microSD (CH340; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6790,
+        "pid": 29987,
+        "architecture": "ESP32 'Cheap Yellow Display' (ESP32-2432S028R): ILI9341 320x240 + XPT2046 resistive touch, microSD (CH340; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "microsd",
+      "spi",
+      "touch",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Sunton",
+    "ecosystem": "Cheap Yellow Display",
+    "transport": "serial"
+  },
+  "links": {}
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/beaglebone-black",
+  "namespace": "boards",
+  "name": "beaglebone-black",
+  "description": "TI AM3358 ARM Cortex-A8 @ 1 GHz",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 7531,
+        "pid": 260,
+        "architecture": "TI AM3358 ARM Cortex-A8 @ 1 GHz"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "can",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "BeagleBoard",
+    "ecosystem": "BeagleBone",
+    "transport": "native"
+  },
+  "links": {}
+}

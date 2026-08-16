@@ -1,0 +1,26 @@
+{
+  "schema_version": 0,
+  "id": "electronic/ov2640",
+  "namespace": "electronic",
+  "name": "ov2640",
+  "description": "OmniVision OV2640 — 2 MP camera image sensor (SCCB control bus)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "sccb",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "camera_capture"
+    ],
+    "compatible_boards": [
+      "esp32-cam",
+      "esp32-s3-cam",
+      "xiao-esp32s3-sense"
+    ],
+    "connector": "bare"
+  },
+  "links": {}
+}

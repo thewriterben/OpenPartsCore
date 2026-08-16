@@ -1,0 +1,42 @@
+{
+  "schema_version": 0,
+  "id": "boards/m5stack-cardputer",
+  "namespace": "boards",
+  "name": "m5stack-cardputer",
+  "description": "M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "audio_output",
+      "audio_sample",
+      "battery",
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "infrared",
+      "keyboard",
+      "microsd",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "grove"
+    ],
+    "vendor": "M5Stack",
+    "ecosystem": "Cardputer",
+    "transport": "serial"
+  },
+  "links": {}
+}

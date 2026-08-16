@@ -1,0 +1,35 @@
+{
+  "schema_version": 0,
+  "id": "boards/raspberry-pi-pico-w",
+  "namespace": "boards",
+  "name": "raspberry-pi-pico-w",
+  "description": "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz (Wi-Fi)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 11914,
+        "pid": 10,
+        "architecture": "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz (Wi-Fi)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Raspberry Pi",
+    "ecosystem": "Pico",
+    "transport": "serial"
+  },
+  "links": {}
+}

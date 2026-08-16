@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/max17048",
+  "namespace": "electronic",
+  "name": "max17048",
+  "description": "Maxim MAX17048 — LiPo battery fuel gauge (state of charge)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 54,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

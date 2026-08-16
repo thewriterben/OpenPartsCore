@@ -1,0 +1,38 @@
+{
+  "schema_version": 0,
+  "id": "boards/nucleo-g474re",
+  "namespace": "boards",
+  "name": "nucleo-g474re",
+  "description": "ARM Cortex-M4 @ 170 MHz (STM32G474RE, HRTIM)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 1155,
+        "pid": 14156,
+        "architecture": "ARM Cortex-M4 @ 170 MHz (STM32G474RE, HRTIM)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "flash",
+      "gpio",
+      "i2c",
+      "pwm",
+      "rtt",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "STMicroelectronics",
+    "ecosystem": "Nucleo-64",
+    "transport": "probe"
+  },
+  "links": {}
+}

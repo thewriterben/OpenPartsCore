@@ -1,0 +1,35 @@
+{
+  "schema_version": 0,
+  "id": "boards/raspberry-pi-5",
+  "namespace": "boards",
+  "name": "raspberry-pi-5",
+  "description": "BCM2712 quad-core ARM Cortex-A76 @ 2.4 GHz (AArch64)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 8457,
+        "pid": 2080,
+        "architecture": "BCM2712 quad-core ARM Cortex-A76 @ 2.4 GHz (AArch64)"
+      }
+    ],
+    "capabilities": [
+      "camera_capture",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "hat_pi"
+    ],
+    "vendor": "Raspberry Pi",
+    "ecosystem": "Raspberry Pi",
+    "transport": "native"
+  },
+  "links": {}
+}

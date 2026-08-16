@@ -1,0 +1,40 @@
+{
+  "schema_version": 0,
+  "id": "boards/pimoroni-presto",
+  "namespace": "boards",
+  "name": "pimoroni-presto",
+  "description": "RP2350 dual Cortex-M33 @ 150 MHz + RM2 Wi-Fi/BLE, 4\" 480x480 IPS touch (MicroPython VID/PID; shared)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 11914,
+        "pid": 5,
+        "architecture": "RP2350 dual Cortex-M33 @ 150 MHz + RM2 Wi-Fi/BLE, 4\" 480x480 IPS touch (MicroPython VID/PID; shared)"
+      }
+    ],
+    "capabilities": [
+      "audio_output",
+      "battery",
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "microsd",
+      "spi",
+      "touch",
+      "wifi"
+    ],
+    "connectors": [
+      "qwiic"
+    ],
+    "vendor": "Pimoroni",
+    "ecosystem": "Presto",
+    "transport": "serial"
+  },
+  "links": {}
+}

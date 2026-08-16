@@ -1,0 +1,34 @@
+{
+  "schema_version": 0,
+  "id": "boards/m5stack-module-llm",
+  "namespace": "boards",
+  "name": "m5stack-module-llm",
+  "description": "AXera AX630C dual Cortex-A53 @ 1.2 GHz + 3.2 TOPS NPU, 4 GB LPDDR4, 32 GB eMMC (CH340N; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6790,
+        "pid": 29987,
+        "architecture": "AXera AX630C dual Cortex-A53 @ 1.2 GHz + 3.2 TOPS NPU, 4 GB LPDDR4, 32 GB eMMC (CH340N; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "audio_output",
+      "audio_sample",
+      "ethernet",
+      "npu"
+    ],
+    "connectors": [
+      "mbus"
+    ],
+    "vendor": "M5Stack",
+    "ecosystem": "Module",
+    "transport": "bridge"
+  },
+  "links": {}
+}

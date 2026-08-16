@@ -1,0 +1,39 @@
+{
+  "schema_version": 0,
+  "id": "boards/xiao-esp32c5",
+  "namespace": "boards",
+  "name": "xiao-esp32c5",
+  "description": "ESP32-C5 RISC-V @ 240 MHz, dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4 (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-C5 RISC-V @ 240 MHz, dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4 (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "battery",
+      "ble",
+      "gpio",
+      "i2c",
+      "spi",
+      "thread",
+      "wifi",
+      "zigbee"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Seeed Studio",
+    "ecosystem": "XIAO",
+    "transport": "serial"
+  },
+  "links": {}
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/adafruit-qtpy-esp32s3",
+  "namespace": "boards",
+  "name": "adafruit-qtpy-esp32s3",
+  "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz (CircuitPython VID/PID; Arduino mode = 0x303a:0x1001)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9114,
+        "pid": 33091,
+        "architecture": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz (CircuitPython VID/PID; Arduino mode = 0x303a:0x1001)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "ble",
+      "gpio",
+      "i2c",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "stemma_qt"
+    ],
+    "vendor": "Adafruit",
+    "ecosystem": "QT Py",
+    "transport": "serial"
+  },
+  "links": {}
+}

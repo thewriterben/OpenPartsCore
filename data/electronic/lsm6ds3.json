@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/lsm6ds3",
+  "namespace": "electronic",
+  "name": "lsm6ds3",
+  "description": "ST LSM6DS3 — 6-axis IMU (accelerometer + gyroscope)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 106,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

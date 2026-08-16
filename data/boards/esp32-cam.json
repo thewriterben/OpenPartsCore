@@ -1,0 +1,34 @@
+{
+  "schema_version": 0,
+  "id": "boards/esp32-cam",
+  "namespace": "boards",
+  "name": "esp32-cam",
+  "description": "ESP32 + OV2640 camera, microSD (AI-Thinker; flashed via external USB-UART; VID/PID is a common CH340 programmer)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6790,
+        "pid": 29987,
+        "architecture": "ESP32 + OV2640 camera, microSD (AI-Thinker; flashed via external USB-UART; VID/PID is a common CH340 programmer)"
+      }
+    ],
+    "capabilities": [
+      "camera_capture",
+      "gpio",
+      "microsd",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "AI-Thinker",
+    "ecosystem": "ESP32-CAM",
+    "transport": "serial"
+  },
+  "links": {}
+}

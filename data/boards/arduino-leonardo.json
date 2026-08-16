@@ -1,0 +1,33 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-leonardo",
+  "namespace": "boards",
+  "name": "arduino-leonardo",
+  "description": "AVR ATmega32U4 @ 16 MHz (native USB)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9025,
+        "pid": 54,
+        "architecture": "AVR ATmega32U4 @ 16 MHz (native USB)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Leonardo",
+    "transport": "serial"
+  },
+  "links": {}
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-uno",
+  "namespace": "boards",
+  "name": "arduino-uno",
+  "description": "AVR ATmega328P @ 16 MHz (legacy)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9025,
+        "pid": 1,
+        "architecture": "AVR ATmega328P @ 16 MHz (legacy)"
+      },
+      {
+        "vid": 9025,
+        "pid": 67,
+        "architecture": "AVR ATmega328P @ 16 MHz"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Uno",
+    "transport": "serial"
+  },
+  "links": {}
+}

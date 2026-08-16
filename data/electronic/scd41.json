@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/scd41",
+  "namespace": "electronic",
+  "name": "scd41",
+  "description": "Sensirion SCD41 — true CO2 (photoacoustic NDIR), temperature, humidity",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 98,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [],
+    "connector": "qwiic"
+  },
+  "links": {}
+}

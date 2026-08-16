@@ -1,9 +1,9 @@
 {
   "schema_version": 0,
-  "id": "boards/esp32-s3",
+  "id": "boards/esp32-c3",
   "namespace": "boards",
-  "name": "esp32-s3",
-  "description": "ESP32-S3 (CP2102 USB-UART)",
+  "name": "esp32-c3",
+  "description": "ESP32-C3 RISC-V single-core @ 160 MHz (native USB)",
   "source": {
     "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
     "retrieved": "2026-08-15",
@@ -12,32 +12,23 @@
   "attributes": {
     "usb_ids": [
       {
-        "vid": 4292,
-        "pid": 60000,
-        "architecture": "ESP32-S3 (CP2102 USB-UART)"
-      },
-      {
-        "vid": 6790,
-        "pid": 21971,
-        "architecture": "ESP32-S3 (CH343 USB-UART)"
-      },
-      {
         "vid": 12346,
         "pid": 4097,
-        "architecture": "ESP32-S3 Xtensa LX7 @ 240 MHz (native USB)"
+        "architecture": "ESP32-C3 RISC-V single-core @ 160 MHz (native USB)"
       }
     ],
     "capabilities": [
-      "audio_sample",
-      "camera_capture",
+      "ble",
       "gpio",
-      "sensor_read"
+      "i2c",
+      "spi",
+      "wifi"
     ],
     "connectors": [
       "bare"
     ],
     "vendor": "Espressif",
-    "ecosystem": "ESP32-S3",
+    "ecosystem": "ESP32-C3",
     "transport": "serial"
   },
   "links": {}

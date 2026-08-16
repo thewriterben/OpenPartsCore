@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/aht20",
+  "namespace": "electronic",
+  "name": "aht20",
+  "description": "ASAIR AHT20 — temperature and humidity sensor",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 56,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 0,
+  "id": "boards/lilygo-t-deck",
+  "namespace": "boards",
+  "name": "lilygo-t-deck",
+  "description": "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa, 2.8\" IPS touch, keyboard/trackball, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa, 2.8\" IPS touch, keyboard/trackball, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "audio_output",
+      "audio_sample",
+      "battery",
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "keyboard",
+      "lora",
+      "microsd",
+      "psram",
+      "spi",
+      "touch",
+      "trackball",
+      "wifi"
+    ],
+    "connectors": [
+      "bare",
+      "grove"
+    ],
+    "vendor": "LILYGO",
+    "ecosystem": "T-Deck",
+    "transport": "serial"
+  },
+  "links": {}
+}

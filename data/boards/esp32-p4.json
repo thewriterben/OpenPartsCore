@@ -1,9 +1,9 @@
 {
   "schema_version": 0,
-  "id": "boards/esp32-s3",
+  "id": "boards/esp32-p4",
   "namespace": "boards",
-  "name": "esp32-s3",
-  "description": "ESP32-S3 (CP2102 USB-UART)",
+  "name": "esp32-p4",
+  "description": "ESP32-P4 dual-core RISC-V @ 400 MHz (AI vector ext., MIPI-CSI/DSI, no radio; native USB; shared VID/PID)",
   "source": {
     "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
     "retrieved": "2026-08-15",
@@ -12,32 +12,25 @@
   "attributes": {
     "usb_ids": [
       {
-        "vid": 4292,
-        "pid": 60000,
-        "architecture": "ESP32-S3 (CP2102 USB-UART)"
-      },
-      {
-        "vid": 6790,
-        "pid": 21971,
-        "architecture": "ESP32-S3 (CH343 USB-UART)"
-      },
-      {
         "vid": 12346,
         "pid": 4097,
-        "architecture": "ESP32-S3 Xtensa LX7 @ 240 MHz (native USB)"
+        "architecture": "ESP32-P4 dual-core RISC-V @ 400 MHz (AI vector ext., MIPI-CSI/DSI, no radio; native USB; shared VID/PID)"
       }
     ],
     "capabilities": [
-      "audio_sample",
+      "analog_read",
       "camera_capture",
+      "display",
       "gpio",
-      "sensor_read"
+      "i2c",
+      "nn_accel",
+      "spi"
     ],
     "connectors": [
       "bare"
     ],
     "vendor": "Espressif",
-    "ecosystem": "ESP32-S3",
+    "ecosystem": "ESP32-P4",
     "transport": "serial"
   },
   "links": {}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 0,
+  "id": "electronic/dht22",
+  "namespace": "electronic",
+  "name": "dht22",
+  "description": "AOSONG DHT22 (AM2302) — capacitive humidity and temperature sensor, single-wire protocol",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "gpio",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [
+      "esp32-s3",
+      "nanopi-neo3",
+      "raspberry-pi-4",
+      "raspberry-pi-5",
+      "waveshare-esp32-s3-touch-lcd-2.1",
+      "xiao-esp32s3-sense"
+    ],
+    "connector": "bare"
+  },
+  "links": {}
+}

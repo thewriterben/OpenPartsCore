@@ -1,0 +1,26 @@
+{
+  "schema_version": 0,
+  "id": "electronic/rpi-ai-camera-imx500",
+  "namespace": "electronic",
+  "name": "rpi-ai-camera-imx500",
+  "description": "Raspberry Pi AI Camera — Sony IMX500 12.3MP sensor with on-sensor NN inference accelerator (CSI)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "csi",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "camera_capture",
+      "npu"
+    ],
+    "compatible_boards": [
+      "raspberry-pi-4",
+      "raspberry-pi-5"
+    ],
+    "connector": "bare"
+  },
+  "links": {}
+}

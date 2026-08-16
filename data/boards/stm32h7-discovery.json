@@ -1,0 +1,39 @@
+{
+  "schema_version": 0,
+  "id": "boards/stm32h7-discovery",
+  "namespace": "boards",
+  "name": "stm32h7-discovery",
+  "description": "ARM Cortex-M7 @ 480 MHz (STM32H750, external flash)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 1155,
+        "pid": 14168,
+        "architecture": "ARM Cortex-M7 @ 480 MHz (STM32H750, external flash)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "dac",
+      "flash",
+      "gpio",
+      "i2c",
+      "pwm",
+      "rtt",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "STMicroelectronics",
+    "ecosystem": "Discovery",
+    "transport": "probe"
+  },
+  "links": {}
+}

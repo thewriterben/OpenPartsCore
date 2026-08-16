@@ -1,0 +1,35 @@
+{
+  "schema_version": 0,
+  "id": "boards/raspberry-pi-4",
+  "namespace": "boards",
+  "name": "raspberry-pi-4",
+  "description": "BCM2711 quad-core ARM Cortex-A72 @ 1.8 GHz (AArch64)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 8457,
+        "pid": 2071,
+        "architecture": "BCM2711 quad-core ARM Cortex-A72 @ 1.8 GHz (AArch64)"
+      }
+    ],
+    "capabilities": [
+      "camera_capture",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "hat_pi"
+    ],
+    "vendor": "Raspberry Pi",
+    "ecosystem": "Raspberry Pi",
+    "transport": "native"
+  },
+  "links": {}
+}
