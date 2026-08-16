@@ -1,0 +1,23 @@
+{
+  "schema_version": 0,
+  "id": "electronic/r-0603",
+  "namespace": "electronic",
+  "name": "Resistor, 0603 (1608 metric)",
+  "description": "Generic chip resistor family. Resistance, tolerance and power rating are properties of the BOM line, not of this entry: a design says '4.7k 1%' and sourcing picks a manufacturer part. This entry fixes the package only.",
+  "source": {
+    "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family.",
+    "url": "https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
+    "retrieved": "2026-08-15"
+  },
+  "attributes": {
+    "package": "0603 (1608 metric)",
+    "body_length_mm": 1.6,
+    "body_width_mm": 0.8,
+    "terminals": 2,
+    "mounting": "smd"
+  },
+  "links": {
+    "kicad_footprint": "Resistor_SMD:R_0603_1608Metric",
+    "kicad_symbol": "Device:R"
+  }
+}
