@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/m5stack-atom-s3",
+  "namespace": "boards",
+  "name": "m5stack-atom-s3",
+  "description": "ESP32-S3 @ 240 MHz, 0.85\" LCD, compact (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3 @ 240 MHz, 0.85\" LCD, compact (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "grove"
+    ],
+    "vendor": "M5Stack",
+    "ecosystem": "M5 Atom",
+    "transport": "serial"
+  },
+  "links": {}
+}

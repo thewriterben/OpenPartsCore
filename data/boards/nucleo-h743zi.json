@@ -1,0 +1,38 @@
+{
+  "schema_version": 0,
+  "id": "boards/nucleo-h743zi",
+  "namespace": "boards",
+  "name": "nucleo-h743zi",
+  "description": "ARM Cortex-M7 @ 480 MHz (STM32H743ZI)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 1155,
+        "pid": 14157,
+        "architecture": "ARM Cortex-M7 @ 480 MHz (STM32H743ZI)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "flash",
+      "gpio",
+      "i2c",
+      "pwm",
+      "rtt",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "STMicroelectronics",
+    "ecosystem": "Nucleo-144",
+    "transport": "probe"
+  },
+  "links": {}
+}

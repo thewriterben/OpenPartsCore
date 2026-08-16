@@ -1,0 +1,24 @@
+{
+  "schema_version": 0,
+  "id": "electronic/rpi-ai-hat-plus-13t",
+  "namespace": "electronic",
+  "name": "rpi-ai-hat-plus-13t",
+  "description": "Raspberry Pi AI HAT+ (13 TOPS) — Hailo-8L NPU over PCIe Gen3 (RPi 5)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "pcie",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "hailo"
+    ],
+    "compatible_boards": [
+      "raspberry-pi-5"
+    ],
+    "connector": "hat_pi"
+  },
+  "links": {}
+}

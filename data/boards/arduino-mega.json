@@ -1,0 +1,33 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-mega",
+  "namespace": "boards",
+  "name": "arduino-mega",
+  "description": "AVR ATmega2560 @ 16 MHz",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9025,
+        "pid": 66,
+        "architecture": "AVR ATmega2560 @ 16 MHz"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Mega",
+    "transport": "serial"
+  },
+  "links": {}
+}

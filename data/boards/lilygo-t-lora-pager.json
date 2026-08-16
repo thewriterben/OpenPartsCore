@@ -1,0 +1,45 @@
+{
+  "schema_version": 0,
+  "id": "boards/lilygo-t-lora-pager",
+  "namespace": "boards",
+  "name": "lilygo-t-lora-pager",
+  "description": "ESP32-S3 @ 240 MHz + SX1262 LoRa, keyboard + rotary encoder, GPS, NFC, IMU (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3 @ 240 MHz + SX1262 LoRa, keyboard + rotary encoder, GPS, NFC, IMU (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "audio_output",
+      "battery",
+      "ble",
+      "display",
+      "gpio",
+      "gps",
+      "i2c",
+      "imu",
+      "keyboard",
+      "lora",
+      "mesh",
+      "microsd",
+      "nfc",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "LILYGO",
+    "ecosystem": "T-Lora",
+    "transport": "serial"
+  },
+  "links": {}
+}

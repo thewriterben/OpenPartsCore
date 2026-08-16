@@ -1,0 +1,33 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-uno-q",
+  "namespace": "boards",
+  "name": "arduino-uno-q",
+  "description": "Arduino Uno Q / ATmega328P",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9025,
+        "pid": 120,
+        "architecture": "Arduino Uno Q / ATmega328P"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Uno",
+    "transport": "bridge"
+  },
+  "links": {}
+}

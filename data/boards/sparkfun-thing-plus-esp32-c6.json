@@ -1,0 +1,39 @@
+{
+  "schema_version": 0,
+  "id": "boards/sparkfun-thing-plus-esp32-c6",
+  "namespace": "boards",
+  "name": "sparkfun-thing-plus-esp32-c6",
+  "description": "ESP32-C6 RISC-V @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; CH340 USB-UART; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6790,
+        "pid": 29987,
+        "architecture": "ESP32-C6 RISC-V @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; CH340 USB-UART; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "ble",
+      "gpio",
+      "i2c",
+      "microsd",
+      "spi",
+      "thread",
+      "wifi"
+    ],
+    "connectors": [
+      "featherwing",
+      "qwiic"
+    ],
+    "vendor": "SparkFun",
+    "ecosystem": "Thing Plus",
+    "transport": "serial"
+  },
+  "links": {}
+}

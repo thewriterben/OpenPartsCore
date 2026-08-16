@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/pcf8574",
+  "namespace": "electronic",
+  "name": "pcf8574",
+  "description": "NXP PCF8574 — 8-bit I2C GPIO expander",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 32,
+    "capabilities": [
+      "gpio"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

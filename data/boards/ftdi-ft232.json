@@ -1,0 +1,29 @@
+{
+  "schema_version": 0,
+  "id": "boards/ftdi-ft232",
+  "namespace": "boards",
+  "name": "ftdi-ft232",
+  "description": "FTDI FT232 USB-UART bridge",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 1027,
+        "pid": 24577,
+        "architecture": "FTDI FT232 USB-UART bridge"
+      }
+    ],
+    "capabilities": [],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "FTDI",
+    "ecosystem": "USB-UART",
+    "transport": "serial"
+  },
+  "links": {}
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 0,
+  "id": "boards/nrf52840-dk",
+  "namespace": "boards",
+  "name": "nrf52840-dk",
+  "description": "Nordic nRF52840 ARM Cortex-M4F @ 64 MHz (BLE 5.0)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 4966,
+        "pid": 4117,
+        "architecture": "Nordic nRF52840 ARM Cortex-M4F @ 64 MHz (BLE 5.0)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Nordic Semiconductor",
+    "ecosystem": "nRF DK",
+    "transport": "serial"
+  },
+  "links": {}
+}

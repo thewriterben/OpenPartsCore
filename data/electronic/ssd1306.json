@@ -1,0 +1,20 @@
+{
+  "schema_version": 0,
+  "id": "electronic/ssd1306",
+  "namespace": "electronic",
+  "name": "ssd1306",
+  "description": "Solomon SSD1306 — 128x64 OLED display",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 60,
+    "capabilities": [],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

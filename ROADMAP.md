@@ -1,12 +1,14 @@
 # Roadmap
 
 ## Now
-- [ ] Schema v0 stabilised against real entries (1 board ingested; grow to full OBC boards ingest)
-- [ ] `scripts/ingest_obc.py`: idempotent Oh-Ben-Claw registry → `data/boards/` converter
-- [ ] Validation in CI
+- [x] Schema v0 stabilised against 100 real entries (66 boards + 34 accessories) (2026-08-15)
+- [x] `scripts/ingest_obc.py`: idempotent, groups USB identity rows into board models (ADR-0004) (2026-08-15)
+- [ ] Validation + binding staleness check in CI
 
 ## Next
-- [ ] Codegen ADR (quicktype vs. hand-rolled) and first generated binding (TS, for OBC-deployment-generator)
+- [x] Codegen ADR (ADR-0003) and first generated binding: `bindings/typescript/parts.ts`, `--check` staleness gate, compiles under `tsc --strict` (2026-08-15)
+- [ ] Report upstream: duplicate board names make name-based selection ambiguous (`esp32-s3`, `arduino-uno`)
+- [ ] Rust binding, so Oh-Ben-Claw can consume this registry rather than own it
 - [ ] `electronic` namespace: first cited entries with KiCad footprint/symbol + atopile package links (for OpenCircuitCore)
 - [ ] `material` namespace: first filament entries (for the OpenDesignCore thin thread)
 

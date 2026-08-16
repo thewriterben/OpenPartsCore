@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/coral-dev-board-mini",
+  "namespace": "boards",
+  "name": "coral-dev-board-mini",
+  "description": "MediaTek MT8167S quad Cortex-A35 + Google Edge TPU, 4 TOPS, 2 GB LPDDR3 (AArch64)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 1317,
+        "pid": 42151,
+        "architecture": "MediaTek MT8167S quad Cortex-A35 + Google Edge TPU, 4 TOPS, 2 GB LPDDR3 (AArch64)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "camera_capture",
+      "edge_tpu",
+      "gpio",
+      "i2c",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "hat_pi"
+    ],
+    "vendor": "Google",
+    "ecosystem": "Coral",
+    "transport": "native"
+  },
+  "links": {}
+}

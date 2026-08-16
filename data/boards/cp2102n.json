@@ -1,0 +1,29 @@
+{
+  "schema_version": 0,
+  "id": "boards/cp2102n",
+  "namespace": "boards",
+  "name": "cp2102n",
+  "description": "Silicon Labs CP2102N USB-UART bridge",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 4292,
+        "pid": 60016,
+        "architecture": "Silicon Labs CP2102N USB-UART bridge"
+      }
+    ],
+    "capabilities": [],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Silicon Labs",
+    "ecosystem": "USB-UART",
+    "transport": "serial"
+  },
+  "links": {}
+}

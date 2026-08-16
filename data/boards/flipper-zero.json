@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/flipper-zero",
+  "namespace": "boards",
+  "name": "flipper-zero",
+  "description": "STM32WB55 ARM Cortex-M4 @ 64 MHz (multi-tool; USB CDC)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 1155,
+        "pid": 22336,
+        "architecture": "STM32WB55 ARM Cortex-M4 @ 64 MHz (multi-tool; USB CDC)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "gpio",
+      "ibutton",
+      "infrared",
+      "nfc",
+      "rfid",
+      "subghz"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Flipper Devices",
+    "ecosystem": "Flipper Zero",
+    "transport": "serial"
+  },
+  "links": {}
+}

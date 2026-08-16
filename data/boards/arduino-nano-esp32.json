@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-nano-esp32",
+  "namespace": "boards",
+  "name": "arduino-nano-esp32",
+  "description": "ESP32-S3 (u-blox NORA-W106) Xtensa LX7 dual-core @ 240 MHz, Nano form factor",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9025,
+        "pid": 112,
+        "architecture": "ESP32-S3 (u-blox NORA-W106) Xtensa LX7 dual-core @ 240 MHz, Nano form factor"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "ble",
+      "gpio",
+      "i2c",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Nano",
+    "transport": "serial"
+  },
+  "links": {}
+}

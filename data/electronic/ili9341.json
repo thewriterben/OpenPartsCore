@@ -1,0 +1,24 @@
+{
+  "schema_version": 0,
+  "id": "electronic/ili9341",
+  "namespace": "electronic",
+  "name": "ili9341",
+  "description": "ILITEK ILI9341 — 240x320 SPI TFT LCD controller",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "spi",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "display"
+    ],
+    "compatible_boards": [
+      "cyd-esp32-2432s028r"
+    ],
+    "connector": "bare"
+  },
+  "links": {}
+}

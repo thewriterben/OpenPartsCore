@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/mcp4725",
+  "namespace": "electronic",
+  "name": "mcp4725",
+  "description": "Microchip MCP4725 — 12-bit single-channel DAC",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 96,
+    "capabilities": [
+      "dac"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

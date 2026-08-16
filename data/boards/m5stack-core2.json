@@ -1,0 +1,40 @@
+{
+  "schema_version": 0,
+  "id": "boards/m5stack-core2",
+  "namespace": "boards",
+  "name": "m5stack-core2",
+  "description": "ESP32-D0WDQ6 @ 240 MHz, 2.0\" ILI9342C touch LCD, MPU6886 IMU (CP2104; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 4292,
+        "pid": 60000,
+        "architecture": "ESP32-D0WDQ6 @ 240 MHz, 2.0\" ILI9342C touch LCD, MPU6886 IMU (CP2104; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "imu",
+      "microsd",
+      "spi",
+      "touch",
+      "wifi"
+    ],
+    "connectors": [
+      "grove",
+      "mbus"
+    ],
+    "vendor": "M5Stack",
+    "ecosystem": "M5 Core",
+    "transport": "serial"
+  },
+  "links": {}
+}

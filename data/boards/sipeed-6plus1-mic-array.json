@@ -1,0 +1,32 @@
+{
+  "schema_version": 0,
+  "id": "boards/sipeed-6plus1-mic-array",
+  "namespace": "boards",
+  "name": "sipeed-6plus1-mic-array",
+  "description": "STM32F103 @ 72 MHz, 6+1 MEMS microphone array with USB audio (UAC1)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 11012,
+        "pid": 254,
+        "architecture": "STM32F103 @ 72 MHz, 6+1 MEMS microphone array with USB audio (UAC1)"
+      }
+    ],
+    "capabilities": [
+      "audio_sample",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Sipeed",
+    "ecosystem": "MaixSense",
+    "transport": "serial"
+  },
+  "links": {}
+}

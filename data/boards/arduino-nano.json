@@ -1,0 +1,33 @@
+{
+  "schema_version": 0,
+  "id": "boards/arduino-nano",
+  "namespace": "boards",
+  "name": "arduino-nano",
+  "description": "AVR ATmega328P @ 16 MHz (CH340 USB-UART)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6790,
+        "pid": 29987,
+        "architecture": "AVR ATmega328P @ 16 MHz (CH340 USB-UART)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "analog_write",
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Arduino",
+    "ecosystem": "Nano",
+    "transport": "serial"
+  },
+  "links": {}
+}

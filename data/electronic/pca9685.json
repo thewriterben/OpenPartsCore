@@ -1,0 +1,23 @@
+{
+  "schema_version": 0,
+  "id": "electronic/pca9685",
+  "namespace": "electronic",
+  "name": "pca9685",
+  "description": "NXP PCA9685 — 16-channel 12-bit I2C PWM / servo driver",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 64,
+    "capabilities": [
+      "actuate",
+      "pwm"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

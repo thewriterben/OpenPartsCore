@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/radxa-rock-5b",
+  "namespace": "boards",
+  "name": "radxa-rock-5b",
+  "description": "Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 8711,
+        "pid": 13578,
+        "architecture": "Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)"
+      }
+    ],
+    "capabilities": [
+      "ethernet",
+      "gpio",
+      "i2c",
+      "npu",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "hat_pi"
+    ],
+    "vendor": "Radxa",
+    "ecosystem": "ROCK",
+    "transport": "native"
+  },
+  "links": {}
+}

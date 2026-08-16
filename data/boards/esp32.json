@@ -1,0 +1,31 @@
+{
+  "schema_version": 0,
+  "id": "boards/esp32",
+  "namespace": "boards",
+  "name": "esp32",
+  "description": "ESP32 Xtensa LX6 @ 240 MHz (CH340)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6790,
+        "pid": 21972,
+        "architecture": "ESP32 Xtensa LX6 @ 240 MHz (CH340)"
+      }
+    ],
+    "capabilities": [
+      "gpio"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Espressif",
+    "ecosystem": "ESP32",
+    "transport": "serial"
+  },
+  "links": {}
+}

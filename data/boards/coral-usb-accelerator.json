@@ -1,0 +1,31 @@
+{
+  "schema_version": 0,
+  "id": "boards/coral-usb-accelerator",
+  "namespace": "boards",
+  "name": "coral-usb-accelerator",
+  "description": "Google Edge TPU ASIC, 4 TOPS @ 2 W (USB 3.0 coprocessor)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 6353,
+        "pid": 37634,
+        "architecture": "Google Edge TPU ASIC, 4 TOPS @ 2 W (USB 3.0 coprocessor)"
+      }
+    ],
+    "capabilities": [
+      "edge_tpu"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Google",
+    "ecosystem": "Coral",
+    "transport": "serial"
+  },
+  "links": {}
+}

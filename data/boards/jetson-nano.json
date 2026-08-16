@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/jetson-nano",
+  "namespace": "boards",
+  "name": "jetson-nano",
+  "description": "NVIDIA Tegra X1 quad-core ARM Cortex-A57 @ 1.43 GHz (128-core Maxwell GPU)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 2389,
+        "pid": 28704,
+        "architecture": "NVIDIA Tegra X1 quad-core ARM Cortex-A57 @ 1.43 GHz (128-core Maxwell GPU)"
+      }
+    ],
+    "capabilities": [
+      "camera_capture",
+      "cuda",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "NVIDIA",
+    "ecosystem": "Jetson",
+    "transport": "native"
+  },
+  "links": {}
+}

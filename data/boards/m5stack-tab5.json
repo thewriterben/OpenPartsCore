@@ -1,0 +1,45 @@
+{
+  "schema_version": 0,
+  "id": "boards/m5stack-tab5",
+  "namespace": "boards",
+  "name": "m5stack-tab5",
+  "description": "ESP32-P4 dual RISC-V @ 400 MHz + ESP32-C6 radio co-proc; 5\" 1280x720 MIPI-DSI touch, 2MP camera (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-P4 dual RISC-V @ 400 MHz + ESP32-C6 radio co-proc; 5\" 1280x720 MIPI-DSI touch, 2MP camera (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "audio_output",
+      "audio_sample",
+      "battery",
+      "ble",
+      "camera_capture",
+      "display",
+      "gpio",
+      "i2c",
+      "microsd",
+      "nn_accel",
+      "psram",
+      "spi",
+      "touch",
+      "wifi"
+    ],
+    "connectors": [
+      "grove",
+      "mbus"
+    ],
+    "vendor": "M5Stack",
+    "ecosystem": "Tab",
+    "transport": "serial"
+  },
+  "links": {}
+}

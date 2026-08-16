@@ -1,0 +1,39 @@
+{
+  "schema_version": 0,
+  "id": "boards/xiao-esp32s3-sense",
+  "namespace": "boards",
+  "name": "xiao-esp32s3-sense",
+  "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 10374,
+        "pid": 88,
+        "architecture": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "audio_sample",
+      "ble",
+      "camera_capture",
+      "gpio",
+      "i2c",
+      "sensor_read",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Seeed Studio",
+    "ecosystem": "XIAO",
+    "transport": "serial"
+  },
+  "links": {}
+}

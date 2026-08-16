@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/dfrobot-firebeetle2-esp32s3",
+  "namespace": "boards",
+  "name": "dfrobot-firebeetle2-esp32s3",
+  "description": "ESP32-S3 LX7 dual-core @ 240 MHz, LiPo charge, onboard GDI (native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3 LX7 dual-core @ 240 MHz, LiPo charge, onboard GDI (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "analog_read",
+      "battery",
+      "ble",
+      "gpio",
+      "i2c",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "DFRobot",
+    "ecosystem": "FireBeetle",
+    "transport": "serial"
+  },
+  "links": {}
+}

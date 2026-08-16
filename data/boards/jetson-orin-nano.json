@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/jetson-orin-nano",
+  "namespace": "boards",
+  "name": "jetson-orin-nano",
+  "description": "NVIDIA Jetson Orin Nano: 6-core Arm Cortex-A78AE + 1024-core Ampere GPU w/ tensor cores, 67 TOPS (AArch64)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 2389,
+        "pid": 28704,
+        "architecture": "NVIDIA Jetson Orin Nano: 6-core Arm Cortex-A78AE + 1024-core Ampere GPU w/ tensor cores, 67 TOPS (AArch64)"
+      }
+    ],
+    "capabilities": [
+      "camera_capture",
+      "cuda",
+      "gpio",
+      "i2c",
+      "pwm",
+      "spi",
+      "tensor_rt"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "NVIDIA",
+    "ecosystem": "Jetson",
+    "transport": "native"
+  },
+  "links": {}
+}

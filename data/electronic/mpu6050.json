@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/mpu6050",
+  "namespace": "electronic",
+  "name": "mpu6050",
+  "description": "InvenSense MPU-6050 — 6-axis accelerometer + gyroscope",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 104,
+    "capabilities": [
+      "sensor_read"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

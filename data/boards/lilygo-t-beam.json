@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/lilygo-t-beam",
+  "namespace": "boards",
+  "name": "lilygo-t-beam",
+  "description": "ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 4292,
+        "pid": 60000,
+        "architecture": "ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "gpio",
+      "gps",
+      "i2c",
+      "lora",
+      "mesh",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "LILYGO",
+    "ecosystem": "T-Beam",
+    "transport": "serial"
+  },
+  "links": {}
+}

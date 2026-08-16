@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/mcp23017",
+  "namespace": "electronic",
+  "name": "mcp23017",
+  "description": "Microchip MCP23017 — 16-bit I2C GPIO expander",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 33,
+    "capabilities": [
+      "gpio"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

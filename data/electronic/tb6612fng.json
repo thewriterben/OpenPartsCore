@@ -1,0 +1,22 @@
+{
+  "schema_version": 0,
+  "id": "electronic/tb6612fng",
+  "namespace": "electronic",
+  "name": "tb6612fng",
+  "description": "Toshiba TB6612FNG — dual DC motor driver (PWM + direction)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "gpio",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "actuate"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

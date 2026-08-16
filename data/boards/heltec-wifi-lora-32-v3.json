@@ -1,0 +1,38 @@
+{
+  "schema_version": 0,
+  "id": "boards/heltec-wifi-lora-32-v3",
+  "namespace": "boards",
+  "name": "heltec-wifi-lora-32-v3",
+  "description": "ESP32-S3 + SX1262 LoRa + 0.96\" OLED (Meshtastic-compatible; native USB; shared VID/PID)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3 + SX1262 LoRa + 0.96\" OLED (Meshtastic-compatible; native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "display",
+      "gpio",
+      "i2c",
+      "lora",
+      "mesh",
+      "spi",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Heltec",
+    "ecosystem": "WiFi LoRa 32",
+    "transport": "serial"
+  },
+  "links": {}
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 0,
+  "id": "electronic/sim7600",
+  "namespace": "electronic",
+  "name": "sim7600",
+  "description": "SIMCom SIM7600 — LTE Cat-4 cellular modem with GNSS (UART/USB)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "uart",
+    "default_i2c_addr": null,
+    "capabilities": [
+      "cellular",
+      "gps"
+    ],
+    "compatible_boards": [],
+    "connector": "bare"
+  },
+  "links": {}
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/rak4631",
+  "namespace": "boards",
+  "name": "rak4631",
+  "description": "Nordic nRF52840 + Semtech SX1262 LoRa (RAKwireless WisBlock core; Meshtastic-compatible; Adafruit nRF52 UF2 bootloader VID/PID, shared — selected by name)",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 9114,
+        "pid": 41,
+        "architecture": "Nordic nRF52840 + Semtech SX1262 LoRa (RAKwireless WisBlock core; Meshtastic-compatible; Adafruit nRF52 UF2 bootloader VID/PID, shared — selected by name)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "gpio",
+      "i2c",
+      "lora",
+      "mesh",
+      "nfc",
+      "spi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "RAKwireless",
+    "ecosystem": "WisBlock",
+    "transport": "serial"
+  },
+  "links": {}
+}

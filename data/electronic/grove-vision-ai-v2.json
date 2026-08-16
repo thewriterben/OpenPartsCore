@@ -1,0 +1,23 @@
+{
+  "schema_version": 0,
+  "id": "electronic/grove-vision-ai-v2",
+  "namespace": "electronic",
+  "name": "grove-vision-ai-v2",
+  "description": "Seeed Grove Vision AI Module V2 — Himax WiseEye2 (Cortex-M55 + Ethos-U55 microNPU) smart camera",
+  "source": {
+    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+    "retrieved": "2026-08-15",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "bus": "i2c",
+    "default_i2c_addr": 98,
+    "capabilities": [
+      "camera_capture",
+      "nn_accel"
+    ],
+    "compatible_boards": [],
+    "connector": "grove"
+  },
+  "links": {}
+}
