@@ -1,0 +1,11 @@
+[package]
+name = "openpartscore"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Canonical parts registry for the OpenDesignCore platform, as const data. No dependencies."
+repository = "https://github.com/thewriterben/OpenPartsCore"
+
+# Intentionally empty. Consumers should not take a dependency tree to read
+# static reference data; src/lib.rs is generated const data with no parsing.
+[dependencies]
