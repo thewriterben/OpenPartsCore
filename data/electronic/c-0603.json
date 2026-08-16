@@ -1,0 +1,23 @@
+{
+  "schema_version": 0,
+  "id": "electronic/c-0603",
+  "namespace": "electronic",
+  "name": "Capacitor, 0603 (1608 metric)",
+  "description": "Generic MLCC family. Capacitance, dielectric, tolerance and voltage rating are properties of the BOM line, not of this entry: a design says '100n X7R 16V' and sourcing picks a manufacturer part. This entry fixes the package only.",
+  "source": {
+    "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 76, as cited by KiCad footprint Capacitor_SMD:C_0603_1608Metric. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family.",
+    "url": "https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
+    "retrieved": "2026-08-15"
+  },
+  "attributes": {
+    "package": "0603 (1608 metric)",
+    "body_length_mm": 1.6,
+    "body_width_mm": 0.8,
+    "terminals": 2,
+    "mounting": "smd"
+  },
+  "links": {
+    "kicad_footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "kicad_symbol": "Device:C"
+  }
+}
