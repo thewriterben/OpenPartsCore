@@ -1,0 +1,25 @@
+{
+  "schema_version": 0,
+  "id": "electronic/dynamixel-xm430-w350",
+  "namespace": "electronic",
+  "name": "ROBOTIS Dynamixel XM430-W350-T/R",
+  "description": "Smart servo with a contactless absolute encoder, so unlike a PWM hobby servo it can report where it actually is. Torque and speed are deliberately not entry facts here: ROBOTIS publishes stall torque at three supply voltages and no continuous rating at all, which makes them voltage-indexed curves rather than single values, and the vendor states outright that stall torque is not the continuous output rating.",
+  "source": {
+    "citation": "ROBOTIS e-Manual, Dynamixel XM430-W350, Specifications table",
+    "url": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/",
+    "retrieved": "2026-08-22"
+  },
+  "attributes": {
+    "capabilities": [
+      "actuate"
+    ],
+    "mass_g": 82,
+    "gear_ratio": 353.5,
+    "position_sensor": "contactless absolute encoder, 12-bit over 360 degrees",
+    "operating_temp_min_c": -5,
+    "operating_temp_max_c": 80
+  },
+  "links": {
+    "datasheet": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/"
+  }
+}

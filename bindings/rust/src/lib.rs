@@ -806,6 +806,16 @@ pub const PARTS: &[Part] = &[
         attributes_json: "{\"bus\":\"onewire\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
+        id: "electronic/dynamixel-xm430-w350",
+        namespace: Namespace::Electronic,
+        name: "ROBOTIS Dynamixel XM430-W350-T/R",
+        description: "Smart servo with a contactless absolute encoder, so unlike a PWM hobby servo it can report where it actually is. Torque and speed are deliberately not entry facts here: ROBOTIS publishes stall torque at three supply voltages and no continuous rating at all, which makes them voltage-indexed curves rather than single values, and the vendor states outright that stall torque is not the continuous output rating.",
+        citation: "ROBOTIS e-Manual, Dynamixel XM430-W350, Specifications table",
+        capabilities: &["actuate"],
+        usb_ids: &[],
+        attributes_json: "{\"capabilities\":[\"actuate\"],\"gear_ratio\":353.5,\"mass_g\":82,\"operating_temp_max_c\":80,\"operating_temp_min_c\":-5,\"position_sensor\":\"contactless absolute encoder, 12-bit over 360 degrees\"}",
+    },
+    Part {
         id: "electronic/grove-vision-ai-v2",
         namespace: Namespace::Electronic,
         name: "grove-vision-ai-v2",
