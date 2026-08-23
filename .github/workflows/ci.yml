@@ -1,0 +1,76 @@
+name: ci
+
+# ROADMAP.md has carried "Validation + binding staleness check in CI" as an open
+# item since the repo was created, and `bindings/typescript/parts.ts` has opened
+# with "Do not edit by hand: CI regenerates this file and fails on any
+# difference" for just as long. That sentence was a claim about a workflow that
+# did not exist.
+#
+# The staleness gate is the load-bearing part. ADR-0001 exists because three
+# hand-maintained copies of Oh-Ben-Claw's registry drifted apart across Rust, TS
+# and Python; ADR-0003 answered that with generated bindings and a `--check`
+# flag. A `--check` nobody runs is the drift it was written to prevent, with
+# extra steps.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      # Structure, unit-suffix rules, and the citation gate. An uncited value is
+      # invalid here, which is the rule the whole registry rests on.
+      - name: Validate every entry
+        run: python scripts/validate.py
+
+      # Regenerate and diff. Byte-identical or red — the discipline ADR-0003
+      # borrowed from OBC-Prime's parity fixtures. A data change without a
+      # regenerated binding fails here rather than reaching a consumer.
+      - name: The committed Rust binding is not stale
+        run: python scripts/emit_rust.py --check
+
+      - name: The committed TypeScript binding is not stale
+        run: python scripts/emit_ts.py --check
+
+      # ARCHITECTURE.md names this as the verification for the TS binding, and
+      # it is the check most likely to be skipped locally: TypeScript is not
+      # installed on every contributor's machine, so the emitter can produce
+      # something that type-checks nowhere until CI says so.
+      #
+      # It found exactly that on its first run. See bindings/typescript/tsconfig.json
+      # for why the command is `-p` rather than the bare `--strict` the docs used
+      # to name.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: TypeScript binding type-checks
+        run: |
+          npm install --no-save --no-package-lock typescript@5
+          npx tsc --noEmit -p bindings/typescript
+
+      # ARCHITECTURE.md's other named verification. The crate has zero
+      # dependencies on purpose (ADR-0001/0003), so this is fast and has nothing
+      # to cache.
+      - name: Rust binding tests
+        working-directory: bindings/rust
+        run: cargo test
+
+      - name: Rust binding builds without warnings
+        working-directory: bindings/rust
+        env:
+          RUSTFLAGS: "-D warnings"
+        run: cargo build

@@ -1,0 +1,22 @@
+{
+  "// why this file exists": [
+    "ARCHITECTURE.md names `tsc --noEmit --strict` as this binding's verification,",
+    "and that command has never passed: the emitter generates `PARTS.find(...)`,",
+    "which is ES2015, while tsc's default target is ES5. `.filter` next to it is",
+    "fine because filter IS ES5, which is why the gap survived reading.",
+    "",
+    "Stating the requirement rather than contorting the emitter into ES5. The",
+    "consumer named in ARCHITECTURE.md is a React Native / Expo app, so an ES2020",
+    "floor costs it nothing. `types: []` keeps the zero-dependency promise: this",
+    "type-checks with no @types packages installed."
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "types": [],
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": ["parts.ts"]
+}
