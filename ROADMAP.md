@@ -10,6 +10,8 @@
 - [ ] Report upstream: duplicate board names make name-based selection ambiguous (`esp32-s3`, `arduino-uno`)
 - [x] Rust binding (`openpartscore`, zero deps, 7 tests) so Oh-Ben-Claw *can* consume this registry rather than own it (2026-08-15)
 - [ ] Oh-Ben-Claw actually switching to it — the other half, and upstream's call
+- [x] `envelope_mm` with its own citation (ADR-0006), preserved across re-ingest; first two entries sourced (2026-09-06)
+- [ ] OpenDesignCore reading `envelope_mm` from here instead of its private `data/parts/` — the other half of the thin thread
 - [ ] `electronic` namespace: first cited entries with KiCad footprint/symbol + atopile package links (for OpenCircuitCore)
 - [ ] `material` namespace: first filament entries (for the OpenDesignCore thin thread)
 

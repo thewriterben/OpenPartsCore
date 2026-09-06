@@ -78,3 +78,21 @@ This is not upstream sloppiness — it is what USB actually does, since a bridge
 **Decision.** Upstream accessories — sensors, displays, HATs, accelerator modules — ingest into `electronic`, keeping `bus`, `default_i2c_addr`, `capabilities`, `compatible_boards`, and `connector` under `attributes`.
 
 **Consequences.** `electronic` will eventually hold both breakout modules and bare components (ICs, passives) once OpenCircuitCore's reference board needs them. That is intended: they are the same kind of thing to a BOM, differing in packaging. If the distinction later earns its keep, it becomes a field, not a namespace — namespaces are expensive to change because they are baked into every id.
+
+---
+
+## ADR-0006 — An envelope carries its own source
+
+**Date:** 2026-09-06
+**Status:** accepted
+
+**Context.** OpenDesignCore's thin thread is "a component from the registry → an enclosure around its dimensions". Its `run_enclosure` reads envelopes from a private `data/parts/` holding one hand-copied module, because *this* registry — the one the thread is named after — carried no dimensions at all. Every `boards/*` entry has exactly one `source`, and it is Oh-Ben-Claw's `registry.json`, which has never held a length. Adding `x, y, z` under that citation would put a number under a source that does not cover it: it would validate, it would look sourced, and it would be the invented-value failure wearing a citation. Two further facts shaped the shape: `ingest_obc.py` rewrites every board file from upstream, so a hand-added field is deleted by the next run; and the generic `boards/esp32-s3` groups three USB bridges under one name, so there is no single drawing it could cite.
+
+**Options.**
+1. `attributes.envelope_mm` under the entry's existing source — rejected for the reason above; `attributes` is documented as "preserved verbatim from the cited source", and upstream has no such field.
+2. A parallel `physical/` namespace keyed to the same slug — splits one part across two ids and forces every consumer to join.
+3. Optional top-level `envelope_mm {x, y, z, tolerance_mm?, source}` with a mandatory citation of its own; the ingest preserves it.
+
+**Decision.** Option 3. `envelope_mm` is optional and, when present, complete (all three axes), positive, and cited *in itself*. Absent means unknown, never zero — the same rule as ClawBot's `limits: null`. `scripts/ingest_obc.py` now carries `envelope_mm` and `links` across a re-ingest (`PRESERVED_KEYS`): they are the fields upstream cannot supply, so the ingest must not remove them. The Rust binding hoists it as `Option<EnvelopeMm>` with the citation inline, so a consumer that reads `x` is one field away from where `x` came from. A derived envelope is acceptable when the derivation is stated in full: the first board entry is the bounding box of the vendor's own STEP model, with the file's hash, the tool and version, the meshing tolerance, the unrounded result and what the box does and does not include, all in the citation.
+
+**Consequences.** Most entries will have no envelope for a long time, and the generic multi-bridge boards never can; that is correct and visible. OpenDesignCore can now read this registry instead of its private store (its ROADMAP's "consume, don't fork" item), and entries without an envelope are simply not offered to `run_enclosure` rather than defaulted. A schema field with its own `source` is a precedent: any future fact that does not come from the entry's source (mass, a mounting-hole pattern) follows this shape rather than borrowing the entry's citation. The re-ingest is idempotent only within a day — `source.retrieved` is stamped with today's date — which predates this ADR and is left as it was.

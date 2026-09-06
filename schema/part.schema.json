@@ -29,6 +29,28 @@
       "type": "object",
       "description": "Namespace-specific facts, preserved verbatim from the cited source."
     },
+    "envelope_mm": {
+      "type": "object",
+      "description": "Axis-aligned bounding envelope of the physical part, millimetres. Carries its own source because it almost never comes from the same document as the rest of the entry (ADR-0006). Absent means unknown, never zero.",
+      "required": ["x", "y", "z", "source"],
+      "properties": {
+        "x": { "type": "number", "exclusiveMinimum": 0 },
+        "y": { "type": "number", "exclusiveMinimum": 0 },
+        "z": { "type": "number", "exclusiveMinimum": 0 },
+        "tolerance_mm": { "type": "number", "exclusiveMinimum": 0, "description": "Dimensional tolerance if the source states one." },
+        "source": {
+          "type": "object",
+          "required": ["citation"],
+          "properties": {
+            "citation": { "type": "string", "minLength": 1 },
+            "url": { "type": "string" },
+            "retrieved": { "type": "string", "format": "date" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "links": {
       "type": "object",
       "properties": {
