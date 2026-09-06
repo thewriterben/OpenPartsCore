@@ -1,0 +1,2 @@
+# Rust build output for the generated binding; only src/lib.rs is the artifact
+bindings/rust/target/
