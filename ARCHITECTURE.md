@@ -17,7 +17,7 @@ This repo is reviewable reference data in the sense of OpenDesignCore ADR-0006: 
 
 Identifying a connected board is therefore a **match**, not a lookup — `303a:1001` narrows to 17 candidates and needs a second signal.
 
-The ingest owns everything it writes except `envelope_mm` and `links`, which upstream cannot supply; those are carried over from the existing file on every run (ADR-0006). Idempotence holds within a day: `source.retrieved` is today's date, so the first run on a new day rewrites every ingested file.
+The ingest owns everything it writes except `envelope_mm` and `links`, which upstream cannot supply; those are carried over from the existing file on every run (ADR-0006). `source.retrieved` is re-stamped only when the entry's upstream facts actually changed, so an unchanged upstream rewrites nothing on any day (until 2026-09-06 it rewrote every file on the first run of each day).
 
 ## Envelopes
 

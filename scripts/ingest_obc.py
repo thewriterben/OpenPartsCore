@@ -50,6 +50,17 @@ def write_entry(path: Path, entry: dict) -> bool:
         for key in PRESERVED_KEYS:
             if key in existing and existing[key]:
                 entry[key] = existing[key]
+        # `retrieved` says when the upstream facts were last read *and found
+        # different*. Stamping today's date onto an unchanged entry rewrote
+        # every file on the first run of each day, which made "idempotent"
+        # true only within a day and buried real changes in a 100-file diff.
+        old_retrieved = (existing.get("source") or {}).get("retrieved")
+        if old_retrieved:
+            probe = dict(entry, source=dict(entry["source"], retrieved=old_retrieved))
+            probe_tail = {k: probe.pop(k) for k in PRESERVED_KEYS if k in probe}
+            probe.update(probe_tail)
+            if probe == existing:
+                entry["source"]["retrieved"] = old_retrieved
     # Stable key order regardless of which side supplied a field, so a
     # preserved envelope does not make the next run report a change.
     tail = {k: entry.pop(k) for k in PRESERVED_KEYS if k in entry}

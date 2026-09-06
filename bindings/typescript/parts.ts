@@ -2571,8 +2571,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Capacitor, 0603 (1608 metric)",
     "description": "Generic MLCC family. Capacitance, dielectric, tolerance and voltage rating are properties of the BOM line, not of this entry: a design says '100n X7R 16V' and sourcing picks a manufacturer part. This entry fixes the package only.",
     "source": {
-      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 76, as cited by KiCad footprint Capacitor_SMD:C_0603_1608Metric. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family.",
-      "url": "https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
+      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 76, as cited by KiCad footprint Capacitor_SMD:C_0603_1608Metric. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
+      "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
       "retrieved": "2026-08-15"
     },
     "attributes": {
@@ -3041,8 +3041,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Resistor, 0603 (1608 metric)",
     "description": "Generic chip resistor family. Resistance, tolerance and power rating are properties of the BOM line, not of this entry: a design says '4.7k 1%' and sourcing picks a manufacturer part. This entry fixes the package only.",
     "source": {
-      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family.",
-      "url": "https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
+      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
+      "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
       "retrieved": "2026-08-15"
     },
     "attributes": {
