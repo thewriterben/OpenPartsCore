@@ -28,8 +28,32 @@ def slug(name: str) -> str:
     return "".join(c if (c.isalnum() or c in "._-") else "-" for c in name.lower())
 
 
+# Fields the ingest does not own. Upstream has no dimensions and no links, so
+# anything under these keys was added here, by hand, with its own citation
+# (ADR-0006) -- a re-ingest that rewrote the file from upstream alone would
+# delete it silently, which is how a cited envelope would vanish between two
+# runs that both reported "unchanged".
+PRESERVED_KEYS = ("envelope_mm", "links")
+
+
 def write_entry(path: Path, entry: dict) -> bool:
-    """Write only if content differs; returns True when the file changed."""
+    """Write only if content differs; returns True when the file changed.
+
+    Keys in PRESERVED_KEYS are carried over from the existing file when
+    present: upstream cannot supply them, so the ingest must not remove them.
+    """
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            existing = {}
+        for key in PRESERVED_KEYS:
+            if key in existing and existing[key]:
+                entry[key] = existing[key]
+    # Stable key order regardless of which side supplied a field, so a
+    # preserved envelope does not make the next run report a change.
+    tail = {k: entry.pop(k) for k in PRESERVED_KEYS if k in entry}
+    entry.update(tail)
     text = json.dumps(entry, indent=2, ensure_ascii=False) + "\n"
     if path.exists() and path.read_text(encoding="utf-8") == text:
         return False

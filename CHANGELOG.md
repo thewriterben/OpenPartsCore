@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- **ADR-0006 — `envelope_mm` with its own source.** Optional top-level `envelope_mm {x, y, z, tolerance_mm?, source}`; the validator requires all three axes positive and a citation of the envelope's own, since the entry-level citation for every ingested board is a registry with no dimensions. `ingest_obc.py` now preserves `envelope_mm` and `links` across a re-ingest instead of deleting them. Rust binding hoists `envelope_mm: Option<EnvelopeMm>` (8 tests); TS binding types `PartEnvelope`. First two envelopes: `boards/dfrobot-firebeetle2-esp32s3` (bounding box of DFRobot's STEP model, hashed and method stated) and `electronic/esp32-s3-wroom-1` (Espressif datasheet; migrated from OpenDesignCore's private `data/parts/`). 104 entries.
 - Repo scaffolded: schema v0, boards namespace with one ingested entry (esp32-s3, from Oh-Ben-Claw registry schema_version 1), stdlib validator, docs and ADRs.
 - ADR-0003: hand-rolled binding emitters with golden-fixture parity.
 - `scripts/ingest_obc.py`: idempotent ingest of Oh-Ben-Claw's registry. 69 upstream USB-identity rows become **66 board models** carrying `usb_ids` lists (ADR-0004 — neither name nor VID/PID is a key upstream), plus 34 accessories into `electronic` (ADR-0005). 100 entries, all cited, all valid.

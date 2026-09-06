@@ -9,6 +9,15 @@ export interface PartSource {
   upstream_schema_version?: number | string;
 }
 
+/** Axis-aligned bounding envelope, millimetres, with its own citation (ADR-0006). Absent means unknown. */
+export interface PartEnvelope {
+  x: number;
+  y: number;
+  z: number;
+  tolerance_mm?: number;
+  source: { citation: string; url?: string; retrieved?: string };
+}
+
 export interface Part {
   schema_version: 0;
   id: string;
@@ -17,6 +26,7 @@ export interface Part {
   description?: string;
   source: PartSource;
   attributes?: Record<string, unknown>;
+  envelope_mm?: PartEnvelope;
   links?: Record<string, string>;
 }
 
@@ -606,7 +616,19 @@ export const PARTS: readonly Part[] = Object.freeze([
       "ecosystem": "FireBeetle",
       "transport": "serial"
     },
-    "links": {}
+    "envelope_mm": {
+      "x": 25.5,
+      "y": 61.47,
+      "z": 8.45,
+      "source": {
+        "citation": "Axis-aligned bounding box of DFRobot's vendor STEP model DFR0975.stp (sha256 6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9, inside '3D Model/' of DFR0975_firebeetle-esp32-s3-ai-acceleration-board_stpfile_1.zip, sha256 0e7feac458213620edf605c85120bf314f17df51fc79858c8800450c019b6d4e), computed 2026-09-06 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing: 25.5000 x 61.4706 x 8.4477 mm, rounded up to 0.01. Z spans PCB underside (z=0) to the tallest top-side component; the model carries no headers. PCB outline is 25.4 x 60.0 mm, thickness 1.6 mm, per 'DFR0975 dimension V1.3.pdf' (dimension_V1.3.zip, drawing dated 2026-06-17); the STEP file's own timestamp is 2023-10-20 and it does not state which board revision it depicts.",
+        "url": "https://wiki.dfrobot.com/dfr0975",
+        "retrieved": "2026-09-06"
+      }
+    },
+    "links": {
+      "model_3d": "sha256:6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9"
+    }
   },
   {
     "schema_version": 0,
@@ -2661,6 +2683,39 @@ export const PARTS: readonly Part[] = Object.freeze([
     },
     "links": {
       "datasheet": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/"
+    }
+  },
+  {
+    "schema_version": 0,
+    "id": "electronic/esp32-s3-wroom-1",
+    "namespace": "electronic",
+    "name": "esp32-s3-wroom-1",
+    "description": "Espressif ESP32-S3-WROOM-1 Wi-Fi + BLE MCU module with PCB antenna. The module soldered onto many of the boards/ entries; it is a component, not a board. Envelope is the module body; the antenna area is included in the 25.5 mm length.",
+    "source": {
+      "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet (identity and description). Migrated 2026-09-06 from OpenDesignCore data/parts/esp32-s3-wroom-1.json, where it had been entered 2026-08-15 from the same document.",
+      "retrieved": "2026-08-15"
+    },
+    "attributes": {
+      "vendor": "Espressif",
+      "ecosystem": "ESP32-S3",
+      "capabilities": [
+        "ble",
+        "wifi"
+      ]
+    },
+    "envelope_mm": {
+      "x": 18.0,
+      "y": 25.5,
+      "z": 3.1,
+      "tolerance_mm": 0.2,
+      "source": {
+        "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet, Table 1-1 (size 18.0 x 25.5 x 3.1 mm) and Section 10.1 Module Dimensions (25.5 +/- 0.2)",
+        "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+        "retrieved": "2026-08-15"
+      }
+    },
+    "links": {
+      "datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf"
     }
   },
   {

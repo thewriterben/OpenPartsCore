@@ -37,6 +37,21 @@ pub struct UsbId {
     pub architecture: &'static str,
 }
 
+/// Axis-aligned bounding envelope of the physical part, millimetres.
+///
+/// Carries its own citation (ADR-0006): an ingested board's entry-level
+/// citation is a registry that holds no dimensions, so a number under it
+/// would be wearing a source that does not cover it.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct EnvelopeMm {
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
+    /// Dimensional tolerance if the source states one.
+    pub tolerance_mm: Option<f64>,
+    pub citation: &'static str,
+}
+
 #[derive(Debug, Clone, Copy)]
 pub struct Part {
     pub id: &'static str,
@@ -49,6 +64,10 @@ pub struct Part {
     pub capabilities: &'static [&'static str],
     /// Empty for anything that is not a board.
     pub usb_ids: &'static [UsbId],
+    /// `None` means unknown -- never a zero. Most entries have none: the
+    /// upstream registry carries no dimensions, and each envelope here was
+    /// sourced separately.
+    pub envelope_mm: Option<EnvelopeMm>,
     /// The namespace-specific remainder, verbatim, for consumers that need a
     /// field this binding does not hoist.
     pub attributes_json: &'static str,
@@ -63,6 +82,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "battery", "ble", "display", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x239a, pid: 0x811d, architecture: "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 1.14\" ST7789 240x135 TFT, LiPo charge (CircuitPython VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"battery\",\"ble\",\"display\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"featherwing\",\"stemma_qt\"],\"ecosystem\":\"Feather\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 1.14\\\" ST7789 240x135 TFT, LiPo charge (CircuitPython VID/PID)\",\"pid\":33053,\"vid\":9114}],\"vendor\":\"Adafruit\"}",
     },
     Part {
@@ -73,6 +93,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x239a, pid: 0x8143, architecture: "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz (CircuitPython VID/PID; Arduino mode = 0x303a:0x1001)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"stemma_qt\"],\"ecosystem\":\"QT Py\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 Xtensa LX7 dual-core @ 240 MHz (CircuitPython VID/PID; Arduino mode = 0x303a:0x1001)\",\"pid\":33091,\"vid\":9114}],\"vendor\":\"Adafruit\"}",
     },
     Part {
@@ -83,6 +104,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "gpio"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x0036, architecture: "AVR ATmega32U4 @ 16 MHz (native USB)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Leonardo\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"AVR ATmega32U4 @ 16 MHz (native USB)\",\"pid\":54,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -93,6 +115,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "gpio"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x0042, architecture: "AVR ATmega2560 @ 16 MHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Mega\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"AVR ATmega2560 @ 16 MHz\",\"pid\":66,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -103,6 +126,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "gpio"],
         usb_ids: &[UsbId { vid: 0x1a86, pid: 0x7523, architecture: "AVR ATmega328P @ 16 MHz (CH340 USB-UART)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nano\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"AVR ATmega328P @ 16 MHz (CH340 USB-UART)\",\"pid\":29987,\"vid\":6790}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -113,6 +137,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "sensor_read", "spi"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x805a, architecture: "nRF52840 ARM Cortex-M4F @ 64 MHz (BLE, IMU)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"sensor_read\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nano\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"nRF52840 ARM Cortex-M4F @ 64 MHz (BLE, IMU)\",\"pid\":32858,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -123,6 +148,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x0070, architecture: "ESP32-S3 (u-blox NORA-W106) Xtensa LX7 dual-core @ 240 MHz, Nano form factor" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nano\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 (u-blox NORA-W106) Xtensa LX7 dual-core @ 240 MHz, Nano form factor\",\"pid\":112,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -133,6 +159,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "gpio"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x0058, architecture: "AVR ATmega4809 @ 20 MHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nano\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"AVR ATmega4809 @ 20 MHz\",\"pid\":88,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -143,6 +170,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "gpio"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x0001, architecture: "AVR ATmega328P @ 16 MHz (legacy)" }, UsbId { vid: 0x2341, pid: 0x0043, architecture: "AVR ATmega328P @ 16 MHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Uno\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"AVR ATmega328P @ 16 MHz (legacy)\",\"pid\":1,\"vid\":9025},{\"architecture\":\"AVR ATmega328P @ 16 MHz\",\"pid\":67,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -153,6 +181,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "gpio"],
         usb_ids: &[UsbId { vid: 0x2341, pid: 0x0078, architecture: "Arduino Uno Q / ATmega328P" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Uno\",\"transport\":\"bridge\",\"usb_ids\":[{\"architecture\":\"Arduino Uno Q / ATmega328P\",\"pid\":120,\"vid\":9025}],\"vendor\":\"Arduino\"}",
     },
     Part {
@@ -163,6 +192,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "can", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x1d6b, pid: 0x0104, architecture: "TI AM3358 ARM Cortex-A8 @ 1 GHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"can\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"BeagleBone\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"TI AM3358 ARM Cortex-A8 @ 1 GHz\",\"pid\":260,\"vid\":7531}],\"vendor\":\"BeagleBoard\"}",
     },
     Part {
@@ -173,6 +203,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "camera_capture", "edge_tpu", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x0525, pid: 0xa4a7, architecture: "MediaTek MT8167S quad Cortex-A35 + Google Edge TPU, 4 TOPS, 2 GB LPDDR3 (AArch64)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"camera_capture\",\"edge_tpu\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"hat_pi\"],\"ecosystem\":\"Coral\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"MediaTek MT8167S quad Cortex-A35 + Google Edge TPU, 4 TOPS, 2 GB LPDDR3 (AArch64)\",\"pid\":42151,\"vid\":1317}],\"vendor\":\"Google\"}",
     },
     Part {
@@ -183,6 +214,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["edge_tpu"],
         usb_ids: &[UsbId { vid: 0x18d1, pid: 0x9302, architecture: "Google Edge TPU ASIC, 4 TOPS @ 2 W (USB 3.0 coprocessor)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"edge_tpu\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Coral\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"Google Edge TPU ASIC, 4 TOPS @ 2 W (USB 3.0 coprocessor)\",\"pid\":37634,\"vid\":6353}],\"vendor\":\"Google\"}",
     },
     Part {
@@ -193,6 +225,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &[],
         usb_ids: &[UsbId { vid: 0x10c4, pid: 0xea60, architecture: "Silicon Labs CP2102 USB-UART bridge" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[],\"connectors\":[\"bare\"],\"ecosystem\":\"USB-UART\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"Silicon Labs CP2102 USB-UART bridge\",\"pid\":60000,\"vid\":4292}],\"vendor\":\"Silicon Labs\"}",
     },
     Part {
@@ -203,6 +236,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &[],
         usb_ids: &[UsbId { vid: 0x10c4, pid: 0xea70, architecture: "Silicon Labs CP2102N USB-UART bridge" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[],\"connectors\":[\"bare\"],\"ecosystem\":\"USB-UART\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"Silicon Labs CP2102N USB-UART bridge\",\"pid\":60016,\"vid\":4292}],\"vendor\":\"Silicon Labs\"}",
     },
     Part {
@@ -213,6 +247,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "display", "gpio", "i2c", "microsd", "spi", "touch", "wifi"],
         usb_ids: &[UsbId { vid: 0x1a86, pid: 0x7523, architecture: "ESP32 'Cheap Yellow Display' (ESP32-2432S028R): ILI9341 320x240 + XPT2046 resistive touch, microSD (CH340; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"display\",\"gpio\",\"i2c\",\"microsd\",\"spi\",\"touch\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Cheap Yellow Display\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32 'Cheap Yellow Display' (ESP32-2432S028R): ILI9341 320x240 + XPT2046 resistive touch, microSD (CH340; shared VID/PID)\",\"pid\":29987,\"vid\":6790}],\"vendor\":\"Sunton\"}",
     },
     Part {
@@ -223,6 +258,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "battery", "ble", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 LX7 dual-core @ 240 MHz, LiPo charge, onboard GDI (native USB; shared VID/PID)" }],
+        envelope_mm: Some(EnvelopeMm { x: 25.5, y: 61.47, z: 8.45, tolerance_mm: None, citation: "Axis-aligned bounding box of DFRobot's vendor STEP model DFR0975.stp (sha256 6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9, inside '3D Model/' of DFR0975_firebeetle-esp32-s3-ai-acceleration-board_stpfile_1.zip, sha256 0e7feac458213620edf605c85120bf314f17df51fc79858c8800450c019b6d4e), computed 2026-09-06 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing: 25.5000 x 61.4706 x 8.4477 mm, rounded up to 0.01. Z spans PCB underside (z=0) to the tallest top-side component; the model carries no headers. PCB outline is 25.4 x 60.0 mm, thickness 1.6 mm, per 'DFR0975 dimension V1.3.pdf' (dimension_V1.3.zip, drawing dated 2026-06-17); the STEP file's own timestamp is 2023-10-20 and it does not state which board revision it depicts." }),
         attributes_json: "{\"capabilities\":[\"analog_read\",\"battery\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"FireBeetle\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 LX7 dual-core @ 240 MHz, LiPo charge, onboard GDI (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"DFRobot\"}",
     },
     Part {
@@ -233,6 +269,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["gpio"],
         usb_ids: &[UsbId { vid: 0x1a86, pid: 0x55d4, architecture: "ESP32 Xtensa LX6 @ 240 MHz (CH340)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32 Xtensa LX6 @ 240 MHz (CH340)\",\"pid\":21972,\"vid\":6790}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -243,6 +280,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-C3 RISC-V single-core @ 160 MHz (native USB)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-C3\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-C3 RISC-V single-core @ 160 MHz (native USB)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -253,6 +291,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "spi", "thread", "wifi", "zigbee"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-C5 RISC-V single-core @ 240 MHz (dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"thread\",\"wifi\",\"zigbee\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-C5\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-C5 RISC-V single-core @ 240 MHz (dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -263,6 +302,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "spi", "thread", "wifi", "zigbee"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-C6 RISC-V single-core @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"thread\",\"wifi\",\"zigbee\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-C6\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-C6 RISC-V single-core @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -273,6 +313,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "gpio", "microsd", "wifi"],
         usb_ids: &[UsbId { vid: 0x1a86, pid: 0x7523, architecture: "ESP32 + OV2640 camera, microSD (AI-Thinker; flashed via external USB-UART; VID/PID is a common CH340 programmer)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"camera_capture\",\"gpio\",\"microsd\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-CAM\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32 + OV2640 camera, microSD (AI-Thinker; flashed via external USB-UART; VID/PID is a common CH340 programmer)\",\"pid\":29987,\"vid\":6790}],\"vendor\":\"AI-Thinker\"}",
     },
     Part {
@@ -283,6 +324,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "spi", "thread", "zigbee"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-H2 RISC-V single-core @ 96 MHz (BLE 5, 802.15.4, no Wi-Fi; native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"thread\",\"zigbee\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-H2\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-H2 RISC-V single-core @ 96 MHz (BLE 5, 802.15.4, no Wi-Fi; native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -293,6 +335,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "camera_capture", "display", "gpio", "i2c", "nn_accel", "spi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-P4 dual-core RISC-V @ 400 MHz (AI vector ext., MIPI-CSI/DSI, no radio; native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"camera_capture\",\"display\",\"gpio\",\"i2c\",\"nn_accel\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-P4\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-P4 dual-core RISC-V @ 400 MHz (AI vector ext., MIPI-CSI/DSI, no radio; native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -303,6 +346,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_sample", "camera_capture", "gpio", "sensor_read"],
         usb_ids: &[UsbId { vid: 0x10c4, pid: 0xea60, architecture: "ESP32-S3 (CP2102 USB-UART)" }, UsbId { vid: 0x1a86, pid: 0x55d3, architecture: "ESP32-S3 (CH343 USB-UART)" }, UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 Xtensa LX7 @ 240 MHz (native USB)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_sample\",\"camera_capture\",\"gpio\",\"sensor_read\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-S3\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 (CP2102 USB-UART)\",\"pid\":60000,\"vid\":4292},{\"architecture\":\"ESP32-S3 (CH343 USB-UART)\",\"pid\":21971,\"vid\":6790},{\"architecture\":\"ESP32-S3 Xtensa LX7 @ 240 MHz (native USB)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -313,6 +357,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "camera_capture", "gpio", "i2c", "microsd", "psram", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 + OV2640/OV5640 camera, microSD, PSRAM (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"camera_capture\",\"gpio\",\"i2c\",\"microsd\",\"psram\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-S3\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 + OV2640/OV5640 camera, microSD, PSRAM (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Espressif\"}",
     },
     Part {
@@ -323,6 +368,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "gpio", "ibutton", "infrared", "nfc", "rfid", "subghz"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x5740, architecture: "STM32WB55 ARM Cortex-M4 @ 64 MHz (multi-tool; USB CDC)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"gpio\",\"ibutton\",\"infrared\",\"nfc\",\"rfid\",\"subghz\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Flipper Zero\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"STM32WB55 ARM Cortex-M4 @ 64 MHz (multi-tool; USB CDC)\",\"pid\":22336,\"vid\":1155}],\"vendor\":\"Flipper Devices\"}",
     },
     Part {
@@ -333,6 +379,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &[],
         usb_ids: &[UsbId { vid: 0x0403, pid: 0x6015, architecture: "FTDI FT231X USB-UART bridge" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[],\"connectors\":[\"bare\"],\"ecosystem\":\"USB-UART\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"FTDI FT231X USB-UART bridge\",\"pid\":24597,\"vid\":1027}],\"vendor\":\"FTDI\"}",
     },
     Part {
@@ -343,6 +390,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &[],
         usb_ids: &[UsbId { vid: 0x0403, pid: 0x6001, architecture: "FTDI FT232 USB-UART bridge" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[],\"connectors\":[\"bare\"],\"ecosystem\":\"USB-UART\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"FTDI FT232 USB-UART bridge\",\"pid\":24577,\"vid\":1027}],\"vendor\":\"FTDI\"}",
     },
     Part {
@@ -353,6 +401,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "display", "gpio", "i2c", "lora", "mesh", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 + SX1262 LoRa + 0.96\" OLED (Meshtastic-compatible; native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"display\",\"gpio\",\"i2c\",\"lora\",\"mesh\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"WiFi LoRa 32\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 + SX1262 LoRa + 0.96\\\" OLED (Meshtastic-compatible; native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Heltec\"}",
     },
     Part {
@@ -363,6 +412,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "cuda", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x0955, pid: 0x7020, architecture: "NVIDIA Tegra X1 quad-core ARM Cortex-A57 @ 1.43 GHz (128-core Maxwell GPU)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"camera_capture\",\"cuda\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Jetson\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"NVIDIA Tegra X1 quad-core ARM Cortex-A57 @ 1.43 GHz (128-core Maxwell GPU)\",\"pid\":28704,\"vid\":2389}],\"vendor\":\"NVIDIA\"}",
     },
     Part {
@@ -373,6 +423,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "cuda", "gpio", "i2c", "pwm", "spi", "tensor_rt"],
         usb_ids: &[UsbId { vid: 0x0955, pid: 0x7020, architecture: "NVIDIA Jetson Orin Nano: 6-core Arm Cortex-A78AE + 1024-core Ampere GPU w/ tensor cores, 67 TOPS (AArch64)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"camera_capture\",\"cuda\",\"gpio\",\"i2c\",\"pwm\",\"spi\",\"tensor_rt\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Jetson\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"NVIDIA Jetson Orin Nano: 6-core Arm Cortex-A78AE + 1024-core Ampere GPU w/ tensor cores, 67 TOPS (AArch64)\",\"pid\":28704,\"vid\":2389}],\"vendor\":\"NVIDIA\"}",
     },
     Part {
@@ -383,6 +434,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "gpio", "gps", "i2c", "lora", "mesh", "wifi"],
         usb_ids: &[UsbId { vid: 0x10c4, pid: 0xea60, architecture: "ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"gpio\",\"gps\",\"i2c\",\"lora\",\"mesh\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"T-Beam\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)\",\"pid\":60000,\"vid\":4292}],\"vendor\":\"LILYGO\"}",
     },
     Part {
@@ -393,6 +445,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "audio_sample", "battery", "ble", "display", "gpio", "i2c", "keyboard", "lora", "microsd", "psram", "spi", "touch", "trackball", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa, 2.8\" IPS touch, keyboard/trackball, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"audio_sample\",\"battery\",\"ble\",\"display\",\"gpio\",\"i2c\",\"keyboard\",\"lora\",\"microsd\",\"psram\",\"spi\",\"touch\",\"trackball\",\"wifi\"],\"connectors\":[\"bare\",\"grove\"],\"ecosystem\":\"T-Deck\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa, 2.8\\\" IPS touch, keyboard/trackball, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"LILYGO\"}",
     },
     Part {
@@ -403,6 +456,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "audio_sample", "battery", "ble", "display", "gpio", "gps", "i2c", "keyboard", "lora", "microsd", "psram", "spi", "touch", "trackball", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa + GNSS, 2.8\" IPS touch, keyboard/trackball, 2000 mAh (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"audio_sample\",\"battery\",\"ble\",\"display\",\"gpio\",\"gps\",\"i2c\",\"keyboard\",\"lora\",\"microsd\",\"psram\",\"spi\",\"touch\",\"trackball\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"T-Deck\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa + GNSS, 2.8\\\" IPS touch, keyboard/trackball, 2000 mAh (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"LILYGO\"}",
     },
     Part {
@@ -413,6 +467,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "display", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 LX7 dual-core @ 240 MHz, 1.9\" ST7789 320x170 LCD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"display\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"T-Display\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 LX7 dual-core @ 240 MHz, 1.9\\\" ST7789 320x170 LCD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"LILYGO\"}",
     },
     Part {
@@ -423,6 +478,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "battery", "ble", "display", "gpio", "gps", "i2c", "imu", "keyboard", "lora", "mesh", "microsd", "nfc", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 @ 240 MHz + SX1262 LoRa, keyboard + rotary encoder, GPS, NFC, IMU (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"battery\",\"ble\",\"display\",\"gpio\",\"gps\",\"i2c\",\"imu\",\"keyboard\",\"lora\",\"mesh\",\"microsd\",\"nfc\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"T-Lora\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 @ 240 MHz + SX1262 LoRa, keyboard + rotary encoder, GPS, NFC, IMU (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"LILYGO\"}",
     },
     Part {
@@ -433,6 +489,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "display", "gpio", "i2c", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 @ 240 MHz, 0.85\" LCD, compact (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"display\",\"gpio\",\"i2c\",\"spi\",\"wifi\"],\"connectors\":[\"grove\"],\"ecosystem\":\"M5 Atom\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 @ 240 MHz, 0.85\\\" LCD, compact (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"M5Stack\"}",
     },
     Part {
@@ -443,6 +500,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "audio_sample", "battery", "ble", "display", "gpio", "i2c", "infrared", "keyboard", "microsd", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"audio_sample\",\"battery\",\"ble\",\"display\",\"gpio\",\"i2c\",\"infrared\",\"keyboard\",\"microsd\",\"spi\",\"wifi\"],\"connectors\":[\"grove\"],\"ecosystem\":\"Cardputer\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\\\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"M5Stack\"}",
     },
     Part {
@@ -453,6 +511,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "display", "gpio", "i2c", "imu", "microsd", "spi", "touch", "wifi"],
         usb_ids: &[UsbId { vid: 0x10c4, pid: 0xea60, architecture: "ESP32-D0WDQ6 @ 240 MHz, 2.0\" ILI9342C touch LCD, MPU6886 IMU (CP2104; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"display\",\"gpio\",\"i2c\",\"imu\",\"microsd\",\"spi\",\"touch\",\"wifi\"],\"connectors\":[\"grove\",\"mbus\"],\"ecosystem\":\"M5 Core\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-D0WDQ6 @ 240 MHz, 2.0\\\" ILI9342C touch LCD, MPU6886 IMU (CP2104; shared VID/PID)\",\"pid\":60000,\"vid\":4292}],\"vendor\":\"M5Stack\"}",
     },
     Part {
@@ -463,6 +522,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "audio_sample", "ethernet", "npu"],
         usb_ids: &[UsbId { vid: 0x1a86, pid: 0x7523, architecture: "AXera AX630C dual Cortex-A53 @ 1.2 GHz + 3.2 TOPS NPU, 4 GB LPDDR4, 32 GB eMMC (CH340N; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"audio_sample\",\"ethernet\",\"npu\"],\"connectors\":[\"mbus\"],\"ecosystem\":\"Module\",\"transport\":\"bridge\",\"usb_ids\":[{\"architecture\":\"AXera AX630C dual Cortex-A53 @ 1.2 GHz + 3.2 TOPS NPU, 4 GB LPDDR4, 32 GB eMMC (CH340N; shared VID/PID)\",\"pid\":29987,\"vid\":6790}],\"vendor\":\"M5Stack\"}",
     },
     Part {
@@ -473,6 +533,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "audio_sample", "battery", "ble", "camera_capture", "display", "gpio", "i2c", "microsd", "nn_accel", "psram", "spi", "touch", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-P4 dual RISC-V @ 400 MHz + ESP32-C6 radio co-proc; 5\" 1280x720 MIPI-DSI touch, 2MP camera (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"audio_sample\",\"battery\",\"ble\",\"camera_capture\",\"display\",\"gpio\",\"i2c\",\"microsd\",\"nn_accel\",\"psram\",\"spi\",\"touch\",\"wifi\"],\"connectors\":[\"grove\",\"mbus\"],\"ecosystem\":\"Tab\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-P4 dual RISC-V @ 400 MHz + ESP32-C6 radio co-proc; 5\\\" 1280x720 MIPI-DSI touch, 2MP camera (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"M5Stack\"}",
     },
     Part {
@@ -483,6 +544,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2207, pid: 0x330c, architecture: "Rockchip RK3328 quad-core ARM Cortex-A53 @ 1.5 GHz (AArch64)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"NanoPi\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"Rockchip RK3328 quad-core ARM Cortex-A53 @ 1.5 GHz (AArch64)\",\"pid\":13068,\"vid\":8711}],\"vendor\":\"FriendlyELEC\"}",
     },
     Part {
@@ -493,6 +555,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x1366, pid: 0x1015, architecture: "Nordic nRF52840 ARM Cortex-M4F @ 64 MHz (BLE 5.0)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"nRF DK\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"Nordic nRF52840 ARM Cortex-M4F @ 64 MHz (BLE 5.0)\",\"pid\":4117,\"vid\":4966}],\"vendor\":\"Nordic Semiconductor\"}",
     },
     Part {
@@ -503,6 +566,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "flash", "gpio", "i2c", "pwm", "rtt", "spi"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x374b, architecture: "ARM Cortex-M4 @ 84 MHz (STM32F401RE)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"flash\",\"gpio\",\"i2c\",\"pwm\",\"rtt\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nucleo-64\",\"transport\":\"probe\",\"usb_ids\":[{\"architecture\":\"ARM Cortex-M4 @ 84 MHz (STM32F401RE)\",\"pid\":14155,\"vid\":1155}],\"vendor\":\"STMicroelectronics\"}",
     },
     Part {
@@ -513,6 +577,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "flash", "gpio", "i2c", "pwm", "rtt", "spi"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x374e, architecture: "ARM Cortex-M4 @ 100 MHz (STM32F411RE)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"flash\",\"gpio\",\"i2c\",\"pwm\",\"rtt\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nucleo-64\",\"transport\":\"probe\",\"usb_ids\":[{\"architecture\":\"ARM Cortex-M4 @ 100 MHz (STM32F411RE)\",\"pid\":14158,\"vid\":1155}],\"vendor\":\"STMicroelectronics\"}",
     },
     Part {
@@ -523,6 +588,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "flash", "gpio", "i2c", "pwm", "rtt", "spi"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x374c, architecture: "ARM Cortex-M4 @ 170 MHz (STM32G474RE, HRTIM)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"flash\",\"gpio\",\"i2c\",\"pwm\",\"rtt\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nucleo-64\",\"transport\":\"probe\",\"usb_ids\":[{\"architecture\":\"ARM Cortex-M4 @ 170 MHz (STM32G474RE, HRTIM)\",\"pid\":14156,\"vid\":1155}],\"vendor\":\"STMicroelectronics\"}",
     },
     Part {
@@ -533,6 +599,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "flash", "gpio", "i2c", "pwm", "rtt", "spi"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x374d, architecture: "ARM Cortex-M7 @ 480 MHz (STM32H743ZI)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"flash\",\"gpio\",\"i2c\",\"pwm\",\"rtt\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nucleo-144\",\"transport\":\"probe\",\"usb_ids\":[{\"architecture\":\"ARM Cortex-M7 @ 480 MHz (STM32H743ZI)\",\"pid\":14157,\"vid\":1155}],\"vendor\":\"STMicroelectronics\"}",
     },
     Part {
@@ -543,6 +610,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "flash", "gpio", "i2c", "pwm", "rtt", "spi"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x374f, architecture: "ARM Cortex-M4 @ 80 MHz (STM32L476RG, ultra-low-power)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"flash\",\"gpio\",\"i2c\",\"pwm\",\"rtt\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Nucleo-64\",\"transport\":\"probe\",\"usb_ids\":[{\"architecture\":\"ARM Cortex-M4 @ 80 MHz (STM32L476RG, ultra-low-power)\",\"pid\":14159,\"vid\":1155}],\"vendor\":\"STMicroelectronics\"}",
     },
     Part {
@@ -553,6 +621,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "vpu"],
         usb_ids: &[UsbId { vid: 0x03e7, pid: 0x2485, architecture: "Intel Movidius Myriad X VPU, 1.4 TOPS; 12.3MP RGB + 2x 480p stereo depth (USB 3)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"camera_capture\",\"vpu\"],\"connectors\":[\"bare\"],\"ecosystem\":\"OAK\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"Intel Movidius Myriad X VPU, 1.4 TOPS; 12.3MP RGB + 2x 480p stereo depth (USB 3)\",\"pid\":9349,\"vid\":999}],\"vendor\":\"Luxonis\"}",
     },
     Part {
@@ -563,6 +632,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output", "battery", "ble", "display", "gpio", "i2c", "microsd", "spi", "touch", "wifi"],
         usb_ids: &[UsbId { vid: 0x2e8a, pid: 0x0005, architecture: "RP2350 dual Cortex-M33 @ 150 MHz + RM2 Wi-Fi/BLE, 4\" 480x480 IPS touch (MicroPython VID/PID; shared)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_output\",\"battery\",\"ble\",\"display\",\"gpio\",\"i2c\",\"microsd\",\"spi\",\"touch\",\"wifi\"],\"connectors\":[\"qwiic\"],\"ecosystem\":\"Presto\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"RP2350 dual Cortex-M33 @ 150 MHz + RM2 Wi-Fi/BLE, 4\\\" 480x480 IPS touch (MicroPython VID/PID; shared)\",\"pid\":5,\"vid\":11914}],\"vendor\":\"Pimoroni\"}",
     },
     Part {
@@ -573,6 +643,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ethernet", "gpio", "i2c", "npu", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2207, pid: 0x350a, architecture: "Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ethernet\",\"gpio\",\"i2c\",\"npu\",\"pwm\",\"spi\"],\"connectors\":[\"hat_pi\"],\"ecosystem\":\"ROCK\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)\",\"pid\":13578,\"vid\":8711}],\"vendor\":\"Radxa\"}",
     },
     Part {
@@ -583,6 +654,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["ble", "gpio", "i2c", "lora", "mesh", "nfc", "spi"],
         usb_ids: &[UsbId { vid: 0x239a, pid: 0x0029, architecture: "Nordic nRF52840 + Semtech SX1262 LoRa (RAKwireless WisBlock core; Meshtastic-compatible; Adafruit nRF52 UF2 bootloader VID/PID, shared — selected by name)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"ble\",\"gpio\",\"i2c\",\"lora\",\"mesh\",\"nfc\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"WisBlock\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"Nordic nRF52840 + Semtech SX1262 LoRa (RAKwireless WisBlock core; Meshtastic-compatible; Adafruit nRF52 UF2 bootloader VID/PID, shared \\u2014 selected by name)\",\"pid\":41,\"vid\":9114}],\"vendor\":\"RAKwireless\"}",
     },
     Part {
@@ -593,6 +665,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2109, pid: 0x0817, architecture: "BCM2711 quad-core ARM Cortex-A72 @ 1.8 GHz (AArch64)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"camera_capture\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"hat_pi\"],\"ecosystem\":\"Raspberry Pi\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"BCM2711 quad-core ARM Cortex-A72 @ 1.8 GHz (AArch64)\",\"pid\":2071,\"vid\":8457}],\"vendor\":\"Raspberry Pi\"}",
     },
     Part {
@@ -603,6 +676,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2109, pid: 0x0820, architecture: "BCM2712 quad-core ARM Cortex-A76 @ 2.4 GHz (AArch64)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"camera_capture\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"hat_pi\"],\"ecosystem\":\"Raspberry Pi\",\"transport\":\"native\",\"usb_ids\":[{\"architecture\":\"BCM2712 quad-core ARM Cortex-A76 @ 2.4 GHz (AArch64)\",\"pid\":2080,\"vid\":8457}],\"vendor\":\"Raspberry Pi\"}",
     },
     Part {
@@ -613,6 +687,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2e8a, pid: 0x0003, architecture: "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Pico\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"RP2040 dual-core ARM Cortex-M0+ @ 133 MHz\",\"pid\":3,\"vid\":11914}],\"vendor\":\"Raspberry Pi\"}",
     },
     Part {
@@ -623,6 +698,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2e8a, pid: 0x000a, architecture: "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz (Wi-Fi)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Pico\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"RP2040 dual-core ARM Cortex-M0+ @ 133 MHz (Wi-Fi)\",\"pid\":10,\"vid\":11914}],\"vendor\":\"Raspberry Pi\"}",
     },
     Part {
@@ -633,6 +709,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x2e8a, pid: 0x0004, architecture: "RP2350 dual-core ARM Cortex-M33 @ 150 MHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Pico\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"RP2350 dual-core ARM Cortex-M33 @ 150 MHz\",\"pid\":4,\"vid\":11914}],\"vendor\":\"Raspberry Pi\"}",
     },
     Part {
@@ -643,6 +720,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "pwm", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x2e8a, pid: 0x000a, architecture: "RP2350 dual-core ARM Cortex-M33 @ 150 MHz + CYW43439 (Wi-Fi 4, BLE 5.2; SDK CDC id shared with pico-w)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"pwm\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Pico\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"RP2350 dual-core ARM Cortex-M33 @ 150 MHz + CYW43439 (Wi-Fi 4, BLE 5.2; SDK CDC id shared with pico-w)\",\"pid\":10,\"vid\":11914}],\"vendor\":\"Raspberry Pi\"}",
     },
     Part {
@@ -653,6 +731,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_sample", "gpio"],
         usb_ids: &[UsbId { vid: 0x2b04, pid: 0x00fe, architecture: "STM32F103 @ 72 MHz, 6+1 MEMS microphone array with USB audio (UAC1)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_sample\",\"gpio\"],\"connectors\":[\"bare\"],\"ecosystem\":\"MaixSense\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"STM32F103 @ 72 MHz, 6+1 MEMS microphone array with USB audio (UAC1)\",\"pid\":254,\"vid\":11012}],\"vendor\":\"Sipeed\"}",
     },
     Part {
@@ -663,6 +742,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "ble", "gpio", "i2c", "microsd", "spi", "thread", "wifi"],
         usb_ids: &[UsbId { vid: 0x1a86, pid: 0x7523, architecture: "ESP32-C6 RISC-V @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; CH340 USB-UART; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"ble\",\"gpio\",\"i2c\",\"microsd\",\"spi\",\"thread\",\"wifi\"],\"connectors\":[\"featherwing\",\"qwiic\"],\"ecosystem\":\"Thing Plus\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-C6 RISC-V @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; CH340 USB-UART; shared VID/PID)\",\"pid\":29987,\"vid\":6790}],\"vendor\":\"SparkFun\"}",
     },
     Part {
@@ -673,6 +753,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "dac", "flash", "gpio", "i2c", "pwm", "rtt", "spi"],
         usb_ids: &[UsbId { vid: 0x0483, pid: 0x3758, architecture: "ARM Cortex-M7 @ 480 MHz (STM32H750, external flash)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"dac\",\"flash\",\"gpio\",\"i2c\",\"pwm\",\"rtt\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Discovery\",\"transport\":\"probe\",\"usb_ids\":[{\"architecture\":\"ARM Cortex-M7 @ 480 MHz (STM32H750, external flash)\",\"pid\":14168,\"vid\":1155}],\"vendor\":\"STMicroelectronics\"}",
     },
     Part {
@@ -683,6 +764,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "analog_write", "can", "gpio", "i2c", "pwm", "spi"],
         usb_ids: &[UsbId { vid: 0x16c0, pid: 0x0483, architecture: "NXP i.MX RT1062 ARM Cortex-M7 @ 600 MHz" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"analog_write\",\"can\",\"gpio\",\"i2c\",\"pwm\",\"spi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"Teensy\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"NXP i.MX RT1062 ARM Cortex-M7 @ 600 MHz\",\"pid\":1155,\"vid\":5824}],\"vendor\":\"PJRC\"}",
     },
     Part {
@@ -693,6 +775,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_sample", "ble", "display", "gpio", "i2c", "spi", "touch", "wifi"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x8135, architecture: "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 2.1\" round touch LCD, I2S speaker" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"audio_sample\",\"ble\",\"display\",\"gpio\",\"i2c\",\"spi\",\"touch\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"ESP32-S3 Touch LCD\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 2.1\\\" round touch LCD, I2S speaker\",\"pid\":33077,\"vid\":12346}],\"vendor\":\"Waveshare\"}",
     },
     Part {
@@ -703,6 +786,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "battery", "ble", "gpio", "i2c", "spi", "thread", "wifi", "zigbee"],
         usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-C5 RISC-V @ 240 MHz, dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4 (native USB; shared VID/PID)" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"battery\",\"ble\",\"gpio\",\"i2c\",\"spi\",\"thread\",\"wifi\",\"zigbee\"],\"connectors\":[\"bare\"],\"ecosystem\":\"XIAO\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-C5 RISC-V @ 240 MHz, dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4 (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"Seeed Studio\"}",
     },
     Part {
@@ -713,6 +797,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read", "audio_sample", "ble", "camera_capture", "gpio", "i2c", "sensor_read", "spi", "wifi"],
         usb_ids: &[UsbId { vid: 0x2886, pid: 0x0058, architecture: "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone" }],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"analog_read\",\"audio_sample\",\"ble\",\"camera_capture\",\"gpio\",\"i2c\",\"sensor_read\",\"spi\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"XIAO\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone\",\"pid\":88,\"vid\":10374}],\"vendor\":\"Seeed Studio\"}",
     },
     Part {
@@ -723,6 +808,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["analog_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"analog_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":72}",
     },
     Part {
@@ -733,6 +819,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":56}",
     },
     Part {
@@ -743,6 +830,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":118}",
     },
     Part {
@@ -753,6 +841,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":119}",
     },
     Part {
@@ -763,6 +852,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["imu", "sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"imu\",\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"stemma_qt\",\"default_i2c_addr\":40}",
     },
     Part {
@@ -773,6 +863,7 @@ pub const PARTS: &[Part] = &[
         citation: "IPC-SM-782A body size for 0603 (1608 metric), page 76, as cited by KiCad footprint Capacitor_SMD:C_0603_1608Metric. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family.",
         capabilities: &[],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"body_length_mm\":1.6,\"body_width_mm\":0.8,\"mounting\":\"smd\",\"package\":\"0603 (1608 metric)\",\"terminals\":2}",
     },
     Part {
@@ -783,6 +874,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"gpio\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -793,6 +885,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"gpio\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[\"esp32-s3\",\"nanopi-neo3\",\"raspberry-pi-4\",\"raspberry-pi-5\",\"waveshare-esp32-s3-touch-lcd-2.1\",\"xiao-esp32s3-sense\"],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -803,6 +896,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"onewire\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -813,7 +907,19 @@ pub const PARTS: &[Part] = &[
         citation: "ROBOTIS e-Manual, Dynamixel XM430-W350, Specifications table",
         capabilities: &["actuate"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"capabilities\":[\"actuate\"],\"gear_ratio\":353.5,\"mass_g\":82,\"operating_temp_max_c\":80,\"operating_temp_min_c\":-5,\"position_sensor\":\"contactless absolute encoder, 12-bit over 360 degrees\"}",
+    },
+    Part {
+        id: "electronic/esp32-s3-wroom-1",
+        namespace: Namespace::Electronic,
+        name: "esp32-s3-wroom-1",
+        description: "Espressif ESP32-S3-WROOM-1 Wi-Fi + BLE MCU module with PCB antenna. The module soldered onto many of the boards/ entries; it is a component, not a board. Envelope is the module body; the antenna area is included in the 25.5 mm length.",
+        citation: "Espressif ESP32-S3-WROOM-1/1U Datasheet (identity and description). Migrated 2026-09-06 from OpenDesignCore data/parts/esp32-s3-wroom-1.json, where it had been entered 2026-08-15 from the same document.",
+        capabilities: &["ble", "wifi"],
+        usb_ids: &[],
+        envelope_mm: Some(EnvelopeMm { x: 18.0, y: 25.5, z: 3.1, tolerance_mm: Some(0.2), citation: "Espressif ESP32-S3-WROOM-1/1U Datasheet, Table 1-1 (size 18.0 x 25.5 x 3.1 mm) and Section 10.1 Module Dimensions (25.5 +/- 0.2)" }),
+        attributes_json: "{\"capabilities\":[\"ble\",\"wifi\"],\"ecosystem\":\"ESP32-S3\",\"vendor\":\"Espressif\"}",
     },
     Part {
         id: "electronic/grove-vision-ai-v2",
@@ -823,6 +929,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "nn_accel"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"camera_capture\",\"nn_accel\"],\"compatible_boards\":[],\"connector\":\"grove\",\"default_i2c_addr\":98}",
     },
     Part {
@@ -833,6 +940,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["display"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"spi\",\"capabilities\":[\"display\"],\"compatible_boards\":[\"cyd-esp32-2432s028r\"],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -843,6 +951,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":64}",
     },
     Part {
@@ -853,6 +962,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_sample"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2s\",\"capabilities\":[\"audio_sample\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -863,6 +973,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":106}",
     },
     Part {
@@ -873,6 +984,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":54}",
     },
     Part {
@@ -883,6 +995,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"spi\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -893,6 +1006,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["audio_output"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2s\",\"capabilities\":[\"audio_output\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -903,6 +1017,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["gpio"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"gpio\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":33}",
     },
     Part {
@@ -913,6 +1028,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["dac"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"dac\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":96}",
     },
     Part {
@@ -923,6 +1039,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":104}",
     },
     Part {
@@ -933,6 +1050,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"sccb\",\"capabilities\":[\"camera_capture\"],\"compatible_boards\":[\"esp32-cam\",\"esp32-s3-cam\",\"xiao-esp32s3-sense\"],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -943,6 +1061,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["actuate", "pwm"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"actuate\",\"pwm\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":64}",
     },
     Part {
@@ -953,6 +1072,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["gpio"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"gpio\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":32}",
     },
     Part {
@@ -963,6 +1083,7 @@ pub const PARTS: &[Part] = &[
         citation: "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family.",
         capabilities: &[],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"body_length_mm\":1.6,\"body_width_mm\":0.8,\"mounting\":\"smd\",\"package\":\"0603 (1608 metric)\",\"terminals\":2}",
     },
     Part {
@@ -973,6 +1094,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["camera_capture", "npu"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"csi\",\"capabilities\":[\"camera_capture\",\"npu\"],\"compatible_boards\":[\"raspberry-pi-4\",\"raspberry-pi-5\"],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -983,6 +1105,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["hailo"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"pcie\",\"capabilities\":[\"hailo\"],\"compatible_boards\":[\"raspberry-pi-5\"],\"connector\":\"hat_pi\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -993,6 +1116,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["hailo"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"pcie\",\"capabilities\":[\"hailo\"],\"compatible_boards\":[\"raspberry-pi-5\"],\"connector\":\"hat_pi\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -1003,6 +1127,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"qwiic\",\"default_i2c_addr\":98}",
     },
     Part {
@@ -1013,6 +1138,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["actuate"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"pwm\",\"capabilities\":[\"actuate\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -1023,6 +1149,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"qwiic\",\"default_i2c_addr\":89}",
     },
     Part {
@@ -1033,6 +1160,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":68}",
     },
     Part {
@@ -1043,6 +1171,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["cellular", "gps"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"uart\",\"capabilities\":[\"cellular\",\"gps\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -1053,6 +1182,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &[],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":60}",
     },
     Part {
@@ -1063,6 +1193,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["actuate"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"gpio\",\"capabilities\":[\"actuate\"],\"compatible_boards\":[],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
     Part {
@@ -1073,6 +1204,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["sensor_read"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"i2c\",\"capabilities\":[\"sensor_read\"],\"compatible_boards\":[],\"connector\":\"stemma_qt\",\"default_i2c_addr\":41}",
     },
     Part {
@@ -1083,6 +1215,7 @@ pub const PARTS: &[Part] = &[
         citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
         capabilities: &["touch"],
         usb_ids: &[],
+        envelope_mm: None,
         attributes_json: "{\"bus\":\"spi\",\"capabilities\":[\"touch\"],\"compatible_boards\":[\"cyd-esp32-2432s028r\"],\"connector\":\"bare\",\"default_i2c_addr\":null}",
     },
 ];

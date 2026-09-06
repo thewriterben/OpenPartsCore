@@ -31,6 +31,15 @@ export interface PartSource {{
   upstream_schema_version?: number | string;
 }}
 
+/** Axis-aligned bounding envelope, millimetres, with its own citation (ADR-0006). Absent means unknown. */
+export interface PartEnvelope {{
+  x: number;
+  y: number;
+  z: number;
+  tolerance_mm?: number;
+  source: {{ citation: string; url?: string; retrieved?: string }};
+}}
+
 export interface Part {{
   schema_version: 0;
   id: string;
@@ -39,6 +48,7 @@ export interface Part {{
   description?: string;
   source: PartSource;
   attributes?: Record<string, unknown>;
+  envelope_mm?: PartEnvelope;
   links?: Record<string, string>;
 }}
 

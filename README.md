@@ -23,6 +23,7 @@ The canonical parts registry for the OpenDesignCore platform: one schema, one se
 
 - **Every entry carries a citation.** An uncited value fails validation. No plausible-looking numbers.
 - **Length fields are millimetres** and end in `_mm` (matches OpenDesignCore ADR-0004). Other units are named in the field (`mass_g`, `voltage_v`).
+- **An envelope carries its own source.** `envelope_mm` is optional; when present it has all three axes and a citation of its own, because the entry's citation (for ingested boards, a registry with no dimensions) does not cover it. Absent means unknown, never zero (ADR-0006).
 - **User inventory does not live here.** Inventory is mutable user state referencing canonical part ids; this repo is reviewable reference data only (platform decision PD-2).
 
 ## Validate

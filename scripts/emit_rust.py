@@ -30,6 +30,14 @@ def rust_str(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+def rust_f64(value) -> str:
+    """An f64 literal with the same digits the JSON carried. `repr` of a float
+    is the shortest round-tripping form, and a trailing `.0` keeps an integer
+    value a float."""
+    text = repr(float(value))
+    return text if "." in text or "e" in text else text + ".0"
+
+
 def load_entries() -> list[dict]:
     entries: list[dict] = []
     for namespace in NAMESPACES:
@@ -80,6 +88,21 @@ pub struct UsbId {
     pub architecture: &'static str,
 }
 
+/// Axis-aligned bounding envelope of the physical part, millimetres.
+///
+/// Carries its own citation (ADR-0006): an ingested board's entry-level
+/// citation is a registry that holds no dimensions, so a number under it
+/// would be wearing a source that does not cover it.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct EnvelopeMm {
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
+    /// Dimensional tolerance if the source states one.
+    pub tolerance_mm: Option<f64>,
+    pub citation: &'static str,
+}
+
 #[derive(Debug, Clone, Copy)]
 pub struct Part {
     pub id: &'static str,
@@ -92,6 +115,10 @@ pub struct Part {
     pub capabilities: &'static [&'static str],
     /// Empty for anything that is not a board.
     pub usb_ids: &'static [UsbId],
+    /// `None` means unknown -- never a zero. Most entries have none: the
+    /// upstream registry carries no dimensions, and each envelope here was
+    /// sourced separately.
+    pub envelope_mm: Option<EnvelopeMm>,
     /// The namespace-specific remainder, verbatim, for consumers that need a
     /// field this binding does not hoist.
     pub attributes_json: &'static str,
@@ -142,6 +169,22 @@ def render_part(entry: dict) -> str:
     # Canonical JSON so the emitted file is stable across runs and platforms.
     attributes_json = json.dumps(attributes, sort_keys=True, separators=(",", ":"))
 
+    envelope = entry.get("envelope_mm")
+    if envelope is None:
+        envelope_rs = "None"
+    else:
+        tol = envelope.get("tolerance_mm")
+        envelope_rs = (
+            "Some(EnvelopeMm { x: %s, y: %s, z: %s, tolerance_mm: %s, citation: %s })"
+            % (
+                rust_f64(envelope["x"]),
+                rust_f64(envelope["y"]),
+                rust_f64(envelope["z"]),
+                "None" if tol is None else f"Some({rust_f64(tol)})",
+                rust_str(envelope["source"]["citation"]),
+            )
+        )
+
     namespace = entry["namespace"].capitalize()
     return (
         "    Part {\n"
@@ -152,6 +195,7 @@ def render_part(entry: dict) -> str:
         f"        citation: {rust_str(entry['source']['citation'])},\n"
         f"        capabilities: &[{caps}],\n"
         f"        usb_ids: &[{usb}],\n"
+        f"        envelope_mm: {envelope_rs},\n"
         f"        attributes_json: {rust_str(attributes_json)},\n"
         "    },\n"
     )

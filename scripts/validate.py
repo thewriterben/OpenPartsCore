@@ -13,6 +13,36 @@ ROOT = Path(__file__).resolve().parent.parent
 NAMESPACES = {"boards", "electronic", "mechanical", "material"}
 ID_RE = re.compile(r"^(boards|electronic|mechanical|material)/[a-z0-9][a-z0-9._-]*$")
 
+def check_envelope(env) -> list[str]:
+    """envelope_mm is optional; when present it is complete, positive and cited.
+
+    It carries its own source (ADR-0006): the entry-level citation names where
+    the identity came from, which for every ingested board is a registry that
+    holds no dimensions. A number with no source of its own is a number that
+    inherited a citation it is not covered by.
+    """
+    if env is None:
+        return []
+    errs = []
+    if not isinstance(env, dict):
+        return ["envelope_mm must be an object"]
+    for axis in ("x", "y", "z"):
+        v = env.get(axis)
+        if not isinstance(v, (int, float)) or isinstance(v, bool):
+            errs.append(f"envelope_mm.{axis} missing or not a number — absent means unknown, never zero")
+        elif v <= 0:
+            errs.append(f"envelope_mm.{axis} must be positive")
+    tol = env.get("tolerance_mm")
+    if tol is not None and (not isinstance(tol, (int, float)) or isinstance(tol, bool) or tol <= 0):
+        errs.append("envelope_mm.tolerance_mm must be a positive number when present")
+    if not str((env.get("source") or {}).get("citation", "")).strip():
+        errs.append("envelope_mm has no citation of its own — the entry-level source does not cover it")
+    extra = set(env) - {"x", "y", "z", "tolerance_mm", "source"}
+    if extra:
+        errs.append(f"envelope_mm has unknown keys {sorted(extra)}")
+    return errs
+
+
 def check(path: Path) -> list[str]:
     errs = []
     try:
@@ -36,6 +66,7 @@ def check(path: Path) -> list[str]:
         errs.append(f"file is in data/{path.parent.name}/ but namespace is '{e['namespace']}'")
     if not str(e.get("source", {}).get("citation", "")).strip():
         errs.append("empty citation — uncited entries are invalid")
+    errs.extend(check_envelope(e.get("envelope_mm")))
     # unit-suffix convention: numeric leaf keys about length must end in _mm
     def walk(obj, crumb=""):
         if isinstance(obj, dict):

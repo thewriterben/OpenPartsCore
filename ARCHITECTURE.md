@@ -17,6 +17,12 @@ This repo is reviewable reference data in the sense of OpenDesignCore ADR-0006: 
 
 Identifying a connected board is therefore a **match**, not a lookup — `303a:1001` narrows to 17 candidates and needs a second signal.
 
+The ingest owns everything it writes except `envelope_mm` and `links`, which upstream cannot supply; those are carried over from the existing file on every run (ADR-0006). Idempotence holds within a day: `source.retrieved` is today's date, so the first run on a new day rewrites every ingested file.
+
+## Envelopes
+
+`envelope_mm {x, y, z, tolerance_mm?, source}` is optional and carries its own citation (ADR-0006). The generic multi-bridge boards can never have one. A derived envelope — the bounding box of a vendor STEP model — is acceptable when the citation states the file hash, the tool and version, the meshing tolerance, the unrounded result and what the box includes. Consumers treat absence as unknown: OpenDesignCore does not offer an envelope-less entry to `run_enclosure`.
+
 ## Bindings
 
 This table said `tsc --noEmit --strict` until 2026-08-22, and that command had never passed: the emitter generates `PARTS.find(...)`, which is ES2015, while tsc's default target is ES5. The `.filter` beside it is ES5 and compiled fine, which is why the gap survived being read. `bindings/typescript/tsconfig.json` now states the requirement, and CI runs it.
@@ -26,9 +32,9 @@ This table said `tsc --noEmit --strict` until 2026-08-22, and that command had n
 | Binding | Consumer | Verified with |
 |---|---|---|
 | `bindings/typescript/parts.ts` | OBC-deployment-generator | `tsc --noEmit -p bindings/typescript` |
-| `bindings/rust/` (crate `openpartscore`) | Oh-Ben-Claw | `cargo test` — 7 tests |
+| `bindings/rust/` (crate `openpartscore`) | Oh-Ben-Claw | `cargo test` — 8 tests |
 
-The Rust crate has **zero dependencies**: the registry is const data, so a consumer needn't take serde to read static reference data. Two fields are hoisted out of `attributes` and typed — `capabilities` and `usb_ids` — because they are what consumers dispatch on; everything else stays as `attributes_json` so a niche field never forces a schema change in the binding.
+The Rust crate has **zero dependencies**: the registry is const data, so a consumer needn't take serde to read static reference data. Two fields are hoisted out of `attributes` and typed — `capabilities` and `usb_ids` — because they are what consumers dispatch on, and `envelope_mm` is hoisted as `Option<EnvelopeMm>` with its citation inline; everything else stays as `attributes_json` so a niche field never forces a schema change in the binding.
 
 `candidates_for_usb(vid, pid)` returns an **iterator, not an Option**, because the mapping is many-to-many (ADR-0004). The type signature is where that fact is hardest to ignore.
 
