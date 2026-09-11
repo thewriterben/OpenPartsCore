@@ -438,6 +438,17 @@ pub const PARTS: &[Part] = &[
         attributes_json: "{\"capabilities\":[\"ble\",\"gpio\",\"gps\",\"i2c\",\"lora\",\"mesh\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"T-Beam\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)\",\"pid\":60000,\"vid\":4292}],\"vendor\":\"LILYGO\"}",
     },
     Part {
+        id: "boards/lilygo-t-camera-plus-s3",
+        namespace: Namespace::Boards,
+        name: "lilygo-t-camera-plus-s3",
+        description: "ESP32-S3 LX7 dual-core @ 240 MHz, OV2640 camera, 1.3\" ST7789V 240x240 touch TFT, mic + speaker, microSD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
+        citation: "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+        capabilities: &["audio_output", "audio_sample", "battery", "ble", "camera_capture", "display", "gpio", "i2c", "microsd", "psram", "spi", "touch", "wifi"],
+        usb_ids: &[UsbId { vid: 0x303a, pid: 0x1001, architecture: "ESP32-S3 LX7 dual-core @ 240 MHz, OV2640 camera, 1.3\" ST7789V 240x240 touch TFT, mic + speaker, microSD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)" }],
+        envelope_mm: Some(EnvelopeMm { x: 30.0, y: 69.67, z: 10.87, tolerance_mm: None, citation: "Axis-aligned bounding box of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step' (sha256 b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487, 68,603,684 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Extents 29.9999 x 69.6625 x 10.8643 mm in the model's own frame, which is board-aligned with Z as the board normal (no axis permutation applied); rounded up to 0.01. Z runs from the lowest underside feature (4.71 mm below the model's z=0) to the tallest top-side component; the model carries no pin headers. This is the **V1.2** hardware revision (2025-04, per the repo README's version table); a separate STEP exists for V1.0-V1.1 (3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step) and was not measured. The STEP is the only dimensional source: the V1.2 schematic (T-CameraPlus-S3_V1.2_20240417.pdf, sha256 5363097ad586a5bf21cdd528fa8c0213b08e6af951835b1f8533531a64a202e2) is electrical only, and neither the README nor lilygo.cc's product page states board dimensions. The product page also lists an OV5640 SKU (H703-01); the model's camera module is not identified in the file, so the OV5640 variant's height is unverified." }),
+        attributes_json: "{\"capabilities\":[\"audio_output\",\"audio_sample\",\"battery\",\"ble\",\"camera_capture\",\"display\",\"gpio\",\"i2c\",\"microsd\",\"psram\",\"spi\",\"touch\",\"wifi\"],\"connectors\":[\"bare\"],\"ecosystem\":\"T-Camera\",\"transport\":\"serial\",\"usb_ids\":[{\"architecture\":\"ESP32-S3 LX7 dual-core @ 240 MHz, OV2640 camera, 1.3\\\" ST7789V 240x240 touch TFT, mic + speaker, microSD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)\",\"pid\":4097,\"vid\":12346}],\"vendor\":\"LILYGO\"}",
+    },
+    Part {
         id: "boards/lilygo-t-deck",
         namespace: Namespace::Boards,
         name: "lilygo-t-deck",
