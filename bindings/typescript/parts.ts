@@ -2451,7 +2451,19 @@ export const PARTS: readonly Part[] = Object.freeze([
       "ecosystem": "XIAO",
       "transport": "serial"
     },
-    "links": {}
+    "envelope_mm": {
+      "x": 24.38,
+      "y": 17.81,
+      "z": 14.02,
+      "source": {
+        "citation": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'Seeed Studio XIAO-ESP32-S3-Sense.step' (sha256 a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698, file dated 2023-05-29, inside seeed-studio-xiao-esp32s3-sense-3d_model.zip, sha256 773c16cb7518a3a18df926979f24c7e224f19309aad69962ec8a54454e288c59), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 24.3782, Y 14.0147, Z 17.8040 mm. The model's Y axis is the board normal and its Z runs across the board (Z extent equals Seeed's stated 17.8 mm width), so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang and the camera expansion board), y = model Z (board width), z = model Y (PCB underside to the top of the mounted camera expansion board); each rounded up to 0.01. The model depicts the Sense with its expansion board fitted, no pin headers, no antenna. Conflict: Seeed's specification table gives the Sense as '21 x 17.8 x 15mm (with expansion board)'; this model measures 14.01 mm tall and 24.38 mm long (the 21 mm is the bare PCB outline; the extra length is the USB-C connector and expansion board). The vendor DXF drawings (XIAO_ESP32S3_ExpBoard_v1.0_top.dxf sha256 4039bf565f6bece5209c60877c804c1f0bd2507173ec9905d5eb8c7ec79949cc, ..._bot.dxf sha256 2e6efd7b1c898cf5f432d1cf841bad5727004c93cdced70bdc94b56e09f75c07) are R12 outline exports with no dimension entities and no declared unit, so they were not used for numbers. Neither source states which board revision the model depicts.",
+        "url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
+        "retrieved": "2026-09-11"
+      }
+    },
+    "links": {
+      "model_3d": "sha256:a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698"
+    }
   },
   {
     "schema_version": 0,
