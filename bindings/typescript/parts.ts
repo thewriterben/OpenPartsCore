@@ -2471,6 +2471,55 @@ export const PARTS: readonly Part[] = Object.freeze([
   },
   {
     "schema_version": 0,
+    "id": "boards/xiao-esp32s3",
+    "namespace": "boards",
+    "name": "xiao-esp32s3",
+    "description": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)",
+    "source": {
+      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
+      "retrieved": "2026-09-11",
+      "upstream_schema_version": 1
+    },
+    "attributes": {
+      "usb_ids": [
+        {
+          "vid": 10374,
+          "pid": 86,
+          "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)"
+        }
+      ],
+      "capabilities": [
+        "analog_read",
+        "ble",
+        "gpio",
+        "i2c",
+        "sensor_read",
+        "spi",
+        "wifi"
+      ],
+      "connectors": [
+        "bare"
+      ],
+      "vendor": "Seeed Studio",
+      "ecosystem": "XIAO",
+      "transport": "serial"
+    },
+    "envelope_mm": {
+      "x": 22.51,
+      "y": 17.81,
+      "z": 4.48,
+      "source": {
+        "citation": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'XIAO-ESP32S3 v2.step' (sha256 870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd, 1,335,902 bytes, file dated 2023-05-27, inside seeed-studio-xiao-esp32s3-3d_model.zip, sha256 0d552ed2cc7359ea132601f4f7fe2c9d816e2dfe4f58f6463e83f84a901d3650), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 22.5045, Y 4.4798, Z 17.8040 mm. As with the Sense model, the model's Y axis is the board normal and its Z runs across the board, so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang), y = model Z (board width), z = model Y (PCB underside to the tallest top-side component); each rounded up to 0.01. The permutation is corroborated by the model's Z extent, 17.8040 mm, matching Seeed's stated 17.8 mm width to the hundredth. The model carries no pin headers (the board ships without them) and no antenna. Conflict: Seeed's specification table gives '21 x 17.8mm' and states no height at all; 21 mm is the bare PCB outline, and the extra 1.5 mm of length measured here is the USB-C connector overhanging it. The vendor's XIAO_ESP32S3_v1.1_Dimensioning.dxf (sha256 5fd32e3ba7a4bd85b8cc0f5d9413e26dd947e84e27b2d0f03350a7d367903f23) was not used for numbers despite its name: it is an R12 export with zero DIMENSION entities, no declared unit ($INSUNITS absent), and drawing extents of 19.050 x 21.145 that match neither the stated outline nor the model. Neither source states which board revision the model depicts; the filename says 'v2' and the DXF says 'v1.1', and nothing relates the two.",
+        "url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
+        "retrieved": "2026-09-11"
+      }
+    },
+    "links": {
+      "model_3d": "sha256:870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+    }
+  },
+  {
+    "schema_version": 0,
     "id": "boards/xiao-esp32s3-sense",
     "namespace": "boards",
     "name": "xiao-esp32s3-sense",
