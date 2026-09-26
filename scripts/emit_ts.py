@@ -40,6 +40,33 @@ export interface PartEnvelope {{
   source: {{ citation: string; url?: string; retrieved?: string }};
 }}
 
+export type Axis = "+x" | "-x" | "+y" | "-y" | "+z" | "-z";
+
+/** Free volume a plug, card or finger needs (ADR-0007). null = unknown: report it, never pass it. */
+export interface FeatureAccess {{
+  direction: Axis | null;
+  depth_mm: number | null;
+  section_mm?: [number, number];
+  source: string;
+}}
+
+export interface PartFeature {{
+  id: string;
+  kind: "board" | "connector" | "switch" | "card_slot" | "antenna" | "optic" | "component";
+  box_mm?: {{ min_mm: [number, number, number]; max_mm: [number, number, number] }};
+  cylinder_mm?: {{ axis: Axis; base_mm: [number, number, number]; length_mm: number; diameter_mm: number }};
+  source: string;
+  access?: FeatureAccess;
+}}
+
+/** Where things are on the part, for one hardware revision, with its own source (ADR-0007). */
+export interface PartFeatures {{
+  source: {{ citation: string; model_sha256: string; revision: string; url?: string; retrieved?: string }};
+  frame: string;
+  not_modelled: string[];
+  items: PartFeature[];
+}}
+
 export interface Part {{
   schema_version: 0;
   id: string;
@@ -49,6 +76,7 @@ export interface Part {{
   source: PartSource;
   attributes?: Record<string, unknown>;
   envelope_mm?: PartEnvelope;
+  features?: PartFeatures;
   links?: Record<string, string>;
 }}
 

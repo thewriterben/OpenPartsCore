@@ -43,6 +43,129 @@ def check_envelope(env) -> list[str]:
     return errs
 
 
+FEATURE_KINDS = {"board", "connector", "switch", "card_slot", "antenna", "optic", "component"}
+# Kinds something has to reach: a plug, a card, a finger, a lens's view.
+ACCESS_KINDS = {"connector", "switch", "card_slot", "antenna", "optic"}
+AXES = {"+x", "-x", "+y", "-y", "+z", "-z"}
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+
+
+def _num(v) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def _vec3(v) -> bool:
+    return isinstance(v, list) and len(v) == 3 and all(_num(c) for c in v)
+
+
+def check_features(feat) -> list[str]:
+    """features is optional; when present it is sourced, revisioned and complete (ADR-0007).
+
+    The rules that matter are the ones a consumer cannot recover from later:
+    which revision and which model file the positions came from, what the
+    items do not cover, and - for anything a plug or finger must reach -
+    whether the free volume is known. Unknown is allowed and spelled null;
+    missing is not, because missing reads as "nothing to reach".
+    """
+    if feat is None:
+        return []
+    if not isinstance(feat, dict):
+        return ["features must be an object"]
+    errs = []
+    extra = set(feat) - {"source", "frame", "not_modelled", "items"}
+    if extra:
+        errs.append(f"features has unknown keys {sorted(extra)}")
+    src = feat.get("source")
+    if not isinstance(src, dict):
+        errs.append("features.source missing - features carry their own source (ADR-0007)")
+    else:
+        if not str(src.get("citation", "")).strip():
+            errs.append("features.source has no citation")
+        if not SHA256_RE.match(str(src.get("model_sha256", ""))):
+            errs.append("features.source.model_sha256 must be the 64-hex sha256 of the model the positions came from")
+        if not str(src.get("revision", "")).strip():
+            errs.append("features.source.revision missing - positions belong to one hardware revision")
+        extra = set(src) - {"citation", "model_sha256", "revision", "url", "retrieved"}
+        if extra:
+            errs.append(f"features.source has unknown keys {sorted(extra)}")
+    if not str(feat.get("frame", "")).strip():
+        errs.append("features.frame missing - coordinates without a stated origin and axes mean nothing")
+    nm = feat.get("not_modelled")
+    if not isinstance(nm, list) or not all(isinstance(s, str) and s.strip() for s in nm):
+        errs.append("features.not_modelled must be a list of non-empty strings (empty list if the items are complete)")
+    items = feat.get("items")
+    if not isinstance(items, list) or not items:
+        errs.append("features.items must be a non-empty list")
+        return errs
+    seen: set[str] = set()
+    for i, it in enumerate(items):
+        errs.extend(_check_item(i, it, seen))
+    return errs
+
+
+def _check_item(i: int, it, seen: set[str]) -> list[str]:
+    if not isinstance(it, dict):
+        return [f"features.items[{i}] must be an object"]
+    errs = []
+    fid = it.get("id")
+    where = f"features.items[{i}]" + (f" '{fid}'" if isinstance(fid, str) else "")
+    if not isinstance(fid, str) or not fid.strip():
+        errs.append(f"{where}: id missing")
+    elif fid in seen:
+        errs.append(f"{where}: duplicate id")
+    else:
+        seen.add(fid)
+    kind = it.get("kind")
+    if kind not in FEATURE_KINDS:
+        errs.append(f"{where}: kind must be one of {sorted(FEATURE_KINDS)}")
+    if not str(it.get("source", "")).strip():
+        errs.append(f"{where}: no source - say which STEP solid or which measurement")
+    extra = set(it) - {"id", "kind", "box_mm", "cylinder_mm", "source", "access"}
+    if extra:
+        errs.append(f"{where}: unknown keys {sorted(extra)}")
+
+    has_box, has_cyl = "box_mm" in it, "cylinder_mm" in it
+    if has_box == has_cyl:
+        errs.append(f"{where}: exactly one of box_mm or cylinder_mm")
+    if has_box:
+        box = it["box_mm"]
+        if not isinstance(box, dict) or not _vec3(box.get("min_mm")) or not _vec3(box.get("max_mm")):
+            errs.append(f"{where}: box_mm needs min_mm and max_mm, three numbers each")
+        elif any(box["min_mm"][k] >= box["max_mm"][k] for k in range(3)):
+            errs.append(f"{where}: box_mm min_mm must be below max_mm on every axis")
+        elif set(box) - {"min_mm", "max_mm"}:
+            errs.append(f"{where}: box_mm has unknown keys")
+    if has_cyl:
+        cyl = it["cylinder_mm"]
+        ok = (isinstance(cyl, dict) and cyl.get("axis") in AXES and _vec3(cyl.get("base_mm"))
+              and _num(cyl.get("length_mm")) and cyl["length_mm"] > 0
+              and _num(cyl.get("diameter_mm")) and cyl["diameter_mm"] > 0
+              and not set(cyl) - {"axis", "base_mm", "length_mm", "diameter_mm"})
+        if not ok:
+            errs.append(f"{where}: cylinder_mm needs axis (±x/±y/±z), base_mm, positive length_mm and diameter_mm, nothing else")
+
+    acc = it.get("access")
+    if kind in ACCESS_KINDS and acc is None:
+        errs.append(f"{where}: a {kind} must declare access (direction/depth_mm may be null = unknown, but not absent)")
+    if acc is not None:
+        if not isinstance(acc, dict):
+            errs.append(f"{where}: access must be an object")
+        else:
+            if "direction" not in acc or (acc["direction"] is not None and acc["direction"] not in AXES):
+                errs.append(f"{where}: access.direction must be ±x/±y/±z or null")
+            d = acc.get("depth_mm", "missing")
+            if d == "missing" or (d is not None and (not _num(d) or d <= 0)):
+                errs.append(f"{where}: access.depth_mm must be a positive number or null")
+            sec = acc.get("section_mm")
+            if sec is not None and not (isinstance(sec, list) and len(sec) == 2 and all(_num(s) and s > 0 for s in sec)):
+                errs.append(f"{where}: access.section_mm must be two positive numbers when present")
+            if not str(acc.get("source", "")).strip():
+                errs.append(f"{where}: access has no source")
+            if set(acc) - {"direction", "depth_mm", "section_mm", "source"}:
+                errs.append(f"{where}: access has unknown keys")
+    return errs
+
+
 def check(path: Path) -> list[str]:
     errs = []
     try:
@@ -67,6 +190,14 @@ def check(path: Path) -> list[str]:
     if not str(e.get("source", {}).get("citation", "")).strip():
         errs.append("empty citation — uncited entries are invalid")
     errs.extend(check_envelope(e.get("envelope_mm")))
+    errs.extend(check_features(e.get("features")))
+    # The schema says additionalProperties:false at the top level; this is
+    # where that is enforced, since a new key is exactly how a fact arrives
+    # without its own source.
+    extra = set(e) - {"schema_version", "id", "namespace", "name", "description",
+                      "source", "attributes", "envelope_mm", "features", "links"}
+    if extra:
+        errs.append(f"unknown top-level keys {sorted(extra)} - a new fact needs a schema field and an ADR")
     # unit-suffix convention: numeric leaf keys about length must end in _mm
     def walk(obj, crumb=""):
         if isinstance(obj, dict):

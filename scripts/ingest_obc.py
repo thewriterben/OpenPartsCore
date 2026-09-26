@@ -28,12 +28,12 @@ def slug(name: str) -> str:
     return "".join(c if (c.isalnum() or c in "._-") else "-" for c in name.lower())
 
 
-# Fields the ingest does not own. Upstream has no dimensions and no links, so
-# anything under these keys was added here, by hand, with its own citation
-# (ADR-0006) -- a re-ingest that rewrote the file from upstream alone would
-# delete it silently, which is how a cited envelope would vanish between two
-# runs that both reported "unchanged".
-PRESERVED_KEYS = ("envelope_mm", "links")
+# Fields the ingest does not own. Upstream has no dimensions, no features and
+# no links, so anything under these keys was added here, by hand, with its own
+# citation (ADR-0006, ADR-0007) -- a re-ingest that rewrote the file from
+# upstream alone would delete it silently, which is how a cited envelope would
+# vanish between two runs that both reported "unchanged".
+PRESERVED_KEYS = ("envelope_mm", "features", "links")
 
 
 def write_entry(path: Path, entry: dict) -> bool:

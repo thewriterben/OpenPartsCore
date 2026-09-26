@@ -1,2 +1,5 @@
 # Rust build output for the generated binding; only src/lib.rs is the artifact
 bindings/rust/target/
+
+# Python bytecode from running scripts/ locally
+__pycache__/
