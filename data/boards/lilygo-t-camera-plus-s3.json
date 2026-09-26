@@ -59,7 +59,7 @@
     },
     "frame": "The STEP model's own frame, unmodified. x across the board (laminate 0.007 to 27.981); y along it, with the edge carrying USB1, CN1 and CN2 at y = 0.016 (laminate to 67.990); z the board normal, z = 0 being the laminate face carrying FPC1, U1 and CN3 and z = 1.200 the face carrying USB1, CN1, CN2, SW3 and CARD1. Millimetres; the STEP declares MM.",
     "not_modelled": [
-      "The camera module and lens: neither vendor STEP contains them. The bench board's barrel measures 14.95 mm diameter with 5.10 mm free length to a 16.65 mm lip, tip 24 mm from the PCB face, axis 35.00 mm from the y = 0 edge (calipers, 2026-09-25); its position across the board and which face it stands on are not yet recorded, so it is not an item.",
+      "The camera module and lens: neither vendor STEP contains them. The bench board's barrel measures 14.95 mm diameter with 5.10 mm free length to a 16.65 mm lip, tip 24 mm from the PCB face, axis 35.00 mm from the y = 0 edge (calipers, 2026-09-25); it stands on the z = 0 face, the face carrying FPC1 and opposite the display (confirmed on the bench board by its owner, 2026-09-26), but its position across the board is not yet measured, so it is not an item.",
       "The display and whatever backs it: not in either model (U11 marks only its connector footprint). The bench board measures 29.40 mm overall depth (calipers, 2026-09-25) against this model's 10.91 mm.",
       "Permanently attached cables - the camera FPC, and a twisted pair observed exiting one long edge of the bench board on 2026-09-25 - are not modelled as paths."
     ],
