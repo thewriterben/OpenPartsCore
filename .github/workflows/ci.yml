@@ -36,6 +36,11 @@ jobs:
       - name: Validate every entry
         run: python scripts/validate.py
 
+      # ADR-0001 of OpenKnowledgeCore: SiYuan is a projection, never a source.
+      # validate.py above rejects any SiYuan reference; these tests prove it does.
+      - name: Citation gate tests
+        run: python -m unittest discover scripts
+
       # Regenerate and diff. Byte-identical or red — the discipline ADR-0003
       # borrowed from OBC-Prime's parity fixtures. A data change without a
       # regenerated binding fails here rather than reaching a consumer.

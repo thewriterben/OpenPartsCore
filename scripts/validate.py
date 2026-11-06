@@ -5,13 +5,91 @@ Stdlib only (no jsonschema dependency): checks required fields, id/namespace
 agreement, citation presence, and the unit-suffix convention for length.
 The JSON Schema in schema/ remains the authoritative definition for tooling
 that can consume it.
+
+Citation gate (OpenKnowledgeCore ADR-0001): SiYuan is a projection, never a
+source. In every run, any string anywhere in an entry that references SiYuan is
+an error. With --strict, every `source` citation must also use one of the
+accepted forms. Free-text citations (the `boards` entries) pass by default.
 """
-import json, re, sys
+import argparse, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 NAMESPACES = {"boards", "electronic", "mechanical", "material"}
 ID_RE = re.compile(r"^(boards|electronic|mechanical|material)/[a-z0-9][a-z0-9._-]*$")
+
+# --- SiYuan rejection and strict citation forms -----------------------------
+# Vendored from OpenKnowledgeCore okc/validate.py (ADR-0001), stdlib only. Keep
+# the patterns in step with that file; this one is self-contained on purpose so
+# CI here needs nothing from another repository.
+
+SIYUAN_REJECTIONS = [
+    ("siyuan URL", re.compile(r"siyuan://", re.IGNORECASE)),
+    ("SiYuan block id", re.compile(r"\b\d{14}-[a-z0-9]{7}\b")),
+    ("SiYuan kernel address", re.compile(r"(localhost|127\.0\.0\.1|\[::1\]):6806\b")),
+    ("SiYuan .sy file path", re.compile(r"(^|[\\/ ])[^\s\\/]+\.sy(\b|$)")),
+]
+
+# Accepted citation forms, enforced only under --strict.
+CITATION_FORMS = {
+    "vault": re.compile(r"^vault:sha256:[0-9a-f]{64}(#page=\d+)?$"),
+    "repo": re.compile(r"^repo:[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+@[0-9a-f]{7,40}:[^\s:][^\s]*$"),
+    "ledger": re.compile(r"^ledger:[a-z0-9_-]+:[A-Za-z0-9_.-]+$"),
+    "doi": re.compile(r"^doi:10\.\d{4,9}/\S+$"),
+    "arxiv": re.compile(r"^arxiv:\d{4}\.\d{4,5}(v\d+)?$"),
+    "standard": re.compile(r"^standard:[A-Z][A-Z0-9/ -]*? [0-9][0-9.-]*:(19|20)\d{2}$"),
+}
+
+
+def siyuan_reference(text: str):
+    """Label of the first SiYuan pattern found in text, or None."""
+    for label, pattern in SIYUAN_REJECTIONS:
+        if pattern.search(text):
+            return label
+    return None
+
+
+def iter_strings(obj, crumb="$"):
+    """Yield (json_path, string) for every string value and key in a document."""
+    if isinstance(obj, str):
+        yield crumb, obj
+    elif isinstance(obj, dict):
+        for k, v in obj.items():
+            yield from iter_strings(k, f"{crumb}.<key {k!r}>")
+            yield from iter_strings(v, f"{crumb}.{k}")
+    elif isinstance(obj, list):
+        for i, v in enumerate(obj):
+            yield from iter_strings(v, f"{crumb}[{i}]")
+
+
+def iter_citations(obj, crumb="$"):
+    """Yield (json_path, citation) for every `source` key: a bare string, or the
+    `citation` of a {citation, retrieved} object, at any depth."""
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            path = f"{crumb}.{k}"
+            if k == "source":
+                cit = v.get("citation") if isinstance(v, dict) else v
+                if isinstance(cit, str):
+                    yield (path + ".citation" if isinstance(v, dict) else path), cit
+            yield from iter_citations(v, path)
+    elif isinstance(obj, list):
+        for i, v in enumerate(obj):
+            yield from iter_citations(v, f"{crumb}[{i}]")
+
+
+def check_citations(e, strict: bool) -> list[str]:
+    errs = []
+    for crumb, text in iter_strings(e):
+        label = siyuan_reference(text)
+        if label:
+            errs.append(f"{crumb} references SiYuan ({label}): a projection is never a source (ADR-0001)")
+    if strict:
+        for crumb, cit in iter_citations(e):
+            if not any(f.match(cit.strip()) for f in CITATION_FORMS.values()):
+                errs.append(f"{crumb} is free text; --strict requires one of: {', '.join(CITATION_FORMS)}")
+    return errs
+
 
 def check_envelope(env) -> list[str]:
     """envelope_mm is optional; when present it is complete, positive and cited.
@@ -43,7 +121,7 @@ def check_envelope(env) -> list[str]:
     return errs
 
 
-def check(path: Path) -> list[str]:
+def check(path: Path, strict: bool = False) -> list[str]:
     errs = []
     try:
         e = json.loads(path.read_text(encoding="utf-8"))
@@ -67,6 +145,7 @@ def check(path: Path) -> list[str]:
     if not str(e.get("source", {}).get("citation", "")).strip():
         errs.append("empty citation — uncited entries are invalid")
     errs.extend(check_envelope(e.get("envelope_mm")))
+    errs.extend(check_citations(e, strict))
     # unit-suffix convention: numeric leaf keys about length must end in _mm
     def walk(obj, crumb=""):
         if isinstance(obj, dict):
@@ -82,19 +161,29 @@ def check(path: Path) -> list[str]:
     walk(e)
     return errs
 
-def main() -> int:
-    data = ROOT / "data"
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--strict", nargs="*", metavar="NAMESPACE", default=None,
+                    help="require a recognised citation form; bare --strict applies to every "
+                         "namespace, or name namespaces (e.g. --strict material) to limit it")
+    ap.add_argument("--data", type=Path, default=ROOT / "data", help="entries directory (default: data/)")
+    args = ap.parse_args(argv)
+    strict_ns = None if args.strict is None else (set(args.strict) or set(NAMESPACES))
+    unknown = (strict_ns or set()) - NAMESPACES
+    if unknown:
+        ap.error(f"unknown namespace(s) for --strict: {sorted(unknown)}")
+    data = args.data
     files = sorted(data.rglob("*.json"))
     if not files:
         print("no entries found under data/", file=sys.stderr)
         return 1
     failed = 0
     for f in files:
-        errs = check(f)
+        errs = check(f, strict=strict_ns is not None and f.parent.name in strict_ns)
         if errs:
             failed += 1
             for e in errs:
-                print(f"FAIL {f.relative_to(ROOT)}: {e}")
+                print(f"FAIL {f.relative_to(ROOT) if f.is_relative_to(ROOT) else f}: {e}")
     print(f"{len(files) - failed}/{len(files)} entries valid")
     return 1 if failed else 0
 
