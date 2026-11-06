@@ -3445,6 +3445,526 @@ export const PARTS: readonly Part[] = Object.freeze([
       "connector": "bare"
     },
     "links": {}
+  },
+  {
+    "schema_version": 0,
+    "id": "material/creality-cr-petg",
+    "namespace": "material",
+    "name": "creality-cr-petg",
+    "description": "Creality CR-PETG 1.75 mm FDM filament. Facts transcribed from the vendor Technical Data Sheet v1.0 archived in the vault (attributes.tds holds the rows verbatim, attributes.normalised the typed values with the page each came from). Two rows in the document carry labels that do not match their test criteria; they are kept verbatim and flagged under attributes.review. Spool identity fields are the RFID data the Creality K2 Plus CFS reported for the loaded spools. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+    "source": {
+      "citation": "vault:sha256:ea0b2c0f7431f523d4a2615a34181b836102ac6018e55cfe035fbabb1f6328bb",
+      "retrieved": "2026-11-06"
+    },
+    "attributes": {
+      "identity": {
+        "vendor": "Creality",
+        "product": "CR-PETG",
+        "polymer": "PETG",
+        "form": "filament",
+        "diameter_mm": 1.75,
+        "net_weight_kg": 1.0,
+        "source": "vault:sha256:49e55cafc43612a1a684b77810b38a1fdedaa7053a016afa2d4f45ea01f6f443"
+      },
+      "spool_rfid": {
+        "note": "Fields as reported by the printer for CFS box MF003 slots 2 and 3 on 2026-11-06 (two spools, same tag data). 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+        "vendor": "Creality",
+        "type": "PETG",
+        "name": "CR-PETG",
+        "rfid": "06001",
+        "minTemp": 220,
+        "maxTemp": 270,
+        "pressure": 0.07,
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "tds": {
+        "title": "CR-PETG Filament Technical Data Sheet",
+        "version": "1.0",
+        "issued": "not printed in the document; the mirror file name says 2021-11",
+        "physical": [
+          {
+            "page": 1,
+            "item": "Density",
+            "testing_criteria": "ASTM D792 (ISO 1183, GB/T 1033)",
+            "parameter": "1.27 ±0.1 (g/cm3 at 21.5˚C)"
+          },
+          {
+            "page": 1,
+            "item": "GTT(Glass-transition temperature)",
+            "testing_criteria": "ASTM D648(ISO 75-2, GB/T 1634)",
+            "parameter": "70°C (@0.45Mpa)"
+          },
+          {
+            "page": 1,
+            "item": "Vicat Softening Temperature",
+            "testing_criteria": "210°C, 2.16 kg",
+            "parameter": "18-20 (g/10 min)"
+          }
+        ],
+        "mechanical": [
+          {
+            "page": 1,
+            "item": "Tensile strength (X-Y)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "46.55 MPa"
+          },
+          {
+            "page": 1,
+            "item": "Tensile strength (Z)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "11.5MPa"
+          },
+          {
+            "page": 1,
+            "item": "Elongation at break (X-Y)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "10.5%"
+          },
+          {
+            "page": 1,
+            "item": "Elongation at break (Z)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "5.6%"
+          },
+          {
+            "page": 1,
+            "item": "Bending strength (X-Y)",
+            "testing_criteria": "ASTMD790 (ISO 178, GB/T 9341)",
+            "parameter": "68MPa"
+          },
+          {
+            "page": 1,
+            "item": "Bending modulus (X-Y)",
+            "testing_criteria": "ASTMD790 (ISO 178, GB/T 9341)",
+            "parameter": "1800(MPa"
+          },
+          {
+            "page": 1,
+            "item": "Charpy impact strength (X-Y)",
+            "testing_criteria": "ASTM D256 (ISO 179, GB/T 1043)",
+            "parameter": "14kJ/m2"
+          }
+        ],
+        "sample_print_conditions": {
+          "page": 1,
+          "Nozzle Temperature": "240℃",
+          "Hot Bed Temperature": "70℃",
+          "PrintingSpeed": "60mm/s",
+          "Infill": "100%"
+        },
+        "recommended_printing_parameters": {
+          "page": 2,
+          "Print Temperature": "230-250℃",
+          "Hotbed Temperature": "60-100℃",
+          "Ambient Temperature": "Normal-60℃",
+          "Print Speed": "40-80mm/s",
+          "Pumping Distance": "3-8mm"
+        },
+        "storage": {
+          "page": 2,
+          "text": "Dry and ventilated environment; not high temperature, sunny or humid conditions; use a dry box if not used up within a short time after opening."
+        },
+        "source": "vault:sha256:ea0b2c0f7431f523d4a2615a34181b836102ac6018e55cfe035fbabb1f6328bb"
+      },
+      "normalised": {
+        "note": "Typed values derived from attributes.tds by transcription only; no unit conversion was applied. Each value names its page in the cited document. Two keys are named by their test criteria rather than the document's row label; see attributes.review.",
+        "density_g_cm3": {
+          "value": 1.27,
+          "tolerance": 0.1,
+          "at_c": 21.5,
+          "standard": "ASTM D792",
+          "page": 1
+        },
+        "heat_deflection_c": {
+          "value": 70,
+          "load_mpa": 0.45,
+          "standard": "ASTM D648",
+          "label_in_document": "GTT(Glass-transition temperature)",
+          "page": 1
+        },
+        "melt_flow_rate_g_10min": {
+          "min": 18,
+          "max": 20,
+          "condition": "210 °C, 2.16 kg",
+          "label_in_document": "Vicat Softening Temperature",
+          "page": 1
+        },
+        "tensile_strength_xy_mpa": {
+          "value": 46.55,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "tensile_strength_z_mpa": {
+          "value": 11.5,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "elongation_at_break_xy_pct": {
+          "value": 10.5,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "elongation_at_break_z_pct": {
+          "value": 5.6,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "flexural_strength_xy_mpa": {
+          "value": 68,
+          "standard": "ASTM D790",
+          "page": 1
+        },
+        "flexural_modulus_xy_mpa": {
+          "value": 1800,
+          "standard": "ASTM D790",
+          "page": 1
+        },
+        "charpy_impact_xy_kj_m2": {
+          "value": 14,
+          "standard": "ASTM D256",
+          "page": 1
+        },
+        "sample_print": {
+          "nozzle_c": 240,
+          "bed_c": 70,
+          "speed_mm_s": 60,
+          "infill_pct": 100,
+          "page": 1
+        },
+        "nozzle_temp_c": {
+          "min": 230,
+          "max": 250,
+          "page": 2
+        },
+        "bed_temp_c": {
+          "min": 60,
+          "max": 100,
+          "page": 2
+        },
+        "ambient_temp_c": {
+          "min": null,
+          "max": 60,
+          "as_printed": "Normal-60℃",
+          "page": 2
+        },
+        "print_speed_mm_s": {
+          "min": 40,
+          "max": 80,
+          "page": 2
+        },
+        "retraction_mm": {
+          "min": 3,
+          "max": 8,
+          "label_in_document": "Pumping Distance",
+          "page": 2
+        },
+        "shrinkage_pct": null,
+        "shrinkage_note": "The TDS says 'low shrinkage advantage of PLA' (page 1) and gives no number. A value must come from a calibration measurement in the studio ledger.",
+        "source": "vault:sha256:ea0b2c0f7431f523d4a2615a34181b836102ac6018e55cfe035fbabb1f6328bb"
+      },
+      "review": {
+        "status": "proposed",
+        "flags": [
+          "document row 'GTT(Glass-transition temperature)' cites ASTM D648 / ISO 75-2 at 0.45 MPa, which is a heat-deflection test; recorded as heat_deflection_c, not Tg",
+          "document row 'Vicat Softening Temperature' has condition 210 °C / 2.16 kg and unit g/10 min, which is a melt index; recorded as melt_flow_rate_g_10min; no Vicat value is available",
+          "TDS gives no filament diameter; 1.75 mm comes from the store page title",
+          "mirror copy: the PDF was archived from SpoolScout's asset host, not from creality.com; Creality publishes no TDS download page as of 2026-11-06"
+        ]
+      }
+    },
+    "links": {
+      "datasheet": "https://assets.spoolscout.com/tds-sds/creality/tds/creality-cr-petg-tds-v1.0-2021-11.pdf"
+    }
+  },
+  {
+    "schema_version": 0,
+    "id": "material/creality-ender-fast-pla",
+    "namespace": "material",
+    "name": "creality-ender-fast-pla",
+    "description": "Creality Ender Fast PLA 1.75 mm FDM filament, 1 kg. Creality publishes no Technical Data Sheet for this product as of 2026-11-06 (download centre, wiki.creality.com and both store pages checked), so this entry carries identity facts from Creality's own product pages and the temperature range the Creality K2 Plus CFS reported from the spool's RFID tag. No density, thermal or mechanical property is recorded; third-party aggregator values exist but are not citable. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+    "source": {
+      "citation": "vault:sha256:ed30c451ea1a8d90ef3ecbd9c7518151fc8b6f4f10f77023448685a3a40873bb",
+      "retrieved": "2026-11-06"
+    },
+    "attributes": {
+      "identity": {
+        "vendor": "Creality",
+        "product": "Ender Fast PLA",
+        "polymer": "PLA",
+        "form": "filament",
+        "diameter_mm": 1.75,
+        "net_weight_kg": 1.0,
+        "item_numbers": {
+          "White": "3301010397",
+          "Black": "3301010398",
+          "Green": "3301010429",
+          "Light Blue": "3301010431",
+          "Orange": "3301010430"
+        },
+        "source": "vault:sha256:ed30c451ea1a8d90ef3ecbd9c7518151fc8b6f4f10f77023448685a3a40873bb"
+      },
+      "marketing_claims": {
+        "note": "Store page text, not test data. Kept only so the claim can be traced; not a property.",
+        "print_speed": "300mm/s, Fast and Stable",
+        "source": "vault:sha256:16b71e5e3ecc0bfc8079d86735aa28487d5c6aa02c9e83567fadea21eeabb024"
+      },
+      "spool_rfid": {
+        "note": "Fields as reported by the printer for CFS box MF003 slot 1 on 2026-11-06. 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+        "vendor": "Creality",
+        "type": "PLA",
+        "name": "ENDER FAST PLA",
+        "rfid": "09002",
+        "minTemp": 190,
+        "maxTemp": 240,
+        "pressure": 0.04,
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "normalised": {
+        "note": "Only printer-reported values. No TDS exists; nothing here is a measured property.",
+        "nozzle_temp_c": {
+          "min": 190,
+          "max": 240,
+          "basis": "RFID tag minTemp/maxTemp as read by the CFS"
+        },
+        "shrinkage_pct": null,
+        "shrinkage_note": "No vendor number. A value must come from a calibration measurement in the studio ledger.",
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "review": {
+        "status": "proposed",
+        "flags": [
+          "no vendor TDS as of 2026-11-06; density, Tg, Vicat, tensile and flexural values are absent on purpose, never zero",
+          "aggregator sites quote density 1.19-1.25 g/cm3 and Vicat 62.3 °C for this product; unverifiable, not recorded",
+          "the mvip.creality.com page lists five item numbers; the UK store page lists more colours (3301010432, 3301010434, 3301010437, 3301010444) without naming them in extractable text"
+        ]
+      }
+    }
+  },
+  {
+    "schema_version": 0,
+    "id": "material/creality-hyper-pla",
+    "namespace": "material",
+    "name": "creality-hyper-pla",
+    "description": "Creality Hyper PLA (Hyper Series PLA) 1.75 mm FDM filament. Facts transcribed from the vendor Technical Data Sheet v1.0 archived in the vault (attributes.tds holds the rows verbatim, attributes.normalised the typed values with the page each came from). Spool identity fields are the RFID data the Creality K2 Plus CFS reported for the loaded spool. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+    "source": {
+      "citation": "vault:sha256:aff153a93c869fc70737cf70062380de0e4155ca31914698569599e49dfdf3bb",
+      "retrieved": "2026-11-06"
+    },
+    "attributes": {
+      "identity": {
+        "vendor": "Creality",
+        "product": "Hyper PLA",
+        "polymer": "PLA",
+        "form": "filament",
+        "diameter_mm": 1.75,
+        "net_weight_kg": 1.0,
+        "source": "vault:sha256:4a249560d43238426ef1a9a8e9fce98a91a4ef100f6b13db9d9c3230ffbb750e"
+      },
+      "spool_rfid": {
+        "note": "Fields as reported by the printer for CFS box MF003 slot 0 on 2026-11-06. 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+        "vendor": "Creality",
+        "type": "PLA",
+        "name": "Hyper PLA",
+        "rfid": "01001",
+        "minTemp": 190,
+        "maxTemp": 240,
+        "pressure": 0.044,
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "tds": {
+        "title": "Hyper-PLA Filament Technical Data Sheet",
+        "version": "1.0",
+        "issued": "not printed in the document; the mirror file name says 2024-06",
+        "physical": [
+          {
+            "page": 1,
+            "item": "Density",
+            "testing_criteria": "ASTM D792 (ISO 1183, GB/T 1033)",
+            "parameter": "1.24 ±0.1 (g/cm3 at 21.5˚C)"
+          },
+          {
+            "page": 1,
+            "item": "Glass transition temperature",
+            "testing_criteria": "DSC, 10°C/min",
+            "parameter": "62 (°C)"
+          },
+          {
+            "page": 1,
+            "item": "Vicat Softening temperature",
+            "testing_criteria": "ASTM D1525 (ISO 306 GB/T 1633)",
+            "parameter": "62.3 ±0.5 (˚C)"
+          },
+          {
+            "page": 1,
+            "item": "Melt index",
+            "testing_criteria": "190°C, 2.16kg",
+            "parameter": "3-5 (g/10 min)"
+          }
+        ],
+        "mechanical": [
+          {
+            "page": 1,
+            "item": "Tensile strength (X-Y)",
+            "testing_criteria": "ISO 527, GB/T 1040",
+            "parameter": "52.99 (MPa)"
+          },
+          {
+            "page": 1,
+            "item": "Tensile modulus (X-Y)",
+            "testing_criteria": "ISO 527, GB/T 1040",
+            "parameter": "1146.06 (Mpa)"
+          },
+          {
+            "page": 1,
+            "item": "Elongation at break (X-Y)",
+            "testing_criteria": "ISO 527, GB/T 1040",
+            "parameter": "6.3 (%)"
+          },
+          {
+            "page": 1,
+            "item": "Bending strength (X-Y)",
+            "testing_criteria": "ISO 178, GB/T 9341",
+            "parameter": "92.38 (MPa)"
+          },
+          {
+            "page": 1,
+            "item": "Bending modulus (X-Y)",
+            "testing_criteria": "ISO 179, GB/T 1043",
+            "parameter": "2490.17 (MPa)"
+          },
+          {
+            "page": 1,
+            "item": "Charpy impact strength (Z)",
+            "testing_criteria": "ISO 179, GB/T 1043",
+            "parameter": "8.83 (kJ/m2)"
+          }
+        ],
+        "sample_print_conditions": {
+          "page": 1,
+          "Nozzle Temperature": "220°C",
+          "Hot Bed Temperature": "60°C",
+          "PrintingSpeed": "300mm/s",
+          "Infill": "100%"
+        },
+        "recommended_printing_conditions": {
+          "page": 2,
+          "Print Temperature": "190-230°C",
+          "Hotbed Temperature": "25-60°C",
+          "Ambient Temperature": "0-50°C",
+          "Print Speed": "40-600mm/s",
+          "Pumping Distance": "1-5mm"
+        },
+        "storage": {
+          "page": 3,
+          "text": "Dry and ventilated environment; not high temperature, sunny or humid conditions; use a dry box if not used up within a short time after opening."
+        },
+        "source": "vault:sha256:aff153a93c869fc70737cf70062380de0e4155ca31914698569599e49dfdf3bb"
+      },
+      "normalised": {
+        "note": "Typed values derived from attributes.tds by transcription only; no unit conversion was applied. Each value names its page in the cited document.",
+        "density_g_cm3": {
+          "value": 1.24,
+          "tolerance": 0.1,
+          "at_c": 21.5,
+          "standard": "ASTM D792",
+          "page": 1
+        },
+        "glass_transition_c": {
+          "value": 62,
+          "method": "DSC 10 °C/min",
+          "page": 1
+        },
+        "vicat_softening_c": {
+          "value": 62.3,
+          "tolerance": 0.5,
+          "standard": "ASTM D1525",
+          "page": 1
+        },
+        "melt_flow_rate_g_10min": {
+          "min": 3,
+          "max": 5,
+          "condition": "190 °C, 2.16 kg",
+          "page": 1
+        },
+        "tensile_strength_xy_mpa": {
+          "value": 52.99,
+          "standard": "ISO 527",
+          "page": 1
+        },
+        "tensile_modulus_xy_mpa": {
+          "value": 1146.06,
+          "standard": "ISO 527",
+          "page": 1
+        },
+        "elongation_at_break_xy_pct": {
+          "value": 6.3,
+          "standard": "ISO 527",
+          "page": 1
+        },
+        "flexural_strength_xy_mpa": {
+          "value": 92.38,
+          "standard": "ISO 178",
+          "page": 1
+        },
+        "flexural_modulus_xy_mpa": {
+          "value": 2490.17,
+          "standard": "ISO 179 as printed; ISO 179 is the Charpy standard, so this is probably a document typo for ISO 178",
+          "page": 1
+        },
+        "charpy_impact_z_kj_m2": {
+          "value": 8.83,
+          "standard": "ISO 179",
+          "page": 1
+        },
+        "sample_print": {
+          "nozzle_c": 220,
+          "bed_c": 60,
+          "speed_mm_s": 300,
+          "infill_pct": 100,
+          "page": 1
+        },
+        "nozzle_temp_c": {
+          "min": 190,
+          "max": 230,
+          "page": 2
+        },
+        "bed_temp_c": {
+          "min": 25,
+          "max": 60,
+          "page": 2
+        },
+        "ambient_temp_c": {
+          "min": 0,
+          "max": 50,
+          "page": 2
+        },
+        "print_speed_mm_s": {
+          "min": 40,
+          "max": 600,
+          "page": 2
+        },
+        "retraction_mm": {
+          "min": 1,
+          "max": 5,
+          "label_in_document": "Pumping Distance",
+          "page": 2
+        },
+        "shrinkage_pct": null,
+        "shrinkage_note": "The TDS states 'low shrinkage rate' (page 1) and gives no number. A value must come from a calibration measurement in the studio ledger.",
+        "source": "vault:sha256:aff153a93c869fc70737cf70062380de0e4155ca31914698569599e49dfdf3bb"
+      },
+      "review": {
+        "status": "proposed",
+        "flags": [
+          "flexural_modulus standard printed as ISO 179 (Charpy) in the document",
+          "TDS gives no filament diameter; 1.75 mm comes from the store page title",
+          "mirror copy: the PDF was archived from SpoolScout's asset host, not from creality.com; Creality publishes no TDS download page as of 2026-11-06"
+        ]
+      }
+    },
+    "links": {
+      "datasheet": "https://assets.spoolscout.com/tds-sds/creality/tds/creality-pla-hyper-tds-v1.0-2024-06.pdf"
+    }
   }
 ] as readonly Part[]);
 
