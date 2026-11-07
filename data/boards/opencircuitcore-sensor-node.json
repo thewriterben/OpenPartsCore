@@ -1,0 +1,314 @@
+{
+  "schema_version": 0,
+  "id": "boards/opencircuitcore-sensor-node",
+  "namespace": "boards",
+  "name": "opencircuitcore-sensor-node",
+  "description": "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0007).",
+  "source": {
+    "citation": "OpenCircuitCore boards/sensor-node at commit 9546499b9965275aec90fe6469f5cc48e4d48e03: board.manifest.json (sha256 1c708612b512a67e4d74bb576a9bfe28d16d0230ce2acb68db00ed83354e9751) and README.md",
+    "url": "https://github.com/thewriterben/OpenCircuitCore/tree/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node",
+    "retrieved": "2026-11-06"
+  },
+  "attributes": {
+    "outline_mm": {
+      "x": 44.0,
+      "y": 52.0
+    },
+    "mounting_holes": [
+      {
+        "ref": "H1",
+        "footprint": "MountingHole_3.2mm_M3",
+        "x_mm": 3.5,
+        "y_mm": 17.0,
+        "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+      },
+      {
+        "ref": "H2",
+        "footprint": "MountingHole_3.2mm_M3",
+        "x_mm": 40.5,
+        "y_mm": 17.0,
+        "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+      },
+      {
+        "ref": "H3",
+        "footprint": "MountingHole_3.2mm_M3",
+        "x_mm": 3.5,
+        "y_mm": 48.5,
+        "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+      },
+      {
+        "ref": "H4",
+        "footprint": "MountingHole_3.2mm_M3",
+        "x_mm": 40.5,
+        "y_mm": 48.5,
+        "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+      }
+    ],
+    "thickness_mm": 1.6
+  },
+  "envelope_mm": {
+    "x": 44.0,
+    "y": 52.0,
+    "z": 11.54,
+    "source": {
+      "citation": "Union of the per-component boxes of sensor-node.step (sha256 98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec) from scripts/extract_step_features.py, OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1), 2026-11-06: z from the header pin tails at -1.405 to the pin tips at 10.135."
+    }
+  },
+  "features": {
+    "source": {
+      "citation": "Per-component boxes of OpenCircuitCore's own STEP export 'sensor-node.step' (kicad-cli 10.0.5 pcb export step --subst-models, 2,522,235 bytes) computed 2026-11-06 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1); 12 components, byte-identical on repeat. The model is the design, not a vendor's drawing of a product: positions are exact by construction, and the built board differs from it only by assembly tolerance.",
+      "model_sha256": "98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec",
+      "revision": "OpenCircuitCore 9546499 (routed, GND pour, DRC clean)",
+      "url": "https://github.com/thewriterben/OpenCircuitCore/blob/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node/sensor-node.step",
+      "retrieved": "2026-11-06"
+    },
+    "frame": "The STEP model's own frame, unmodified: KiCad's board frame with y negated. x across the board (0 to 44, the edge nearer H1/H3 at x = 0); y along it, the antenna end at y = 0 and the header end at y = -52; z the board normal, z = 0 the bottom face and z = 1.6 the component face. Millimetres; the STEP declares MM.",
+    "not_modelled": [
+      "The four M3 holes (3.2 mm NPTH at KiCad (3.5,17) (40.5,17) (3.5,48.5) (40.5,48.5), i.e. y negated here) are not items: they are absences in the Board box, listed under attributes.mounting_holes.",
+      "Solder fillets, the module's castellation solder and the header pins' solder joints on the z = 0 face are not in the STEP; only the header pin tails (to z = -1.405) are.",
+      "Cables or sockets plugged into J1 and J2: their housings' length is unknown (access depth_mm null)."
+    ],
+    "items": [
+      {
+        "id": "Board",
+        "kind": "board",
+        "box_mm": {
+          "min_mm": [
+            0.0,
+            -52.0,
+            0.0
+          ],
+          "max_mm": [
+            44.0,
+            0.0,
+            1.6
+          ]
+        },
+        "source": "step:sensor-node_PCB for x and y. z max is 1.6 from sensor-node.kicad_pcb '(thickness 1.6)': the STEP's laminate solid ends at z = 1.51 while every component seats at z = 1.595, so the exported solid omits the outer copper and mask; the stackup figure is used because an enclosure clamps on the real face."
+      },
+      {
+        "id": "C1",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            12.2,
+            -38.4,
+            1.595
+          ],
+          "max_mm": [
+            13.8,
+            -37.6,
+            2.395
+          ]
+        },
+        "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C1 matched to it by footprint and by board.manifest.json position (13, 38) lying inside this box with y negated)"
+      },
+      {
+        "id": "C2",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            32.2,
+            -38.4,
+            1.595
+          ],
+          "max_mm": [
+            33.8,
+            -37.6,
+            2.395
+          ]
+        },
+        "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C2 matched to it by footprint and by board.manifest.json position (33, 38) lying inside this box with y negated)"
+      },
+      {
+        "id": "C3",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            12.2,
+            -43.4,
+            1.595
+          ],
+          "max_mm": [
+            13.8,
+            -42.6,
+            2.395
+          ]
+        },
+        "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C3 matched to it by footprint and by board.manifest.json position (13, 43) lying inside this box with y negated)"
+      },
+      {
+        "id": "C4",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            27.2,
+            -43.4,
+            1.595
+          ],
+          "max_mm": [
+            28.8,
+            -42.6,
+            2.395
+          ]
+        },
+        "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C4 matched to it by footprint and by board.manifest.json position (28, 43) lying inside this box with y negated)"
+      },
+      {
+        "id": "J1",
+        "kind": "connector",
+        "box_mm": {
+          "min_mm": [
+            7.73,
+            -49.77,
+            -1.405
+          ],
+          "max_mm": [
+            17.89,
+            -47.23,
+            10.135
+          ]
+        },
+        "source": "step:PinHeader_1x04_P2.54mm_Vertical (KiCad names the solid after its footprint, not its refdes; J1 matched to it by footprint and by board.manifest.json position (9, 48.5) lying inside this box with y negated)",
+        "access": {
+          "direction": "+z",
+          "depth_mm": null,
+          "source": "Direction from the footprint: PinHeader_1x04_P2.54mm_Vertical is a straight header on the z = 1.6 face with pins along +z, so a socket housing mates from +z down onto the insulator. depth_mm: TODO(source) - mating housing length belongs to a chosen socket MPN, which this design does not fix (electronic/pinheader-2.54-1x04 says the same of the header). Section absent: the header's own face."
+        }
+      },
+      {
+        "id": "J2",
+        "kind": "connector",
+        "box_mm": {
+          "min_mm": [
+            19.73,
+            -49.77,
+            -1.405
+          ],
+          "max_mm": [
+            34.97,
+            -47.23,
+            10.135
+          ]
+        },
+        "source": "step:PinHeader_1x06_P2.54mm_Vertical (KiCad names the solid after its footprint, not its refdes; J2 matched to it by footprint and by board.manifest.json position (21, 48.5) lying inside this box with y negated)",
+        "access": {
+          "direction": "+z",
+          "depth_mm": null,
+          "source": "Direction from the footprint: PinHeader_1x06_P2.54mm_Vertical is a straight header on the z = 1.6 face with pins along +z, so a socket housing mates from +z down onto the insulator. depth_mm: TODO(source) - mating housing length belongs to a chosen socket MPN, which this design does not fix (electronic/pinheader-2.54-1x06 says the same of the header). Section absent: the header's own face."
+        }
+      },
+      {
+        "id": "R1",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            17.2,
+            -38.4,
+            1.595
+          ],
+          "max_mm": [
+            18.8,
+            -37.6,
+            2.045
+          ]
+        },
+        "source": "step:R_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; R1 matched to it by footprint and by board.manifest.json position (18, 38) lying inside this box with y negated)"
+      },
+      {
+        "id": "R2",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            22.2,
+            -38.4,
+            1.595
+          ],
+          "max_mm": [
+            23.8,
+            -37.6,
+            2.045
+          ]
+        },
+        "source": "step:R_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; R2 matched to it by footprint and by board.manifest.json position (23, 38) lying inside this box with y negated)"
+      },
+      {
+        "id": "R3",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            27.2,
+            -38.4,
+            1.595
+          ],
+          "max_mm": [
+            28.8,
+            -37.6,
+            2.045
+          ]
+        },
+        "source": "step:R_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; R3 matched to it by footprint and by board.manifest.json position (28, 38) lying inside this box with y negated)"
+      },
+      {
+        "id": "U1",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            13.0,
+            -32.75,
+            1.595
+          ],
+          "max_mm": [
+            31.0,
+            -7.25,
+            4.695
+          ]
+        },
+        "source": "step:ESP32-S3-WROOM-1 (KiCad names the solid after its footprint, not its refdes; U1 matched to it by footprint and by board.manifest.json position (22, 20) lying inside this box with y negated)"
+      },
+      {
+        "id": "U2",
+        "kind": "component",
+        "box_mm": {
+          "min_mm": [
+            6.765,
+            -39.285,
+            1.595
+          ],
+          "max_mm": [
+            9.265,
+            -36.785,
+            2.375
+          ]
+        },
+        "source": "step:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinNumbering (KiCad names the solid after its footprint, not its refdes; U2 matched to it by footprint and by board.manifest.json position (8, 38) lying inside this box with y negated)"
+      },
+      {
+        "id": "U1-ANT",
+        "kind": "antenna",
+        "box_mm": {
+          "min_mm": [
+            13.0,
+            -13.25,
+            1.595
+          ],
+          "max_mm": [
+            31.0,
+            -7.25,
+            4.695
+          ]
+        },
+        "source": "U1's STEP box (step:ESP32-S3-WROOM-1) cut at y = -13.25, the edge of the module footprint's antenna keepout rule area (README: the GND pour stops at the antenna keepout y = 13.25 mm in KiCad's frame). The region from there to the module's y = -7.25 end carries the PCB antenna.",
+        "access": {
+          "direction": null,
+          "depth_mm": null,
+          "source": "TODO(source): the clearance Espressif requires around the WROOM-1 PCB antenna (ESP32-S3 Hardware Design Guidelines, antenna placement) is not pinned here. An antenna has no plug; what it needs is metal kept away, which a box of free air does not express. Unknown until cited."
+        }
+      }
+    ]
+  },
+  "links": {
+    "kicad_pcb": "OpenCircuitCore/boards/sensor-node/sensor-node.kicad_pcb",
+    "model_3d": "OpenCircuitCore/boards/sensor-node/sensor-node.step"
+  }
+}
