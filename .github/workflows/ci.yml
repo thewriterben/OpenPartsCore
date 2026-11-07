@@ -38,7 +38,12 @@ jobs:
       # so strict mode is on for that namespace from the start. The older
       # namespaces still carry free-text citations; each one joins this list
       # when its citations have been migrated (OpenKnowledgeCore ADR-0001).
-      - name: Validate every entry (strict citations in material/)
+      # schema/material.schema.json (ADR-0007) is checked with the jsonschema
+      # package; validate.py errors rather than skips when it is missing.
+      - name: Install the namespace-schema validator
+        run: pip install jsonschema
+
+      - name: Validate every entry (strict citations in material/, schema-checked attributes)
         run: python scripts/validate.py --strict material
 
       # ADR-0001 of OpenKnowledgeCore: SiYuan is a projection, never a source.

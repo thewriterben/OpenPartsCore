@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "openpartscore/material.schema.json",
+  "title": "OpenPartsCore material attributes (schema v0)",
+  "description": "What `attributes` holds for an entry in the `material` namespace (ADR-0007). One layout: `identity` (what the product is), `spool_rfid` (what the printer read off the spool tag), `tds` (the vendor's technical data sheet, every table row verbatim with its page), `normalised` (typed values transcribed from `tds` or from `spool_rfid`, each naming its page or its basis), `marketing_claims` (store-page text kept only so a claim can be traced) and `review` (status and the flags a reviewer must read). Numbers are transcribed, never converted: a key's unit is in its name. Absent means unknown, never zero. Citation strings are checked by scripts/validate.py, not here.",
+  "type": "object",
+  "required": ["identity", "review"],
+  "additionalProperties": false,
+  "properties": {
+    "identity": {
+      "type": "object",
+      "required": ["vendor", "product", "polymer", "form", "diameter_mm", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "vendor": {"type": "string", "minLength": 1},
+        "product": {"type": "string", "minLength": 1},
+        "polymer": {"type": "string", "minLength": 1, "description": "Base polymer as the vendor names it: PLA, PETG, ABS, ASA, TPU, PA, PC ..."},
+        "form": {"type": "string", "enum": ["filament", "resin", "sheet", "pellet"]},
+        "diameter_mm": {"type": "number", "exclusiveMinimum": 0},
+        "net_weight_kg": {"type": "number", "exclusiveMinimum": 0},
+        "item_numbers": {
+          "type": "object",
+          "description": "Vendor item number per colour or variant, as printed on the cited page.",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        },
+        "source": {"$ref": "#/$defs/citation"}
+      }
+    },
+    "spool_rfid": {
+      "type": "object",
+      "description": "Fields as the printer reported them from the spool's RFID tag. Field names are the tag's own (minTemp, maxTemp, pressure), preserved verbatim and not interpreted.",
+      "required": ["note", "source"],
+      "properties": {
+        "note": {"type": "string", "minLength": 1, "description": "Which printer, which slot, which day, and what is not interpreted."},
+        "vendor": {"type": "string"},
+        "type": {"type": "string"},
+        "name": {"type": "string"},
+        "rfid": {"type": "string"},
+        "minTemp": {"type": "integer"},
+        "maxTemp": {"type": "integer"},
+        "pressure": {"type": "number"},
+        "source": {"$ref": "#/$defs/citation"}
+      },
+      "additionalProperties": {"type": ["string", "number", "boolean", "null"]}
+    },
+    "tds": {
+      "type": "object",
+      "description": "The vendor TDS as printed. Fixed keys are the document's identity, its Items tables and its storage text; every other key is a section of label: value pairs, named after the section heading (`sample_print_conditions`, `recommended_printing_conditions`, ...). Every block names the page it was read from.",
+      "required": ["title", "source"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "version": {"type": "string"},
+        "issued": {"type": "string", "description": "Date as printed, or the words saying it is not printed."},
+        "physical": {"$ref": "#/$defs/tds_rows"},
+        "mechanical": {"$ref": "#/$defs/tds_rows"},
+        "storage": {
+          "type": "object",
+          "required": ["page", "text"],
+          "additionalProperties": false,
+          "properties": {"page": {"$ref": "#/$defs/page"}, "text": {"type": "string"}}
+        },
+        "source": {"$ref": "#/$defs/citation"}
+      },
+      "patternProperties": {
+        "^(?!(title|version|issued|physical|mechanical|storage|source)$)[a-z][a-z0-9_]*$": {"$ref": "#/$defs/tds_section"}
+      },
+      "additionalProperties": false
+    },
+    "normalised": {
+      "type": "object",
+      "description": "Typed values. Every key other than the fixed four ends in its unit (`_c`, `_mpa`, `_pct`, `_g_cm3`, `_g_10min`, `_mm_s`, `_mm`, `_kj_m2`) and holds a field object that names where the number was read. Print-direction keys carry `_xy` or `_z` before the unit. Sample print settings are flat keys (`sample_print_nozzle_c`, `sample_print_bed_c`, `sample_print_speed_mm_s`, `sample_print_infill_pct`), one field per number, so every number has its own page and row.",
+      "required": ["note", "source"],
+      "properties": {
+        "note": {"type": "string", "minLength": 1, "description": "How these values relate to `tds` or `spool_rfid` (transcription only, no conversion)."},
+        "shrinkage_pct": {
+          "description": "null until a calibration measurement exists; a vendor TDS that says 'low shrinkage' gives no number.",
+          "anyOf": [{"type": "null"}, {"$ref": "#/$defs/field"}]
+        },
+        "shrinkage_note": {"type": "string"},
+        "source": {"$ref": "#/$defs/citation"}
+      },
+      "patternProperties": {
+        "^(?!shrinkage_pct$)[a-z][a-z0-9_]*_(c|mpa|pct|g_cm3|g_10min|mm_s|mm|kj_m2)$": {"$ref": "#/$defs/field"}
+      },
+      "additionalProperties": false
+    },
+    "marketing_claims": {
+      "type": "object",
+      "description": "Store-page text, not test data. Kept only so a claim can be traced; nothing here is a property.",
+      "required": ["note", "source"],
+      "properties": {
+        "note": {"type": "string", "minLength": 1},
+        "source": {"$ref": "#/$defs/citation"}
+      },
+      "additionalProperties": {"type": "string"}
+    },
+    "review": {
+      "type": "object",
+      "required": ["status", "flags"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {"type": "string", "enum": ["proposed", "accepted", "rejected"]},
+        "flags": {
+          "type": "array",
+          "description": "Everything a reviewer must read before accepting: mislabelled rows, re-keyed values, values the extractor dropped, where a fact came from when the TDS lacks it. Empty is allowed and means the pipeline and the hand-check found nothing to say.",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "reviewer": {"type": "string"},
+        "reviewed": {"type": "string", "description": "ISO date of the review that set `status`."}
+      }
+    }
+  },
+  "$defs": {
+    "citation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A citation string in one of the forms scripts/validate.py accepts under --strict."
+    },
+    "page": {"type": "integer", "minimum": 1},
+    "tds_rows": {
+      "type": "array",
+      "description": "One object per table row, cells verbatim, in document order.",
+      "items": {
+        "type": "object",
+        "required": ["page", "item", "testing_criteria", "parameter"],
+        "additionalProperties": false,
+        "properties": {
+          "page": {"$ref": "#/$defs/page"},
+          "row": {"type": "integer", "minimum": 1, "description": "Row number in the extracted document, counted across all tables; what `normalised.*.row` points at."},
+          "item": {"type": "string"},
+          "testing_criteria": {"type": "string"},
+          "parameter": {"type": "string"}
+        }
+      }
+    },
+    "tds_section": {
+      "type": "object",
+      "description": "A label: value table or block, values as printed.",
+      "required": ["page"],
+      "properties": {
+        "page": {"$ref": "#/$defs/page"},
+        "rows": {"type": "array", "items": {"type": "integer", "minimum": 1}}
+      },
+      "additionalProperties": {"type": "string"}
+    },
+    "field": {
+      "type": "object",
+      "description": "One transcribed number (or range) and where it was read. At least one of value, min, max; and either a page in the cited document or a stated basis.",
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "min": {"type": ["number", "null"]},
+        "max": {"type": ["number", "null"]},
+        "tolerance": {"type": "number", "minimum": 0},
+        "at_c": {"type": "number", "description": "Temperature the value was measured at, when the document prints one."},
+        "load_mpa": {"type": "number", "description": "Test load, for heat-deflection values."},
+        "condition": {"type": "string", "description": "Test condition as printed (e.g. '210°C, 2.16 kg')."},
+        "standard": {"type": "string", "description": "Test standard as printed (e.g. 'ASTM D792')."},
+        "method": {"type": "string"},
+        "as_printed": {"type": "string", "description": "The original cell text when a bound was taken from a word (e.g. 'Normal-60℃')."},
+        "basis": {"type": "string", "description": "Where the number comes from when it is not a page of the cited document (e.g. an RFID tag field)."},
+        "label_in_document": {"type": "string", "description": "The row label when the key name differs from it."},
+        "page": {"$ref": "#/$defs/page"},
+        "row": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {"anyOf": [{"required": ["value"]}, {"required": ["min"]}, {"required": ["max"]}]},
+        {"anyOf": [{"required": ["page"]}, {"required": ["basis"]}]}
+      ]
+    }
+  }
+}
