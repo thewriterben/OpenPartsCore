@@ -143,3 +143,21 @@ Two further facts shaped this. The bench board is **V1.1** and the envelope came
 **Consequences.** Positions from a vendor model are only as good as the model and the revision match, and the frame is the model's, not a physical datum; consumers place the part with a transform they own. Access directions read off the geometry (a connector body overhanging the board edge mates through that edge) are recorded as inferences, and say so in their `source`, until someone confirms them on the board. EasyEDA shares one STEP product between same-footprint instances, so shared passives lose their refdes; their ids are the footprint plus an ordinal, which is honest about what the model knows. The first entry is `boards/lilygo-t-camera-plus-s3` at V1.1. Its envelope note, which guessed that the tallest solid was a lens barrel, is corrected: the census names it SW3, the 6 x 6 mm tactile switch.
 
 **Addendum (2026-11-06, merging main's strict citation gate).** `features.source.citation` is a citation like any other and takes one of the strict forms; the prose that explains how the positions were computed moves to `features.source.note`. `items[].source` and `items[].access.source` are not citations: they say where inside the cited model a box or a direction came from (`step:J1`, or an inference from the geometry), so `--strict` does not ask them for a citation form. The SiYuan rule still applies to them.
+
+---
+
+## ADR-0009 - A source block may carry a note; the citation holds only the citation
+
+**Date:** 2026-11-07
+**Status:** accepted (records a change made in PR #17, 2026-11-06)
+
+**Context.** Before `--strict` covered every namespace, nine hand-written citations in `boards/` and `electronic/` were prose: which file, where in it, and how a number was read off it ("STEP inside the zip, bounding box of the board solid"). PR #17 moved each to a strict form (`vault:sha256:...`, `repo:owner/name@sha:path`). The method did not fit in a citation and was still worth keeping: the DFRobot STEP sits in a RAR inside the zip, the ROBOTIS numbers come from a data file because the rendered page has none, and a reviewer re-deriving a value needs to know that. OpenKnowledgeCore ADR-0001 already says a citation is only a pointer to archived bytes.
+
+**Options.**
+1. Keep the prose in `citation` and exempt those entries from `--strict` - leaves a namespace half strict, and the prose is exactly what strict mode exists to stop.
+2. Drop the prose - loses the method; the next person repeats the archaeology.
+3. An optional `note` string on `source` and on `envelope_mm.source`, beside `citation`, following ADR-0008's `features.source.note`.
+
+**Decision.** Option 3. `note` explains how the cited bytes yield the values (method, page, container, caveats). It never replaces the citation: `--strict` checks `citation` and ignores `note`, and an entry with a note and no valid citation still fails. The SiYuan rejection scans every string, notes included, so a note cannot smuggle a second-brain reference in. Free text stays in `note`, never in `citation`.
+
+**Consequences.** Seven entries carry a top-level `source.note` and six an `envelope_mm.source.note` (2026-11-07). Bindings carry the field as an optional string. A consumer must not parse a note for values; anything it needs as data belongs in `attributes`, `envelope_mm` or `features` with its own citation.
