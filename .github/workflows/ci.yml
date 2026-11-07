@@ -34,19 +34,18 @@ jobs:
       # Structure, unit-suffix rules, and the citation gate. An uncited value is
       # invalid here, which is the rule the whole registry rests on.
       #
-      # `material` was born with strict citations (vault:sha256: forms, PR #12),
-      # so strict mode is on for that namespace from the start. Ingested entries
-      # cite the Oh-Ben-Claw commit they were read from (repo: form) since
-      # ingest_obc.py learned to; `boards` joins this list when its four
-      # hand-measured envelope_mm citations are migrated, `electronic` when its
-      # four hand-written citations are (OpenKnowledgeCore ADR-0001).
+      # Strict citations everywhere (OpenKnowledgeCore ADR-0001): `material` was
+      # born strict (vault:sha256: forms, PR #12), ingested entries cite the
+      # Oh-Ben-Claw commit they were read from (PR #16), and the last nine
+      # hand-written citations in `boards` and `electronic` were migrated to
+      # vault:/repo: forms with the method prose moved to source.note (PR #17).
       # schema/material.schema.json (ADR-0007) is checked with the jsonschema
       # package; validate.py errors rather than skips when it is missing.
       - name: Install the namespace-schema validator
         run: pip install jsonschema
 
-      - name: Validate every entry (strict citations in material/, schema-checked attributes)
-        run: python scripts/validate.py --strict material
+      - name: Validate every entry (strict citations, schema-checked attributes)
+        run: python scripts/validate.py --strict
 
       # ADR-0001 of OpenKnowledgeCore: SiYuan is a projection, never a source.
       # validate.py above rejects any SiYuan reference; these tests prove it does.
