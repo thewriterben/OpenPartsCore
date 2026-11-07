@@ -5,8 +5,8 @@
   "name": "m5stack-cardputer",
   "description": "M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)",
   "source": {
-    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-    "retrieved": "2026-08-15",
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
     "upstream_schema_version": 1
   },
   "attributes": {

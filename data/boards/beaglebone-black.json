@@ -5,8 +5,8 @@
   "name": "beaglebone-black",
   "description": "TI AM3358 ARM Cortex-A8 @ 1 GHz",
   "source": {
-    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-    "retrieved": "2026-08-15",
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
     "upstream_schema_version": 1
   },
   "attributes": {

@@ -5,8 +5,8 @@
   "name": "lilygo-t-camera-plus-s3",
   "description": "ESP32-S3 LX7 dual-core @ 240 MHz, OV2640 camera, 1.3\" ST7789V 240x240 touch TFT, mic + speaker, microSD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
   "source": {
-    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-    "retrieved": "2026-09-11",
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
     "upstream_schema_version": 1
   },
   "attributes": {

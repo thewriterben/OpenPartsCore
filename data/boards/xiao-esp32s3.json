@@ -5,8 +5,8 @@
   "name": "xiao-esp32s3",
   "description": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)",
   "source": {
-    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-    "retrieved": "2026-09-11",
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
     "upstream_schema_version": 1
   },
   "attributes": {
@@ -15,6 +15,11 @@
         "vid": 10374,
         "pid": 86,
         "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)"
+      },
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB-Serial-JTAG; shared VID/PID)"
       }
     ],
     "capabilities": [

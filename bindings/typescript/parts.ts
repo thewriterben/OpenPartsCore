@@ -38,8 +38,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "adafruit-feather-esp32s3-tft",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 1.14\" ST7789 240x135 TFT, LiPo charge (CircuitPython VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -77,8 +77,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "adafruit-qtpy-esp32s3",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz (CircuitPython VID/PID; Arduino mode = 0x303a:0x1001)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -113,8 +113,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-leonardo",
     "description": "AVR ATmega32U4 @ 16 MHz (native USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -146,8 +146,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-mega",
     "description": "AVR ATmega2560 @ 16 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -179,8 +179,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano",
     "description": "AVR ATmega328P @ 16 MHz (CH340 USB-UART)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -212,8 +212,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano-33-ble",
     "description": "nRF52840 ARM Cortex-M4F @ 64 MHz (BLE, IMU)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -248,8 +248,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano-esp32",
     "description": "ESP32-S3 (u-blox NORA-W106) Xtensa LX7 dual-core @ 240 MHz, Nano form factor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -284,8 +284,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano-every",
     "description": "AVR ATmega4809 @ 20 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -317,8 +317,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-uno",
     "description": "AVR ATmega328P @ 16 MHz (legacy)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -355,8 +355,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-uno-q",
     "description": "Arduino Uno Q / ATmega328P",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -388,8 +388,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "beaglebone-black",
     "description": "TI AM3358 ARM Cortex-A8 @ 1 GHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -424,8 +424,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "coral-dev-board-mini",
     "description": "MediaTek MT8167S quad Cortex-A35 + Google Edge TPU, 4 TOPS, 2 GB LPDDR3 (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -461,8 +461,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "coral-usb-accelerator",
     "description": "Google Edge TPU ASIC, 4 TOPS @ 2 W (USB 3.0 coprocessor)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -492,8 +492,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "cp2102",
     "description": "Silicon Labs CP2102 USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -521,8 +521,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "cp2102n",
     "description": "Silicon Labs CP2102N USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -550,8 +550,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "cyd-esp32-2432s028r",
     "description": "ESP32 'Cheap Yellow Display' (ESP32-2432S028R): ILI9341 320x240 + XPT2046 resistive touch, microSD (CH340; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -588,8 +588,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "dfrobot-firebeetle2-esp32s3",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz, LiPo charge, onboard GDI (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -632,13 +632,50 @@ export const PARTS: readonly Part[] = Object.freeze([
   },
   {
     "schema_version": 0,
+    "id": "boards/emakefun-esp32-s3-cam",
+    "namespace": "boards",
+    "name": "emakefun-esp32-s3-cam",
+    "description": "ESP32-S3R8 LX7 dual-core @ 240 MHz, OV2640/OV3660 camera, microSD, 8 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
+    "source": {
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
+      "upstream_schema_version": 1
+    },
+    "attributes": {
+      "usb_ids": [
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3R8 LX7 dual-core @ 240 MHz, OV2640/OV3660 camera, microSD, 8 MB flash / 8 MB PSRAM (native USB; shared VID/PID)"
+        }
+      ],
+      "capabilities": [
+        "battery",
+        "ble",
+        "camera_capture",
+        "gpio",
+        "microsd",
+        "psram",
+        "wifi"
+      ],
+      "connectors": [
+        "bare"
+      ],
+      "vendor": "Emakefun",
+      "ecosystem": "ESP32-S3-CAM",
+      "transport": "serial"
+    },
+    "links": {}
+  },
+  {
+    "schema_version": 0,
     "id": "boards/esp32",
     "namespace": "boards",
     "name": "esp32",
     "description": "ESP32 Xtensa LX6 @ 240 MHz (CH340)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -668,8 +705,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-c3",
     "description": "ESP32-C3 RISC-V single-core @ 160 MHz (native USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -703,8 +740,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-c5",
     "description": "ESP32-C5 RISC-V single-core @ 240 MHz (dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -741,8 +778,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-c6",
     "description": "ESP32-C6 RISC-V single-core @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -779,8 +816,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-cam",
     "description": "ESP32 + OV2640 camera, microSD (AI-Thinker; flashed via external USB-UART; VID/PID is a common CH340 programmer)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -813,8 +850,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-h2",
     "description": "ESP32-H2 RISC-V single-core @ 96 MHz (BLE 5, 802.15.4, no Wi-Fi; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -850,8 +887,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-p4",
     "description": "ESP32-P4 dual-core RISC-V @ 400 MHz (AI vector ext., MIPI-CSI/DSI, no radio; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -887,8 +924,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-s3",
     "description": "ESP32-S3 (CP2102 USB-UART)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -931,8 +968,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-s3-cam",
     "description": "ESP32-S3 + OV2640/OV5640 camera, microSD, PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -963,13 +1000,49 @@ export const PARTS: readonly Part[] = Object.freeze([
   },
   {
     "schema_version": 0,
+    "id": "boards/esp32-s3-wroom-cam",
+    "namespace": "boards",
+    "name": "esp32-s3-wroom-cam",
+    "description": "ESP32-S3-WROOM-1 LX7 dual-core @ 240 MHz, OV2640/OV5640 camera, microSD, 8 MB PSRAM (native USB; shared VID/PID)",
+    "source": {
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
+      "upstream_schema_version": 1
+    },
+    "attributes": {
+      "usb_ids": [
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3-WROOM-1 LX7 dual-core @ 240 MHz, OV2640/OV5640 camera, microSD, 8 MB PSRAM (native USB; shared VID/PID)"
+        }
+      ],
+      "capabilities": [
+        "ble",
+        "camera_capture",
+        "gpio",
+        "microsd",
+        "psram",
+        "wifi"
+      ],
+      "connectors": [
+        "bare"
+      ],
+      "vendor": "Unbranded",
+      "ecosystem": "ESP32-S3-CAM",
+      "transport": "serial"
+    },
+    "links": {}
+  },
+  {
+    "schema_version": 0,
     "id": "boards/flipper-zero",
     "namespace": "boards",
     "name": "flipper-zero",
     "description": "STM32WB55 ARM Cortex-M4 @ 64 MHz (multi-tool; USB CDC)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1005,8 +1078,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ftdi-ft231x",
     "description": "FTDI FT231X USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1034,8 +1107,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ftdi-ft232",
     "description": "FTDI FT232 USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1063,8 +1136,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "heltec-wifi-lora-32-v3",
     "description": "ESP32-S3 + SX1262 LoRa + 0.96\" OLED (Meshtastic-compatible; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1101,8 +1174,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "jetson-nano",
     "description": "NVIDIA Tegra X1 quad-core ARM Cortex-A57 @ 1.43 GHz (128-core Maxwell GPU)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1137,8 +1210,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "jetson-orin-nano",
     "description": "NVIDIA Jetson Orin Nano: 6-core Arm Cortex-A78AE + 1024-core Ampere GPU w/ tensor cores, 67 TOPS (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1174,8 +1247,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-beam",
     "description": "ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1211,8 +1284,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-camera-plus-s3",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz, OV2640 camera, 1.3\" ST7789V 240x240 touch TFT, mic + speaker, microSD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-09-11",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1266,8 +1339,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-deck",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa, 2.8\" IPS touch, keyboard/trackball, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1312,8 +1385,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-deck-plus",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa + GNSS, 2.8\" IPS touch, keyboard/trackball, 2000 mAh (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1358,8 +1431,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-display-s3",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz, 1.9\" ST7789 320x170 LCD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1394,8 +1467,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-lora-pager",
     "description": "ESP32-S3 @ 240 MHz + SX1262 LoRa, keyboard + rotary encoder, GPS, NFC, IMU (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1439,8 +1512,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-atom-s3",
     "description": "ESP32-S3 @ 240 MHz, 0.85\" LCD, compact (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1475,8 +1548,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-cardputer",
     "description": "M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1517,8 +1590,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-core2",
     "description": "ESP32-D0WDQ6 @ 240 MHz, 2.0\" ILI9342C touch LCD, MPU6886 IMU (CP2104; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1557,8 +1630,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-module-llm",
     "description": "AXera AX630C dual Cortex-A53 @ 1.2 GHz + 3.2 TOPS NPU, 4 GB LPDDR4, 32 GB eMMC (CH340N; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1591,8 +1664,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-tab5",
     "description": "ESP32-P4 dual RISC-V @ 400 MHz + ESP32-C6 radio co-proc; 5\" 1280x720 MIPI-DSI touch, 2MP camera (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1636,8 +1709,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nanopi-neo3",
     "description": "Rockchip RK3328 quad-core ARM Cortex-A53 @ 1.5 GHz (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1670,8 +1743,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nrf52840-dk",
     "description": "Nordic nRF52840 ARM Cortex-M4F @ 64 MHz (BLE 5.0)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1705,8 +1778,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-f401re",
     "description": "ARM Cortex-M4 @ 84 MHz (STM32F401RE)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1743,8 +1816,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-f411re",
     "description": "ARM Cortex-M4 @ 100 MHz (STM32F411RE)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1781,8 +1854,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-g474re",
     "description": "ARM Cortex-M4 @ 170 MHz (STM32G474RE, HRTIM)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1819,8 +1892,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-h743zi",
     "description": "ARM Cortex-M7 @ 480 MHz (STM32H743ZI)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1857,8 +1930,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-l476rg",
     "description": "ARM Cortex-M4 @ 80 MHz (STM32L476RG, ultra-low-power)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1895,8 +1968,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "oak-d-lite",
     "description": "Intel Movidius Myriad X VPU, 1.4 TOPS; 12.3MP RGB + 2x 480p stereo depth (USB 3)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1927,8 +2000,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "pimoroni-presto",
     "description": "RP2350 dual Cortex-M33 @ 150 MHz + RM2 Wi-Fi/BLE, 4\" 480x480 IPS touch (MicroPython VID/PID; shared)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1967,8 +2040,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "radxa-rock-5b",
     "description": "Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2003,8 +2076,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rak4631",
     "description": "Nordic nRF52840 + Semtech SX1262 LoRa (RAKwireless WisBlock core; Meshtastic-compatible; Adafruit nRF52 UF2 bootloader VID/PID, shared — selected by name)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2040,8 +2113,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-4",
     "description": "BCM2711 quad-core ARM Cortex-A72 @ 1.8 GHz (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2075,8 +2148,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-5",
     "description": "BCM2712 quad-core ARM Cortex-A76 @ 2.4 GHz (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2110,8 +2183,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico",
     "description": "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2145,8 +2218,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico-w",
     "description": "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz (Wi-Fi)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2180,8 +2253,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico2",
     "description": "RP2350 dual-core ARM Cortex-M33 @ 150 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2215,8 +2288,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico2-w",
     "description": "RP2350 dual-core ARM Cortex-M33 @ 150 MHz + CYW43439 (Wi-Fi 4, BLE 5.2; SDK CDC id shared with pico-w)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2252,8 +2325,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sipeed-6plus1-mic-array",
     "description": "STM32F103 @ 72 MHz, 6+1 MEMS microphone array with USB audio (UAC1)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2284,8 +2357,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sparkfun-thing-plus-esp32-c6",
     "description": "ESP32-C6 RISC-V @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; CH340 USB-UART; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2323,8 +2396,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "stm32h7-discovery",
     "description": "ARM Cortex-M7 @ 480 MHz (STM32H750, external flash)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2362,8 +2435,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "teensy-4.1",
     "description": "NXP i.MX RT1062 ARM Cortex-M7 @ 600 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2399,8 +2472,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "waveshare-esp32-s3-touch-lcd-2.1",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 2.1\" round touch LCD, I2S speaker",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2437,8 +2510,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xiao-esp32c5",
     "description": "ESP32-C5 RISC-V @ 240 MHz, dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4 (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2476,8 +2549,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xiao-esp32s3",
     "description": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-09-11",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2486,6 +2559,11 @@ export const PARTS: readonly Part[] = Object.freeze([
           "vid": 10374,
           "pid": 86,
           "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)"
+        },
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB-Serial-JTAG; shared VID/PID)"
         }
       ],
       "capabilities": [
@@ -2525,16 +2603,21 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xiao-esp32s3-sense",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
       "usb_ids": [
         {
           "vid": 10374,
-          "pid": 88,
+          "pid": 32854,
           "architecture": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone"
+        },
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone (native USB-Serial-JTAG; shared VID/PID)"
         }
       ],
       "capabilities": [
@@ -2576,8 +2659,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ads1115",
     "description": "TI ADS1115 — 16-bit 4-channel ADC with programmable gain",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2598,8 +2681,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "aht20",
     "description": "ASAIR AHT20 — temperature and humidity sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2620,8 +2703,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "bme280",
     "description": "Bosch BME280 — temperature, humidity, and pressure sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2642,8 +2725,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "bmp388",
     "description": "Bosch BMP388 — high-accuracy barometric pressure and temperature",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2664,8 +2747,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "bno055",
     "description": "Bosch BNO055 — 9-DOF IMU with on-chip sensor fusion (absolute orientation)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2710,8 +2793,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "dht11",
     "description": "AOSONG DHT11 — basic humidity and temperature sensor, single-wire protocol",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2732,8 +2815,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "dht22",
     "description": "AOSONG DHT22 (AM2302) — capacitive humidity and temperature sensor, single-wire protocol",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2761,8 +2844,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ds18b20",
     "description": "Maxim DS18B20 — 1-Wire digital temperature sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2841,8 +2924,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "grove-vision-ai-v2",
     "description": "Seeed Grove Vision AI Module V2 — Himax WiseEye2 (Cortex-M55 + Ethos-U55 microNPU) smart camera",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2864,8 +2947,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ili9341",
     "description": "ILITEK ILI9341 — 240x320 SPI TFT LCD controller",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2888,8 +2971,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ina260",
     "description": "TI INA260 — high/low-side current, voltage, and power monitor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2910,8 +2993,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "inmp441",
     "description": "InvenSense INMP441 — I2S MEMS microphone (audio capture)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2932,8 +3015,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lsm6ds3",
     "description": "ST LSM6DS3 — 6-axis IMU (accelerometer + gyroscope)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2954,8 +3037,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "max17048",
     "description": "Maxim MAX17048 — LiPo battery fuel gauge (state of charge)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2976,8 +3059,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "max31855",
     "description": "Maxim MAX31855 — thermocouple-to-digital converter (K-type)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -2998,8 +3081,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "max98357a",
     "description": "Maxim MAX98357A — I2S Class-D amplifier (speaker output)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3020,8 +3103,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "mcp23017",
     "description": "Microchip MCP23017 — 16-bit I2C GPIO expander",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3042,8 +3125,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "mcp4725",
     "description": "Microchip MCP4725 — 12-bit single-channel DAC",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3064,8 +3147,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "mpu6050",
     "description": "InvenSense MPU-6050 — 6-axis accelerometer + gyroscope",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3086,8 +3169,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ov2640",
     "description": "OmniVision OV2640 — 2 MP camera image sensor (SCCB control bus)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3112,8 +3195,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "pca9685",
     "description": "NXP PCA9685 — 16-channel 12-bit I2C PWM / servo driver",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3135,8 +3218,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "pcf8574",
     "description": "NXP PCF8574 — 8-bit I2C GPIO expander",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3180,8 +3263,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rpi-ai-camera-imx500",
     "description": "Raspberry Pi AI Camera — Sony IMX500 12.3MP sensor with on-sensor NN inference accelerator (CSI)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3206,8 +3289,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rpi-ai-hat-plus-13t",
     "description": "Raspberry Pi AI HAT+ (13 TOPS) — Hailo-8L NPU over PCIe Gen3 (RPi 5)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3230,8 +3313,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rpi-ai-hat-plus-2",
     "description": "Raspberry Pi AI HAT+ 2 — Hailo-10H NPU, 40 TOPS INT4 / 20 TOPS INT8, GenAI-capable (RPi 5, PCIe)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3254,8 +3337,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "scd41",
     "description": "Sensirion SCD41 — true CO2 (photoacoustic NDIR), temperature, humidity",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3276,8 +3359,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sg90",
     "description": "TowerPro SG90 — micro servo (PWM position control)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3298,8 +3381,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sgp40",
     "description": "Sensirion SGP40 — VOC air-quality gas sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3320,8 +3403,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sht31",
     "description": "Sensirion SHT31 — high-accuracy temperature and humidity",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3342,8 +3425,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sim7600",
     "description": "SIMCom SIM7600 — LTE Cat-4 cellular modem with GNSS (UART/USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3365,8 +3448,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ssd1306",
     "description": "Solomon SSD1306 — 128x64 OLED display",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3385,8 +3468,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "tb6612fng",
     "description": "Toshiba TB6612FNG — dual DC motor driver (PWM + direction)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3407,8 +3490,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "vl53l1x",
     "description": "ST VL53L1X — time-of-flight distance sensor (up to 4 m)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3429,8 +3512,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xpt2046",
     "description": "XPT2046 — resistive touch-screen controller (SPI)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {

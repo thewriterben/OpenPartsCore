@@ -23,7 +23,7 @@ The canonical parts registry for the OpenDesignCore platform: one schema, one se
 ## Rules
 
 - **Every entry carries a citation.** An uncited value fails validation. No plausible-looking numbers.
-- **A citation never points at SiYuan**, and in `material/` it must be a recognised form (`vault:sha256:`, `repo:`, `ledger:`, `doi:`, `arxiv:`, `standard:`). The other namespaces move to strict form as their citations are migrated (OpenKnowledgeCore ADR-0001).
+- **A citation never points at SiYuan**, and in `material/` it must be a recognised form (`vault:sha256:`, `repo:`, `ledger:`, `doi:`, `arxiv:`, `standard:`). Ingested entries cite the Oh-Ben-Claw registry at the commit they were read from (`repo:thewriterben/Oh-Ben-Claw@<sha>:registry/registry.json`); `boards/` and `electronic/` join strict mode when their remaining hand-written citations (four `envelope_mm` sources, four part sources) are migrated (OpenKnowledgeCore ADR-0001).
 - **Length fields are millimetres** and end in `_mm` (matches OpenDesignCore ADR-0004). Other units are named in the field (`mass_g`, `voltage_v`).
 - **Material attributes have one layout.** `identity` and `review` are required; `tds` is the vendor data sheet row by row with pages; `normalised` holds typed values whose keys end in their unit and which each name a page or a basis; `review.flags` is what a reviewer must read. `scripts/validate.py` checks it with `schema/material.schema.json` (needs `pip install jsonschema`; ADR-0007).
 - **An envelope carries its own source.** `envelope_mm` is optional; when present it has all three axes and a citation of its own, because the entry's citation (for ingested boards, a registry with no dimensions) does not cover it. Absent means unknown, never zero (ADR-0006).
