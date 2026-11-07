@@ -621,9 +621,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 61.47,
       "z": 8.45,
       "source": {
-        "citation": "Axis-aligned bounding box of DFRobot's vendor STEP model DFR0975.stp (sha256 6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9, inside '3D Model/' of DFR0975_firebeetle-esp32-s3-ai-acceleration-board_stpfile_1.zip, sha256 0e7feac458213620edf605c85120bf314f17df51fc79858c8800450c019b6d4e), computed 2026-09-06 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing: 25.5000 x 61.4706 x 8.4477 mm, rounded up to 0.01. Z spans PCB underside (z=0) to the tallest top-side component; the model carries no headers. PCB outline is 25.4 x 60.0 mm, thickness 1.6 mm, per 'DFR0975 dimension V1.3.pdf' (dimension_V1.3.zip, drawing dated 2026-06-17); the STEP file's own timestamp is 2023-10-20 and it does not state which board revision it depicts.",
+        "citation": "vault:sha256:6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9",
         "url": "https://wiki.dfrobot.com/dfr0975",
-        "retrieved": "2026-09-06"
+        "retrieved": "2026-09-06",
+        "note": "Axis-aligned bounding box of DFRobot's vendor STEP model DFR0975.stp (sha256 6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9, inside '3D Model/' of DFR0975_firebeetle-esp32-s3-ai-acceleration-board_stpfile_1.zip, sha256 0e7feac458213620edf605c85120bf314f17df51fc79858c8800450c019b6d4e), computed 2026-09-06 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing: 25.5000 x 61.4706 x 8.4477 mm, rounded up to 0.01. Z spans PCB underside (z=0) to the tallest top-side component; the model carries no headers. PCB outline is 25.4 x 60.0 mm, thickness 1.6 mm, per 'DFR0975 dimension V1.3.pdf' (dimension_V1.3.zip, drawing dated 2026-06-17); the STEP file's own timestamp is 2023-10-20 and it does not state which board revision it depicts. Re-downloaded 2026-11-06: the zip (same sha256) holds 'DFR0975_stp_files/DFR0975 3D Model.rar' (dated 2026-06-17) and the STEP is '3D Model/DFR0975.stp' inside that RAR, not in a '3D Model/' folder of the zip itself; the archived STEP is the cited bytes."
       }
     },
     "links": {
@@ -1323,9 +1324,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 69.67,
       "z": 10.87,
       "source": {
-        "citation": "Axis-aligned bounding box of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step' (sha256 b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487, 68,603,684 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Extents 29.9999 x 69.6625 x 10.8643 mm in the model's own frame, which is board-aligned with Z as the board normal (no axis permutation applied); rounded up to 0.01. Z runs from the lowest underside feature (4.71 mm below the model's z=0) to the tallest top-side component; the model carries no pin headers. This is the **V1.2** hardware revision (2025-04, per the repo README's version table); a separate STEP exists for V1.0-V1.1 (3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step) and was not measured. The STEP is the only dimensional source: the V1.2 schematic (T-CameraPlus-S3_V1.2_20240417.pdf, sha256 5363097ad586a5bf21cdd528fa8c0213b08e6af951835b1f8533531a64a202e2) is electrical only, and neither the README nor lilygo.cc's product page states board dimensions. The product page also lists an OV5640 SKU (H703-01); the model's camera module is not identified in the file, so the OV5640 variant's height is unverified. What the model does say, from a census of all 825 solids (BRepBndLib::Add, coarse boxes, 2026-09-12): the extreme z faces belong to exactly two features. The top is a single solid 6.2995 x 6.0000 x 5.0000 mm spanning z 1.1412 to 6.1412 -- a lens-barrel shape, the tallest thing on the board by 1.80 mm over the next component (8.9500 x 7.4500 x 4.2000 mm, reaching 4.3412). The bottom is -4.7100. Those two numbers are the whole of z: 6.1412 - (-4.7100) = 10.8512, rounded up to 10.87. Which solid is the camera is still not established -- geometry alone cannot say, and no silkscreen or placement file was consulted -- so this is not a claim that the barrel is the OV2640. It does make the open question a single measurement rather than a disassembly: an OV5640 board's **overall** thickness, lowest underside feature to highest top-side feature, compared against 10.85. Above it, the envelope is wrong for that SKU and z must be re-derived; at or below it, this envelope covers both. No such measurement has been made, and no vendor publishes the module height -- LILYGO's product page, the repo README and the resellers' listings were all checked on 2026-09-12 and none states one.",
+        "citation": "repo:Xinyuan-LilyGO/T-CameraPlus-S3@55764fa22a0dd2ea66715b2b5dc403a34569ba42:structure/3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step",
         "url": "https://github.com/Xinyuan-LilyGO/T-CameraPlus-S3",
-        "retrieved": "2026-09-11"
+        "retrieved": "2026-09-11",
+        "note": "Axis-aligned bounding box of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step' (sha256 b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487, 68,603,684 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Extents 29.9999 x 69.6625 x 10.8643 mm in the model's own frame, which is board-aligned with Z as the board normal (no axis permutation applied); rounded up to 0.01. Z runs from the lowest underside feature (4.71 mm below the model's z=0) to the tallest top-side component; the model carries no pin headers. This is the **V1.2** hardware revision (2025-04, per the repo README's version table); a separate STEP exists for V1.0-V1.1 (3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step) and was not measured. The STEP is the only dimensional source: the V1.2 schematic (T-CameraPlus-S3_V1.2_20240417.pdf, sha256 5363097ad586a5bf21cdd528fa8c0213b08e6af951835b1f8533531a64a202e2) is electrical only, and neither the README nor lilygo.cc's product page states board dimensions. The product page also lists an OV5640 SKU (H703-01); the model's camera module is not identified in the file, so the OV5640 variant's height is unverified. What the model does say, from a census of all 825 solids (BRepBndLib::Add, coarse boxes, 2026-09-12): the extreme z faces belong to exactly two features. The top is a single solid 6.2995 x 6.0000 x 5.0000 mm spanning z 1.1412 to 6.1412 -- a lens-barrel shape, the tallest thing on the board by 1.80 mm over the next component (8.9500 x 7.4500 x 4.2000 mm, reaching 4.3412). The bottom is -4.7100. Those two numbers are the whole of z: 6.1412 - (-4.7100) = 10.8512, rounded up to 10.87. Which solid is the camera is still not established -- geometry alone cannot say, and no silkscreen or placement file was consulted -- so this is not a claim that the barrel is the OV2640. It does make the open question a single measurement rather than a disassembly: an OV5640 board's **overall** thickness, lowest underside feature to highest top-side feature, compared against 10.85. Above it, the envelope is wrong for that SKU and z must be re-derived; at or below it, this envelope covers both. No such measurement has been made, and no vendor publishes the module height -- LILYGO's product page, the repo README and the resellers' listings were all checked on 2026-09-12 and none states one."
       }
     },
     "links": {
@@ -2587,9 +2589,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 17.81,
       "z": 4.48,
       "source": {
-        "citation": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'XIAO-ESP32S3 v2.step' (sha256 870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd, 1,335,902 bytes, file dated 2023-05-27, inside seeed-studio-xiao-esp32s3-3d_model.zip, sha256 0d552ed2cc7359ea132601f4f7fe2c9d816e2dfe4f58f6463e83f84a901d3650), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 22.5045, Y 4.4798, Z 17.8040 mm. As with the Sense model, the model's Y axis is the board normal and its Z runs across the board, so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang), y = model Z (board width), z = model Y (PCB underside to the tallest top-side component); each rounded up to 0.01. The permutation is corroborated by the model's Z extent, 17.8040 mm, matching Seeed's stated 17.8 mm width to the hundredth. The model carries no pin headers (the board ships without them) and no antenna. Conflict: Seeed's specification table gives '21 x 17.8mm' and states no height at all; 21 mm is the bare PCB outline, and the extra 1.5 mm of length measured here is the USB-C connector overhanging it. The vendor's XIAO_ESP32S3_v1.1_Dimensioning.dxf (sha256 5fd32e3ba7a4bd85b8cc0f5d9413e26dd947e84e27b2d0f03350a7d367903f23) was not used for numbers despite its name: it is an R12 export with zero DIMENSION entities, no declared unit ($INSUNITS absent), and drawing extents of 19.050 x 21.145 that match neither the stated outline nor the model. Neither source states which board revision the model depicts; the filename says 'v2' and the DXF says 'v1.1', and nothing relates the two.",
+        "citation": "vault:sha256:870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
         "url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
-        "retrieved": "2026-09-11"
+        "retrieved": "2026-09-11",
+        "note": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'XIAO-ESP32S3 v2.step' (sha256 870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd, 1,335,902 bytes, file dated 2023-05-27, inside seeed-studio-xiao-esp32s3-3d_model.zip, sha256 0d552ed2cc7359ea132601f4f7fe2c9d816e2dfe4f58f6463e83f84a901d3650), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 22.5045, Y 4.4798, Z 17.8040 mm. As with the Sense model, the model's Y axis is the board normal and its Z runs across the board, so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang), y = model Z (board width), z = model Y (PCB underside to the tallest top-side component); each rounded up to 0.01. The permutation is corroborated by the model's Z extent, 17.8040 mm, matching Seeed's stated 17.8 mm width to the hundredth. The model carries no pin headers (the board ships without them) and no antenna. Conflict: Seeed's specification table gives '21 x 17.8mm' and states no height at all; 21 mm is the bare PCB outline, and the extra 1.5 mm of length measured here is the USB-C connector overhanging it. The vendor's XIAO_ESP32S3_v1.1_Dimensioning.dxf (sha256 5fd32e3ba7a4bd85b8cc0f5d9413e26dd947e84e27b2d0f03350a7d367903f23) was not used for numbers despite its name: it is an R12 export with zero DIMENSION entities, no declared unit ($INSUNITS absent), and drawing extents of 19.050 x 21.145 that match neither the stated outline nor the model. Neither source states which board revision the model depicts; the filename says 'v2' and the DXF says 'v1.1', and nothing relates the two."
       }
     },
     "links": {
@@ -2643,9 +2646,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 17.81,
       "z": 14.02,
       "source": {
-        "citation": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'Seeed Studio XIAO-ESP32-S3-Sense.step' (sha256 a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698, file dated 2023-05-29, inside seeed-studio-xiao-esp32s3-sense-3d_model.zip, sha256 773c16cb7518a3a18df926979f24c7e224f19309aad69962ec8a54454e288c59), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 24.3782, Y 14.0147, Z 17.8040 mm. The model's Y axis is the board normal and its Z runs across the board (Z extent equals Seeed's stated 17.8 mm width), so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang and the camera expansion board), y = model Z (board width), z = model Y (PCB underside to the top of the mounted camera expansion board); each rounded up to 0.01. The model depicts the Sense with its expansion board fitted, no pin headers, no antenna. Conflict: Seeed's specification table gives the Sense as '21 x 17.8 x 15mm (with expansion board)'; this model measures 14.01 mm tall and 24.38 mm long (the 21 mm is the bare PCB outline; the extra length is the USB-C connector and expansion board). The vendor DXF drawings (XIAO_ESP32S3_ExpBoard_v1.0_top.dxf sha256 4039bf565f6bece5209c60877c804c1f0bd2507173ec9905d5eb8c7ec79949cc, ..._bot.dxf sha256 2e6efd7b1c898cf5f432d1cf841bad5727004c93cdced70bdc94b56e09f75c07) are R12 outline exports with no dimension entities and no declared unit, so they were not used for numbers. Neither source states which board revision the model depicts.",
+        "citation": "vault:sha256:a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698",
         "url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
-        "retrieved": "2026-09-11"
+        "retrieved": "2026-09-11",
+        "note": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'Seeed Studio XIAO-ESP32-S3-Sense.step' (sha256 a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698, file dated 2023-05-29, inside seeed-studio-xiao-esp32s3-sense-3d_model.zip, sha256 773c16cb7518a3a18df926979f24c7e224f19309aad69962ec8a54454e288c59), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 24.3782, Y 14.0147, Z 17.8040 mm. The model's Y axis is the board normal and its Z runs across the board (Z extent equals Seeed's stated 17.8 mm width), so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang and the camera expansion board), y = model Z (board width), z = model Y (PCB underside to the top of the mounted camera expansion board); each rounded up to 0.01. The model depicts the Sense with its expansion board fitted, no pin headers, no antenna. Conflict: Seeed's specification table gives the Sense as '21 x 17.8 x 15mm (with expansion board)'; this model measures 14.01 mm tall and 24.38 mm long (the 21 mm is the bare PCB outline; the extra length is the USB-C connector and expansion board). The vendor DXF drawings (XIAO_ESP32S3_ExpBoard_v1.0_top.dxf sha256 4039bf565f6bece5209c60877c804c1f0bd2507173ec9905d5eb8c7ec79949cc, ..._bot.dxf sha256 2e6efd7b1c898cf5f432d1cf841bad5727004c93cdced70bdc94b56e09f75c07) are R12 outline exports with no dimension entities and no declared unit, so they were not used for numbers. Neither source states which board revision the model depicts."
       }
     },
     "links": {
@@ -2770,9 +2774,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Capacitor, 0603 (1608 metric)",
     "description": "Generic MLCC family. Capacitance, dielectric, tolerance and voltage rating are properties of the BOM line, not of this entry: a design says '100n X7R 16V' and sourcing picks a manufacturer part. This entry fixes the package only.",
     "source": {
-      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 76, as cited by KiCad footprint Capacitor_SMD:C_0603_1608Metric. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
-      "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
-      "retrieved": "2026-08-15"
+      "citation": "repo:KiCad/kicad-footprints@0008170b644c3ba77b1f9f4eafd7a40fd624de7a:Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod",
+      "url": "https://github.com/KiCad/kicad-footprints/blob/0008170b644c3ba77b1f9f4eafd7a40fd624de7a/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod",
+      "retrieved": "2026-11-06",
+      "note": "The footprint's F.Fab outline is the 1.6 x 0.8 mm body (fp_line x -0.8..0.8, y -0.4..0.4); its descr names IPC-SM-782 page 76 as the body-size source via a pcb-3d.com PDF that returned 404 on 2026-09-06 (Internet Archive snapshot of 2025-04-28: https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf). The standard itself is not archived: no licence to redistribute it. C_0603_1608Metric.kicad_mod last changed in this commit (2020-09-23); KiCad libraries are CC-BY-SA-4.0. First entered 2026-08-15 from the same footprint. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family."
     },
     "attributes": {
       "package": "0603 (1608 metric)",
@@ -2866,9 +2871,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ROBOTIS Dynamixel XM430-W350-T/R",
     "description": "Smart servo with a contactless absolute encoder, so unlike a PWM hobby servo it can report where it actually is. Torque and speed are deliberately not entry facts here: ROBOTIS publishes stall torque at three supply voltages and no continuous rating at all, which makes them voltage-indexed curves rather than single values, and the vendor states outright that stall torque is not the continuous output rating.",
     "source": {
-      "citation": "ROBOTIS e-Manual, Dynamixel XM430-W350, Specifications table",
+      "citation": "repo:ROBOTIS-GIT/emanual@4077642189c67d8640a25cb05a1a40203944efd7:_data/dxl_x_info.yml",
       "url": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/",
-      "retrieved": "2026-08-22"
+      "retrieved": "2026-11-06",
+      "note": "Key xm430-w350 in the e-Manual's data file, which the Specifications table on the page at url renders through _includes/en/dxl/specifications_x.md: weight '82 [g]', gearratio '353.5 : 1', resolution '4096 [pulse/rev]', temperature '-5 ~ +80 [deg C]'. First entered 2026-08-22 from the rendered page; re-checked against the data file at this commit (2026-02-03) on 2026-11-06. The emanual repository's LICENSE.txt is MIT (the site theme's); ROBOTIS states no separate licence for the specification data."
     },
     "attributes": {
       "capabilities": [
@@ -2891,8 +2897,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-s3-wroom-1",
     "description": "Espressif ESP32-S3-WROOM-1 Wi-Fi + BLE MCU module with PCB antenna. The module soldered onto many of the boards/ entries; it is a component, not a board. Envelope is the module body; the antenna area is included in the 25.5 mm length.",
     "source": {
-      "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet (identity and description). Migrated 2026-09-06 from OpenDesignCore data/parts/esp32-s3-wroom-1.json, where it had been entered 2026-08-15 from the same document.",
-      "retrieved": "2026-08-15"
+      "citation": "vault:sha256:27d71971da07c280c6068d08c74720d1a25b8f20cf8494dc1765bdd28d40d435#page=3",
+      "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "retrieved": "2026-11-06",
+      "note": "Espressif ESP32-S3-WROOM-1/1U Datasheet, Version 1.8 (PDF created 2026-03-02), Table 1-1 Specifications on page 3 for identity and description. Entered 2026-08-15 from the same document; migrated 2026-09-06 from OpenDesignCore data/parts/esp32-s3-wroom-1.json; checked against the archived copy 2026-11-06."
     },
     "attributes": {
       "vendor": "Espressif",
@@ -2908,9 +2916,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "z": 3.1,
       "tolerance_mm": 0.2,
       "source": {
-        "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet, Table 1-1 (size 18.0 x 25.5 x 3.1 mm) and Section 10.1 Module Dimensions (25.5 +/- 0.2)",
+        "citation": "vault:sha256:27d71971da07c280c6068d08c74720d1a25b8f20cf8494dc1765bdd28d40d435#page=42",
         "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
-        "retrieved": "2026-08-15"
+        "retrieved": "2026-11-06",
+        "note": "Section 10.1 Module Dimensions on page 42 (25.5 +/- 0.2 mm); Table 1-1 on page 3 states the size as 18.0 x 25.5 x 3.1 mm."
       }
     },
     "links": {
@@ -3240,9 +3249,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Resistor, 0603 (1608 metric)",
     "description": "Generic chip resistor family. Resistance, tolerance and power rating are properties of the BOM line, not of this entry: a design says '4.7k 1%' and sourcing picks a manufacturer part. This entry fixes the package only.",
     "source": {
-      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
-      "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
-      "retrieved": "2026-08-15"
+      "citation": "repo:KiCad/kicad-footprints@0008170b644c3ba77b1f9f4eafd7a40fd624de7a:Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+      "url": "https://github.com/KiCad/kicad-footprints/blob/0008170b644c3ba77b1f9f4eafd7a40fd624de7a/Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+      "retrieved": "2026-11-06",
+      "note": "The footprint's F.Fab outline is the 1.6 x 0.8 mm body (fp_line x -0.8..0.8, y -0.4..0.4); its descr names IPC-SM-782 page 72 as the body-size source via a pcb-3d.com PDF that returned 404 on 2026-09-06 (Internet Archive snapshot of 2025-04-28: https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf). The standard itself is not archived: no licence to redistribute it. R_0603_1608Metric.kicad_mod last changed in this commit (2020-09-23); KiCad libraries are CC-BY-SA-4.0. First entered 2026-08-15 from the same footprint. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family."
     },
     "attributes": {
       "package": "0603 (1608 metric)",

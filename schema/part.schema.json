@@ -22,7 +22,8 @@
       "properties": {
         "citation": { "type": "string", "minLength": 1 },
         "retrieved": { "type": "string", "format": "date" },
-        "upstream_schema_version": { "type": ["integer", "string"] }
+        "upstream_schema_version": { "type": ["integer", "string"] },
+        "note": { "type": "string", "description": "How the cited bytes yield the values: method, page, container, caveats. It explains the citation and never replaces it." }
       }
     },
     "attributes": {
@@ -44,7 +45,8 @@
           "properties": {
             "citation": { "type": "string", "minLength": 1 },
             "url": { "type": "string" },
-            "retrieved": { "type": "string", "format": "date" }
+            "retrieved": { "type": "string", "format": "date" },
+            "note": { "type": "string", "description": "How the cited bytes yield the values: method, page, container, caveats. It explains the citation and never replaces it." }
           },
           "additionalProperties": false
         }

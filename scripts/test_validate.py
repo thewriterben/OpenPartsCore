@@ -56,6 +56,20 @@ class CitationGate(unittest.TestCase):
         self.assertEqual(run(e), [])
         self.assertTrue(run(e, strict=True))
 
+    def test_every_committed_entry_passes_strict_mode(self):
+        """CI runs bare --strict: no namespace may regress to free-text citations."""
+        data = Path(__file__).resolve().parents[1] / "data"
+        for p in sorted(data.glob("*/*.json")):
+            self.assertEqual(validate.check(p, strict=True), [], p.name)
+
+    def test_note_beside_a_citation_is_not_a_citation(self):
+        e = entry(VAULT)
+        e["source"]["note"] = "how the cited bytes yield the values"
+        e["envelope_mm"] = {"x": 1, "y": 2, "z": 3, "source": {"citation": VAULT, "note": "measured"}}
+        self.assertEqual(run(e, strict=True), [])
+        e["envelope_mm"]["source"]["citation"] = "measured by hand"
+        self.assertTrue(any("envelope_mm" in x and "free text" in x for x in run(e, strict=True)))
+
     def test_every_committed_entry_passes_default_mode(self):
         self.assertEqual(validate.main([]), 0)
 
