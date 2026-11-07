@@ -160,4 +160,4 @@ Two further facts shaped this. The bench board is **V1.1** and the envelope came
 
 **Decision.** Option 3. `note` explains how the cited bytes yield the values (method, page, container, caveats). It never replaces the citation: `--strict` checks `citation` and ignores `note`, and an entry with a note and no valid citation still fails. The SiYuan rejection scans every string, notes included, so a note cannot smuggle a second-brain reference in. Free text stays in `note`, never in `citation`.
 
-**Consequences.** Seven entries carry a top-level `source.note` and six an `envelope_mm.source.note` (2026-11-07). Bindings carry the field as an optional string. A consumer must not parse a note for values; anything it needs as data belongs in `attributes`, `envelope_mm` or `features` with its own citation.
+**Consequences.** Seven entries carry a top-level `source.note` and six an `envelope_mm.source.note` (2026-11-07). The bindings embed entries whole, so a note travels with its entry; nothing in them reads it. A consumer must not parse a note for values; anything it needs as data belongs in `attributes`, `envelope_mm` or `features` with its own citation.
