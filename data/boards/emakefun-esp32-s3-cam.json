@@ -1,0 +1,37 @@
+{
+  "schema_version": 0,
+  "id": "boards/emakefun-esp32-s3-cam",
+  "namespace": "boards",
+  "name": "emakefun-esp32-s3-cam",
+  "description": "ESP32-S3R8 LX7 dual-core @ 240 MHz, OV2640/OV3660 camera, microSD, 8 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
+  "source": {
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3R8 LX7 dual-core @ 240 MHz, OV2640/OV3660 camera, microSD, 8 MB flash / 8 MB PSRAM (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "battery",
+      "ble",
+      "camera_capture",
+      "gpio",
+      "microsd",
+      "psram",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Emakefun",
+    "ecosystem": "ESP32-S3-CAM",
+    "transport": "serial"
+  },
+  "links": {}
+}

@@ -35,9 +35,11 @@ jobs:
       # invalid here, which is the rule the whole registry rests on.
       #
       # `material` was born with strict citations (vault:sha256: forms, PR #12),
-      # so strict mode is on for that namespace from the start. The older
-      # namespaces still carry free-text citations; each one joins this list
-      # when its citations have been migrated (OpenKnowledgeCore ADR-0001).
+      # so strict mode is on for that namespace from the start. Ingested entries
+      # cite the Oh-Ben-Claw commit they were read from (repo: form) since
+      # ingest_obc.py learned to; `boards` joins this list when its four
+      # hand-measured envelope_mm citations are migrated, `electronic` when its
+      # four hand-written citations are (OpenKnowledgeCore ADR-0001).
       # schema/material.schema.json (ADR-0007) is checked with the jsonschema
       # package; validate.py errors rather than skips when it is missing.
       - name: Install the namespace-schema validator
