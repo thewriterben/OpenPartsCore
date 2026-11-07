@@ -5,8 +5,8 @@
   "name": "radxa-rock-5b",
   "description": "Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)",
   "source": {
-    "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-    "retrieved": "2026-08-15",
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
     "upstream_schema_version": 1
   },
   "attributes": {

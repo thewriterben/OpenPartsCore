@@ -66,8 +66,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "adafruit-feather-esp32s3-tft",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 1.14\" ST7789 240x135 TFT, LiPo charge (CircuitPython VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -105,8 +105,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "adafruit-qtpy-esp32s3",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz (CircuitPython VID/PID; Arduino mode = 0x303a:0x1001)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -141,8 +141,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-leonardo",
     "description": "AVR ATmega32U4 @ 16 MHz (native USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -174,8 +174,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-mega",
     "description": "AVR ATmega2560 @ 16 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -207,8 +207,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano",
     "description": "AVR ATmega328P @ 16 MHz (CH340 USB-UART)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -240,8 +240,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano-33-ble",
     "description": "nRF52840 ARM Cortex-M4F @ 64 MHz (BLE, IMU)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -276,8 +276,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano-esp32",
     "description": "ESP32-S3 (u-blox NORA-W106) Xtensa LX7 dual-core @ 240 MHz, Nano form factor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -312,8 +312,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-nano-every",
     "description": "AVR ATmega4809 @ 20 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -345,8 +345,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-uno",
     "description": "AVR ATmega328P @ 16 MHz (legacy)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -383,8 +383,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "arduino-uno-q",
     "description": "Arduino Uno Q / ATmega328P",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -416,8 +416,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "beaglebone-black",
     "description": "TI AM3358 ARM Cortex-A8 @ 1 GHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -452,8 +452,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "coral-dev-board-mini",
     "description": "MediaTek MT8167S quad Cortex-A35 + Google Edge TPU, 4 TOPS, 2 GB LPDDR3 (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -489,8 +489,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "coral-usb-accelerator",
     "description": "Google Edge TPU ASIC, 4 TOPS @ 2 W (USB 3.0 coprocessor)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -520,8 +520,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "cp2102",
     "description": "Silicon Labs CP2102 USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -549,8 +549,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "cp2102n",
     "description": "Silicon Labs CP2102N USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -578,8 +578,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "cyd-esp32-2432s028r",
     "description": "ESP32 'Cheap Yellow Display' (ESP32-2432S028R): ILI9341 320x240 + XPT2046 resistive touch, microSD (CH340; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -616,8 +616,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "dfrobot-firebeetle2-esp32s3",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz, LiPo charge, onboard GDI (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -649,9 +649,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 61.47,
       "z": 8.45,
       "source": {
-        "citation": "Axis-aligned bounding box of DFRobot's vendor STEP model DFR0975.stp (sha256 6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9, inside '3D Model/' of DFR0975_firebeetle-esp32-s3-ai-acceleration-board_stpfile_1.zip, sha256 0e7feac458213620edf605c85120bf314f17df51fc79858c8800450c019b6d4e), computed 2026-09-06 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing: 25.5000 x 61.4706 x 8.4477 mm, rounded up to 0.01. Z spans PCB underside (z=0) to the tallest top-side component; the model carries no headers. PCB outline is 25.4 x 60.0 mm, thickness 1.6 mm, per 'DFR0975 dimension V1.3.pdf' (dimension_V1.3.zip, drawing dated 2026-06-17); the STEP file's own timestamp is 2023-10-20 and it does not state which board revision it depicts.",
+        "citation": "vault:sha256:6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9",
         "url": "https://wiki.dfrobot.com/dfr0975",
-        "retrieved": "2026-09-06"
+        "retrieved": "2026-09-06",
+        "note": "Axis-aligned bounding box of DFRobot's vendor STEP model DFR0975.stp (sha256 6c2fa63dd92cb8555d65828c2c9446dc758f0537b32f36a6e4fcfdf2bef0a3c9, inside '3D Model/' of DFR0975_firebeetle-esp32-s3-ai-acceleration-board_stpfile_1.zip, sha256 0e7feac458213620edf605c85120bf314f17df51fc79858c8800450c019b6d4e), computed 2026-09-06 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing: 25.5000 x 61.4706 x 8.4477 mm, rounded up to 0.01. Z spans PCB underside (z=0) to the tallest top-side component; the model carries no headers. PCB outline is 25.4 x 60.0 mm, thickness 1.6 mm, per 'DFR0975 dimension V1.3.pdf' (dimension_V1.3.zip, drawing dated 2026-06-17); the STEP file's own timestamp is 2023-10-20 and it does not state which board revision it depicts. Re-downloaded 2026-11-06: the zip (same sha256) holds 'DFR0975_stp_files/DFR0975 3D Model.rar' (dated 2026-06-17) and the STEP is '3D Model/DFR0975.stp' inside that RAR, not in a '3D Model/' folder of the zip itself; the archived STEP is the cited bytes."
       }
     },
     "links": {
@@ -660,13 +661,50 @@ export const PARTS: readonly Part[] = Object.freeze([
   },
   {
     "schema_version": 0,
+    "id": "boards/emakefun-esp32-s3-cam",
+    "namespace": "boards",
+    "name": "emakefun-esp32-s3-cam",
+    "description": "ESP32-S3R8 LX7 dual-core @ 240 MHz, OV2640/OV3660 camera, microSD, 8 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
+    "source": {
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
+      "upstream_schema_version": 1
+    },
+    "attributes": {
+      "usb_ids": [
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3R8 LX7 dual-core @ 240 MHz, OV2640/OV3660 camera, microSD, 8 MB flash / 8 MB PSRAM (native USB; shared VID/PID)"
+        }
+      ],
+      "capabilities": [
+        "battery",
+        "ble",
+        "camera_capture",
+        "gpio",
+        "microsd",
+        "psram",
+        "wifi"
+      ],
+      "connectors": [
+        "bare"
+      ],
+      "vendor": "Emakefun",
+      "ecosystem": "ESP32-S3-CAM",
+      "transport": "serial"
+    },
+    "links": {}
+  },
+  {
+    "schema_version": 0,
     "id": "boards/esp32",
     "namespace": "boards",
     "name": "esp32",
     "description": "ESP32 Xtensa LX6 @ 240 MHz (CH340)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -696,8 +734,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-c3",
     "description": "ESP32-C3 RISC-V single-core @ 160 MHz (native USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -731,8 +769,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-c5",
     "description": "ESP32-C5 RISC-V single-core @ 240 MHz (dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -769,8 +807,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-c6",
     "description": "ESP32-C6 RISC-V single-core @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -807,8 +845,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-cam",
     "description": "ESP32 + OV2640 camera, microSD (AI-Thinker; flashed via external USB-UART; VID/PID is a common CH340 programmer)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -841,8 +879,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-h2",
     "description": "ESP32-H2 RISC-V single-core @ 96 MHz (BLE 5, 802.15.4, no Wi-Fi; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -878,8 +916,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-p4",
     "description": "ESP32-P4 dual-core RISC-V @ 400 MHz (AI vector ext., MIPI-CSI/DSI, no radio; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -915,8 +953,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-s3",
     "description": "ESP32-S3 (CP2102 USB-UART)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -959,8 +997,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-s3-cam",
     "description": "ESP32-S3 + OV2640/OV5640 camera, microSD, PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -991,13 +1029,49 @@ export const PARTS: readonly Part[] = Object.freeze([
   },
   {
     "schema_version": 0,
+    "id": "boards/esp32-s3-wroom-cam",
+    "namespace": "boards",
+    "name": "esp32-s3-wroom-cam",
+    "description": "ESP32-S3-WROOM-1 LX7 dual-core @ 240 MHz, OV2640/OV5640 camera, microSD, 8 MB PSRAM (native USB; shared VID/PID)",
+    "source": {
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
+      "upstream_schema_version": 1
+    },
+    "attributes": {
+      "usb_ids": [
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3-WROOM-1 LX7 dual-core @ 240 MHz, OV2640/OV5640 camera, microSD, 8 MB PSRAM (native USB; shared VID/PID)"
+        }
+      ],
+      "capabilities": [
+        "ble",
+        "camera_capture",
+        "gpio",
+        "microsd",
+        "psram",
+        "wifi"
+      ],
+      "connectors": [
+        "bare"
+      ],
+      "vendor": "Unbranded",
+      "ecosystem": "ESP32-S3-CAM",
+      "transport": "serial"
+    },
+    "links": {}
+  },
+  {
+    "schema_version": 0,
     "id": "boards/flipper-zero",
     "namespace": "boards",
     "name": "flipper-zero",
     "description": "STM32WB55 ARM Cortex-M4 @ 64 MHz (multi-tool; USB CDC)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1033,8 +1107,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ftdi-ft231x",
     "description": "FTDI FT231X USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1062,8 +1136,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ftdi-ft232",
     "description": "FTDI FT232 USB-UART bridge",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1091,8 +1165,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "heltec-wifi-lora-32-v3",
     "description": "ESP32-S3 + SX1262 LoRa + 0.96\" OLED (Meshtastic-compatible; native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1129,8 +1203,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "jetson-nano",
     "description": "NVIDIA Tegra X1 quad-core ARM Cortex-A57 @ 1.43 GHz (128-core Maxwell GPU)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1165,8 +1239,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "jetson-orin-nano",
     "description": "NVIDIA Jetson Orin Nano: 6-core Arm Cortex-A78AE + 1024-core Ampere GPU w/ tensor cores, 67 TOPS (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1202,8 +1276,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-beam",
     "description": "ESP32 + SX1276/SX1262 LoRa + NEO-6M GPS (Meshtastic-compatible; CP210x; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1239,8 +1313,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-camera-plus-s3",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz, OV2640 camera, 1.3\" ST7789V 240x240 touch TFT, mic + speaker, microSD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-09-11",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -1278,18 +1352,20 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 69.67,
       "z": 10.87,
       "source": {
-        "citation": "Axis-aligned bounding box of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step' (sha256 b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487, 68,603,684 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Extents 29.9999 x 69.6625 x 10.8643 mm in the model's own frame, which is board-aligned with Z as the board normal (no axis permutation applied); rounded up to 0.01. Z runs from the lowest underside feature (4.71 mm below the model's z=0) to the tallest top-side component; the model carries no pin headers. This is the **V1.2** hardware revision (2025-04, per the repo README's version table); a separate STEP exists for V1.0-V1.1 (3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step) and was not measured. The STEP is the only dimensional source: the V1.2 schematic (T-CameraPlus-S3_V1.2_20240417.pdf, sha256 5363097ad586a5bf21cdd528fa8c0213b08e6af951835b1f8533531a64a202e2) is electrical only, and neither the README nor lilygo.cc's product page states board dimensions. The product page also lists an OV5640 SKU (H703-01); the model's camera module is not identified in the file, so the OV5640 variant's height is unverified. What the model does say, from a census of all 825 solids (BRepBndLib::Add, coarse boxes, 2026-09-12): the extreme z faces belong to exactly two features. The top is a single solid 6.2995 x 6.0000 x 5.0000 mm spanning z 1.1412 to 6.1412 -- SW3, the 6 x 6 mm tactile switch (named in the per-component census of 2026-09-26; this note said 'a lens-barrel shape' until then, which was a guess from geometry and wrong), the tallest thing on the board by 1.80 mm over the next component (8.9500 x 7.4500 x 4.2000 mm, reaching 4.3412). The bottom is -4.7100. Those two numbers are the whole of z: 6.1412 - (-4.7100) = 10.8512, rounded up to 10.87. **Neither vendor model contains the camera module or the display at all** (established 2026-09-26 by naming every solid in both the V1.2 and V1.0-V1.1 files), so this envelope is the populated PCB only, not the board as fitted: a V1.1 board with its lens and display measures 29.40 mm deep (calipers, 2026-09-25). The OV5640 question cannot be settled from these models either way, and no vendor publishes the module height -- LILYGO's product page, the repo README and the resellers' listings were all checked on 2026-09-12 and none states one. For where the connectors are, and what the models leave out, see features (ADR-0007).",
+        "citation": "repo:Xinyuan-LilyGO/T-CameraPlus-S3@55764fa22a0dd2ea66715b2b5dc403a34569ba42:structure/3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step",
         "url": "https://github.com/Xinyuan-LilyGO/T-CameraPlus-S3",
-        "retrieved": "2026-09-11"
+        "retrieved": "2026-09-11",
+        "note": "Axis-aligned bounding box of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step' (sha256 b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487, 68,603,684 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Extents 29.9999 x 69.6625 x 10.8643 mm in the model's own frame, which is board-aligned with Z as the board normal (no axis permutation applied); rounded up to 0.01. Z runs from the lowest underside feature (4.71 mm below the model's z=0) to the tallest top-side component; the model carries no pin headers. This is the **V1.2** hardware revision (2025-04, per the repo README's version table); a separate STEP exists for V1.0-V1.1 (3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step) and was not measured. The STEP is the only dimensional source: the V1.2 schematic (T-CameraPlus-S3_V1.2_20240417.pdf, sha256 5363097ad586a5bf21cdd528fa8c0213b08e6af951835b1f8533531a64a202e2) is electrical only, and neither the README nor lilygo.cc's product page states board dimensions. The product page also lists an OV5640 SKU (H703-01); the model's camera module is not identified in the file, so the OV5640 variant's height is unverified. What the model does say, from a census of all 825 solids (BRepBndLib::Add, coarse boxes, 2026-09-12): the extreme z faces belong to exactly two features. The top is a single solid 6.2995 x 6.0000 x 5.0000 mm spanning z 1.1412 to 6.1412 -- a lens-barrel shape, the tallest thing on the board by 1.80 mm over the next component (8.9500 x 7.4500 x 4.2000 mm, reaching 4.3412). The bottom is -4.7100. Those two numbers are the whole of z: 6.1412 - (-4.7100) = 10.8512, rounded up to 10.87. Which solid is the camera is still not established -- geometry alone cannot say, and no silkscreen or placement file was consulted -- so this is not a claim that the barrel is the OV2640. It does make the open question a single measurement rather than a disassembly: an OV5640 board's **overall** thickness, lowest underside feature to highest top-side feature, compared against 10.85. Above it, the envelope is wrong for that SKU and z must be re-derived; at or below it, this envelope covers both. No such measurement has been made, and no vendor publishes the module height -- LILYGO's product page, the repo README and the resellers' listings were all checked on 2026-09-12 and none states one."
       }
     },
     "features": {
       "source": {
-        "citation": "Per-component bounding boxes of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step' (57,412,708 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-26 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1): STEPCAFControl_Reader, one box per placed component instance (the union of its bodies, full assembly location applied), BRepBndLib::AddOptimal on exact geometry, rounded to 0.001 mm; the run is byte-identical on repeat. Silkscreen and copper layers are excluded as zero-thickness artwork. This is the V1.0-V1.1 model because the bench board is V1.1; the V1.2 model used for envelope_mm differs where it matters for fit - laminate 1.14 mm instead of 1.20, CN4 and LED1 about 1 mm further from the y = 0 edge, and a slide switch (SW4) overhanging the x = 0 edge that V1.1 does not have - while USB1, CN1, CN2, CN3, CN5, FPC1, RF1, U1 and CARD1 occupy the same x-y footprint in both. Access directions marked 'inferred' are read off the geometry and are not confirmations; every depth is unknown until measured or cited.",
+        "citation": "repo:Xinyuan-LilyGO/T-CameraPlus-S3@55764fa22a0dd2ea66715b2b5dc403a34569ba42:structure/3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step",
         "model_sha256": "9f8e6d6c4b8c691101ddfbd29e1e08029dffe3880d1e74c67c2abf27a9582ab9",
         "revision": "V1.0-V1.1",
         "url": "https://github.com/Xinyuan-LilyGO/T-CameraPlus-S3/tree/55764fa22a0dd2ea66715b2b5dc403a34569ba42/structure",
-        "retrieved": "2026-09-26"
+        "retrieved": "2026-09-26",
+        "note": "Per-component bounding boxes of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step' (57,412,708 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-26 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1): STEPCAFControl_Reader, one box per placed component instance (the union of its bodies, full assembly location applied), BRepBndLib::AddOptimal on exact geometry, rounded to 0.001 mm; the run is byte-identical on repeat. Silkscreen and copper layers are excluded as zero-thickness artwork. This is the V1.0-V1.1 model because the bench board is V1.1; the V1.2 model used for envelope_mm differs where it matters for fit - laminate 1.14 mm instead of 1.20, CN4 and LED1 about 1 mm further from the y = 0 edge, and a slide switch (SW4) overhanging the x = 0 edge that V1.1 does not have - while USB1, CN1, CN2, CN3, CN5, FPC1, RF1, U1 and CARD1 occupy the same x-y footprint in both. Access directions marked 'inferred' are read off the geometry and are not confirmations; every depth is unknown until measured or cited."
       },
       "frame": "The STEP model's own frame, unmodified. x across the board (laminate 0.007 to 27.981); y along it, with the edge carrying USB1, CN1 and CN2 at y = 0.016 (laminate to 67.990); z the board normal, z = 0 being the laminate face carrying FPC1, U1 and CN3 and z = 1.200 the face carrying USB1, CN1, CN2, SW3 and CARD1. Millimetres; the STEP declares MM.",
       "not_modelled": [
@@ -3853,8 +3929,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-deck",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa, 2.8\" IPS touch, keyboard/trackball, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3899,8 +3975,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-deck-plus",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz + SX1262 LoRa + GNSS, 2.8\" IPS touch, keyboard/trackball, 2000 mAh (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3945,8 +4021,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-display-s3",
     "description": "ESP32-S3 LX7 dual-core @ 240 MHz, 1.9\" ST7789 320x170 LCD, 16 MB flash / 8 MB PSRAM (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -3981,8 +4057,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lilygo-t-lora-pager",
     "description": "ESP32-S3 @ 240 MHz + SX1262 LoRa, keyboard + rotary encoder, GPS, NFC, IMU (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4026,8 +4102,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-atom-s3",
     "description": "ESP32-S3 @ 240 MHz, 0.85\" LCD, compact (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4062,8 +4138,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-cardputer",
     "description": "M5StampS3 (ESP32-S3) @ 240 MHz, 56-key keyboard, 1.14\" ST7789, mic + speaker, IR TX (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4104,8 +4180,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-core2",
     "description": "ESP32-D0WDQ6 @ 240 MHz, 2.0\" ILI9342C touch LCD, MPU6886 IMU (CP2104; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4144,8 +4220,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-module-llm",
     "description": "AXera AX630C dual Cortex-A53 @ 1.2 GHz + 3.2 TOPS NPU, 4 GB LPDDR4, 32 GB eMMC (CH340N; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4178,8 +4254,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "m5stack-tab5",
     "description": "ESP32-P4 dual RISC-V @ 400 MHz + ESP32-C6 radio co-proc; 5\" 1280x720 MIPI-DSI touch, 2MP camera (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4223,8 +4299,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nanopi-neo3",
     "description": "Rockchip RK3328 quad-core ARM Cortex-A53 @ 1.5 GHz (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4257,8 +4333,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nrf52840-dk",
     "description": "Nordic nRF52840 ARM Cortex-M4F @ 64 MHz (BLE 5.0)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4292,8 +4368,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-f401re",
     "description": "ARM Cortex-M4 @ 84 MHz (STM32F401RE)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4330,8 +4406,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-f411re",
     "description": "ARM Cortex-M4 @ 100 MHz (STM32F411RE)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4368,8 +4444,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-g474re",
     "description": "ARM Cortex-M4 @ 170 MHz (STM32G474RE, HRTIM)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4406,8 +4482,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-h743zi",
     "description": "ARM Cortex-M7 @ 480 MHz (STM32H743ZI)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4444,8 +4520,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "nucleo-l476rg",
     "description": "ARM Cortex-M4 @ 80 MHz (STM32L476RG, ultra-low-power)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4482,8 +4558,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "oak-d-lite",
     "description": "Intel Movidius Myriad X VPU, 1.4 TOPS; 12.3MP RGB + 2x 480p stereo depth (USB 3)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4514,9 +4590,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "opencircuitcore-sensor-node",
     "description": "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0007).",
     "source": {
-      "citation": "OpenCircuitCore boards/sensor-node at commit 9546499b9965275aec90fe6469f5cc48e4d48e03: board.manifest.json (sha256 1c708612b512a67e4d74bb576a9bfe28d16d0230ce2acb68db00ed83354e9751) and README.md",
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/board.manifest.json",
       "url": "https://github.com/thewriterben/OpenCircuitCore/tree/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node",
-      "retrieved": "2026-11-06"
+      "retrieved": "2026-11-06",
+      "note": "OpenCircuitCore boards/sensor-node at commit 9546499b9965275aec90fe6469f5cc48e4d48e03: board.manifest.json (sha256 1c708612b512a67e4d74bb576a9bfe28d16d0230ce2acb68db00ed83354e9751) and README.md"
     },
     "attributes": {
       "outline_mm": {
@@ -4560,16 +4637,18 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 52.0,
       "z": 11.54,
       "source": {
-        "citation": "Union of the per-component boxes of sensor-node.step (sha256 98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec) from scripts/extract_step_features.py, OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1), 2026-11-06: z from the header pin tails at -1.405 to the pin tips at 10.135."
+        "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.step",
+        "note": "Union of the per-component boxes of sensor-node.step (sha256 98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec) from scripts/extract_step_features.py, OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1), 2026-11-06: z from the header pin tails at -1.405 to the pin tips at 10.135."
       }
     },
     "features": {
       "source": {
-        "citation": "Per-component boxes of OpenCircuitCore's own STEP export 'sensor-node.step' (kicad-cli 10.0.5 pcb export step --subst-models, 2,522,235 bytes) computed 2026-11-06 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1); 12 components, byte-identical on repeat. The model is the design, not a vendor's drawing of a product: positions are exact by construction, and the built board differs from it only by assembly tolerance.",
+        "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.step",
         "model_sha256": "98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec",
         "revision": "OpenCircuitCore 9546499 (routed, GND pour, DRC clean)",
         "url": "https://github.com/thewriterben/OpenCircuitCore/blob/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node/sensor-node.step",
-        "retrieved": "2026-11-06"
+        "retrieved": "2026-11-06",
+        "note": "Per-component boxes of OpenCircuitCore's own STEP export 'sensor-node.step' (kicad-cli 10.0.5 pcb export step --subst-models, 2,522,235 bytes) computed 2026-11-06 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1); 12 components, byte-identical on repeat. The model is the design, not a vendor's drawing of a product: positions are exact by construction, and the built board differs from it only by assembly tolerance."
       },
       "frame": "The STEP model's own frame, unmodified: KiCad's board frame with y negated. x across the board (0 to 44, the edge nearer H1/H3 at x = 0); y along it, the antenna end at y = 0 and the header end at y = -52; z the board normal, z = 0 the bottom face and z = 1.6 the component face. Millimetres; the STEP declares MM.",
       "not_modelled": [
@@ -4828,8 +4907,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "pimoroni-presto",
     "description": "RP2350 dual Cortex-M33 @ 150 MHz + RM2 Wi-Fi/BLE, 4\" 480x480 IPS touch (MicroPython VID/PID; shared)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4868,8 +4947,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "radxa-rock-5b",
     "description": "Rockchip RK3588 octa-core (4x Cortex-A76 + 4x Cortex-A55), Mali-G610, 6 TOPS NPU (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4904,8 +4983,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rak4631",
     "description": "Nordic nRF52840 + Semtech SX1262 LoRa (RAKwireless WisBlock core; Meshtastic-compatible; Adafruit nRF52 UF2 bootloader VID/PID, shared — selected by name)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4941,8 +5020,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-4",
     "description": "BCM2711 quad-core ARM Cortex-A72 @ 1.8 GHz (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -4976,8 +5055,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-5",
     "description": "BCM2712 quad-core ARM Cortex-A76 @ 2.4 GHz (AArch64)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5011,8 +5090,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico",
     "description": "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5046,8 +5125,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico-w",
     "description": "RP2040 dual-core ARM Cortex-M0+ @ 133 MHz (Wi-Fi)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5081,8 +5160,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico2",
     "description": "RP2350 dual-core ARM Cortex-M33 @ 150 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5116,8 +5195,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "raspberry-pi-pico2-w",
     "description": "RP2350 dual-core ARM Cortex-M33 @ 150 MHz + CYW43439 (Wi-Fi 4, BLE 5.2; SDK CDC id shared with pico-w)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5153,8 +5232,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sipeed-6plus1-mic-array",
     "description": "STM32F103 @ 72 MHz, 6+1 MEMS microphone array with USB audio (UAC1)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5185,8 +5264,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sparkfun-thing-plus-esp32-c6",
     "description": "ESP32-C6 RISC-V @ 160 MHz (Wi-Fi 6, BLE 5, 802.15.4; CH340 USB-UART; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5224,8 +5303,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "stm32h7-discovery",
     "description": "ARM Cortex-M7 @ 480 MHz (STM32H750, external flash)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5263,8 +5342,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "teensy-4.1",
     "description": "NXP i.MX RT1062 ARM Cortex-M7 @ 600 MHz",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5300,8 +5379,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "waveshare-esp32-s3-touch-lcd-2.1",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, 2.1\" round touch LCD, I2S speaker",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5338,8 +5417,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xiao-esp32c5",
     "description": "ESP32-C5 RISC-V @ 240 MHz, dual-band 2.4/5 GHz Wi-Fi 6, BLE 5, 802.15.4 (native USB; shared VID/PID)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5377,8 +5456,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xiao-esp32s3",
     "description": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-09-11",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5387,6 +5466,11 @@ export const PARTS: readonly Part[] = Object.freeze([
           "vid": 10374,
           "pid": 86,
           "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB)"
+        },
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3R8 Xtensa LX7 dual-core @ 240 MHz, 8 MB PSRAM / 8 MB flash, Wi-Fi + BLE 5.0 (native USB-Serial-JTAG; shared VID/PID)"
         }
       ],
       "capabilities": [
@@ -5410,9 +5494,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 17.81,
       "z": 4.48,
       "source": {
-        "citation": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'XIAO-ESP32S3 v2.step' (sha256 870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd, 1,335,902 bytes, file dated 2023-05-27, inside seeed-studio-xiao-esp32s3-3d_model.zip, sha256 0d552ed2cc7359ea132601f4f7fe2c9d816e2dfe4f58f6463e83f84a901d3650), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 22.5045, Y 4.4798, Z 17.8040 mm. As with the Sense model, the model's Y axis is the board normal and its Z runs across the board, so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang), y = model Z (board width), z = model Y (PCB underside to the tallest top-side component); each rounded up to 0.01. The permutation is corroborated by the model's Z extent, 17.8040 mm, matching Seeed's stated 17.8 mm width to the hundredth. The model carries no pin headers (the board ships without them) and no antenna. Conflict: Seeed's specification table gives '21 x 17.8mm' and states no height at all; 21 mm is the bare PCB outline, and the extra 1.5 mm of length measured here is the USB-C connector overhanging it. The vendor's XIAO_ESP32S3_v1.1_Dimensioning.dxf (sha256 5fd32e3ba7a4bd85b8cc0f5d9413e26dd947e84e27b2d0f03350a7d367903f23) was not used for numbers despite its name: it is an R12 export with zero DIMENSION entities, no declared unit ($INSUNITS absent), and drawing extents of 19.050 x 21.145 that match neither the stated outline nor the model. Neither source states which board revision the model depicts; the filename says 'v2' and the DXF says 'v1.1', and nothing relates the two.",
+        "citation": "vault:sha256:870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
         "url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
-        "retrieved": "2026-09-11"
+        "retrieved": "2026-09-11",
+        "note": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'XIAO-ESP32S3 v2.step' (sha256 870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd, 1,335,902 bytes, file dated 2023-05-27, inside seeed-studio-xiao-esp32s3-3d_model.zip, sha256 0d552ed2cc7359ea132601f4f7fe2c9d816e2dfe4f58f6463e83f84a901d3650), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 22.5045, Y 4.4798, Z 17.8040 mm. As with the Sense model, the model's Y axis is the board normal and its Z runs across the board, so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang), y = model Z (board width), z = model Y (PCB underside to the tallest top-side component); each rounded up to 0.01. The permutation is corroborated by the model's Z extent, 17.8040 mm, matching Seeed's stated 17.8 mm width to the hundredth. The model carries no pin headers (the board ships without them) and no antenna. Conflict: Seeed's specification table gives '21 x 17.8mm' and states no height at all; 21 mm is the bare PCB outline, and the extra 1.5 mm of length measured here is the USB-C connector overhanging it. The vendor's XIAO_ESP32S3_v1.1_Dimensioning.dxf (sha256 5fd32e3ba7a4bd85b8cc0f5d9413e26dd947e84e27b2d0f03350a7d367903f23) was not used for numbers despite its name: it is an R12 export with zero DIMENSION entities, no declared unit ($INSUNITS absent), and drawing extents of 19.050 x 21.145 that match neither the stated outline nor the model. Neither source states which board revision the model depicts; the filename says 'v2' and the DXF says 'v1.1', and nothing relates the two."
       }
     },
     "links": {
@@ -5426,16 +5511,21 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xiao-esp32s3-sense",
     "description": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
       "usb_ids": [
         {
           "vid": 10374,
-          "pid": 88,
+          "pid": 32854,
           "architecture": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone"
+        },
+        {
+          "vid": 12346,
+          "pid": 4097,
+          "architecture": "ESP32-S3 Xtensa LX7 dual-core @ 240 MHz, OV2640 camera, PDM microphone (native USB-Serial-JTAG; shared VID/PID)"
         }
       ],
       "capabilities": [
@@ -5461,9 +5551,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "y": 17.81,
       "z": 14.02,
       "source": {
-        "citation": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'Seeed Studio XIAO-ESP32-S3-Sense.step' (sha256 a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698, file dated 2023-05-29, inside seeed-studio-xiao-esp32s3-sense-3d_model.zip, sha256 773c16cb7518a3a18df926979f24c7e224f19309aad69962ec8a54454e288c59), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 24.3782, Y 14.0147, Z 17.8040 mm. The model's Y axis is the board normal and its Z runs across the board (Z extent equals Seeed's stated 17.8 mm width), so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang and the camera expansion board), y = model Z (board width), z = model Y (PCB underside to the top of the mounted camera expansion board); each rounded up to 0.01. The model depicts the Sense with its expansion board fitted, no pin headers, no antenna. Conflict: Seeed's specification table gives the Sense as '21 x 17.8 x 15mm (with expansion board)'; this model measures 14.01 mm tall and 24.38 mm long (the 21 mm is the bare PCB outline; the extra length is the USB-C connector and expansion board). The vendor DXF drawings (XIAO_ESP32S3_ExpBoard_v1.0_top.dxf sha256 4039bf565f6bece5209c60877c804c1f0bd2507173ec9905d5eb8c7ec79949cc, ..._bot.dxf sha256 2e6efd7b1c898cf5f432d1cf841bad5727004c93cdced70bdc94b56e09f75c07) are R12 outline exports with no dimension entities and no declared unit, so they were not used for numbers. Neither source states which board revision the model depicts.",
+        "citation": "vault:sha256:a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698",
         "url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
-        "retrieved": "2026-09-11"
+        "retrieved": "2026-09-11",
+        "note": "Axis-aligned bounding box of Seeed Studio's vendor STEP model 'Seeed Studio XIAO-ESP32-S3-Sense.step' (sha256 a37c6b41d5660cd3310fea05edde0238762fe00da4de623936b7ca66814cb698, file dated 2023-05-29, inside seeed-studio-xiao-esp32s3-sense-3d_model.zip, sha256 773c16cb7518a3a18df926979f24c7e224f19309aad69962ec8a54454e288c59), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Measured extents in the model's own frame: X 24.3782, Y 14.0147, Z 17.8040 mm. The model's Y axis is the board normal and its Z runs across the board (Z extent equals Seeed's stated 17.8 mm width), so the axes are permuted here: x = model X (along the USB-C axis, including the connector overhang and the camera expansion board), y = model Z (board width), z = model Y (PCB underside to the top of the mounted camera expansion board); each rounded up to 0.01. The model depicts the Sense with its expansion board fitted, no pin headers, no antenna. Conflict: Seeed's specification table gives the Sense as '21 x 17.8 x 15mm (with expansion board)'; this model measures 14.01 mm tall and 24.38 mm long (the 21 mm is the bare PCB outline; the extra length is the USB-C connector and expansion board). The vendor DXF drawings (XIAO_ESP32S3_ExpBoard_v1.0_top.dxf sha256 4039bf565f6bece5209c60877c804c1f0bd2507173ec9905d5eb8c7ec79949cc, ..._bot.dxf sha256 2e6efd7b1c898cf5f432d1cf841bad5727004c93cdced70bdc94b56e09f75c07) are R12 outline exports with no dimension entities and no declared unit, so they were not used for numbers. Neither source states which board revision the model depicts."
       }
     },
     "links": {
@@ -5477,8 +5568,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ads1115",
     "description": "TI ADS1115 — 16-bit 4-channel ADC with programmable gain",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5499,8 +5590,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "aht20",
     "description": "ASAIR AHT20 — temperature and humidity sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5521,8 +5612,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "bme280",
     "description": "Bosch BME280 — temperature, humidity, and pressure sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5543,8 +5634,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "bmp388",
     "description": "Bosch BMP388 — high-accuracy barometric pressure and temperature",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5565,8 +5656,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "bno055",
     "description": "Bosch BNO055 — 9-DOF IMU with on-chip sensor fusion (absolute orientation)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5588,9 +5679,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Capacitor, 0603 (1608 metric)",
     "description": "Generic MLCC family. Capacitance, dielectric, tolerance and voltage rating are properties of the BOM line, not of this entry: a design says '100n X7R 16V' and sourcing picks a manufacturer part. This entry fixes the package only.",
     "source": {
-      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 76, as cited by KiCad footprint Capacitor_SMD:C_0603_1608Metric. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
-      "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
-      "retrieved": "2026-08-15"
+      "citation": "repo:KiCad/kicad-footprints@0008170b644c3ba77b1f9f4eafd7a40fd624de7a:Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod",
+      "url": "https://github.com/KiCad/kicad-footprints/blob/0008170b644c3ba77b1f9f4eafd7a40fd624de7a/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod",
+      "retrieved": "2026-11-06",
+      "note": "The footprint's F.Fab outline is the 1.6 x 0.8 mm body (fp_line x -0.8..0.8, y -0.4..0.4); its descr names IPC-SM-782 page 76 as the body-size source via a pcb-3d.com PDF that returned 404 on 2026-09-06 (Internet Archive snapshot of 2025-04-28: https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf). The standard itself is not archived: no licence to redistribute it. C_0603_1608Metric.kicad_mod last changed in this commit (2020-09-23); KiCad libraries are CC-BY-SA-4.0. First entered 2026-08-15 from the same footprint. TODO(source): dielectric, tolerance and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family."
     },
     "attributes": {
       "package": "0603 (1608 metric)",
@@ -5611,8 +5703,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "dht11",
     "description": "AOSONG DHT11 — basic humidity and temperature sensor, single-wire protocol",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5633,8 +5725,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "dht22",
     "description": "AOSONG DHT22 (AM2302) — capacitive humidity and temperature sensor, single-wire protocol",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5662,8 +5754,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ds18b20",
     "description": "Maxim DS18B20 — 1-Wire digital temperature sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5684,9 +5776,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ROBOTIS Dynamixel XM430-W350-T/R",
     "description": "Smart servo with a contactless absolute encoder, so unlike a PWM hobby servo it can report where it actually is. Torque and speed are deliberately not entry facts here: ROBOTIS publishes stall torque at three supply voltages and no continuous rating at all, which makes them voltage-indexed curves rather than single values, and the vendor states outright that stall torque is not the continuous output rating.",
     "source": {
-      "citation": "ROBOTIS e-Manual, Dynamixel XM430-W350, Specifications table",
+      "citation": "repo:ROBOTIS-GIT/emanual@4077642189c67d8640a25cb05a1a40203944efd7:_data/dxl_x_info.yml",
       "url": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/",
-      "retrieved": "2026-08-22"
+      "retrieved": "2026-11-06",
+      "note": "Key xm430-w350 in the e-Manual's data file, which the Specifications table on the page at url renders through _includes/en/dxl/specifications_x.md: weight '82 [g]', gearratio '353.5 : 1', resolution '4096 [pulse/rev]', temperature '-5 ~ +80 [deg C]'. First entered 2026-08-22 from the rendered page; re-checked against the data file at this commit (2026-02-03) on 2026-11-06. The emanual repository's LICENSE.txt is MIT (the site theme's); ROBOTIS states no separate licence for the specification data."
     },
     "attributes": {
       "capabilities": [
@@ -5709,8 +5802,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "esp32-s3-wroom-1",
     "description": "Espressif ESP32-S3-WROOM-1 Wi-Fi + BLE MCU module with PCB antenna. The module soldered onto many of the boards/ entries; it is a component, not a board. Envelope is the module body; the antenna area is included in the 25.5 mm length.",
     "source": {
-      "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet (identity and description). Migrated 2026-09-06 from OpenDesignCore data/parts/esp32-s3-wroom-1.json, where it had been entered 2026-08-15 from the same document.",
-      "retrieved": "2026-08-15"
+      "citation": "vault:sha256:27d71971da07c280c6068d08c74720d1a25b8f20cf8494dc1765bdd28d40d435#page=3",
+      "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "retrieved": "2026-11-06",
+      "note": "Espressif ESP32-S3-WROOM-1/1U Datasheet, Version 1.8 (PDF created 2026-03-02), Table 1-1 Specifications on page 3 for identity and description. Entered 2026-08-15 from the same document; migrated 2026-09-06 from OpenDesignCore data/parts/esp32-s3-wroom-1.json; checked against the archived copy 2026-11-06."
     },
     "attributes": {
       "vendor": "Espressif",
@@ -5731,9 +5826,10 @@ export const PARTS: readonly Part[] = Object.freeze([
           20
         ],
         "source": {
-          "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet, section 'Strapping Pins' (GPIO0, GPIO3, GPIO45, GPIO46 sampled at reset to set boot mode, ROM log, VDD_SPI voltage and JTAG source). USB_D- / USB_D+ are GPIO19 / GPIO20 per the pin description table (module pads 13, 14). A design that drives a sensor bus on any of these pins is refused by OpenCircuitCore scripts/make_firmware.py.",
+          "citation": "vault:sha256:27d71971da07c280c6068d08c74720d1a25b8f20cf8494dc1765bdd28d40d435#page=13",
           "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
-          "retrieved": "2026-11-04"
+          "retrieved": "2026-11-06",
+          "note": "Datasheet v1.8, Chapter 4 Boot Configurations on page 13 (strapping pins GPIO0, GPIO3, GPIO45, GPIO46); USB_D- / USB_D+ on GPIO19 / GPIO20 (module pads 13, 14) are from the pin description table on page 11. Entered from: Espressif ESP32-S3-WROOM-1/1U Datasheet, section 'Strapping Pins' (GPIO0, GPIO3, GPIO45, GPIO46 sampled at reset to set boot mode, ROM log, VDD_SPI voltage and JTAG source). USB_D- / USB_D+ are GPIO19 / GPIO20 per the pin description table (module pads 13, 14). A design that drives a sensor bus on any of these pins is refused by OpenCircuitCore scripts/make_firmware.py."
         }
       }
     },
@@ -5743,9 +5839,10 @@ export const PARTS: readonly Part[] = Object.freeze([
       "z": 3.1,
       "tolerance_mm": 0.2,
       "source": {
-        "citation": "Espressif ESP32-S3-WROOM-1/1U Datasheet, Table 1-1 (size 18.0 x 25.5 x 3.1 mm) and Section 10.1 Module Dimensions (25.5 +/- 0.2)",
+        "citation": "vault:sha256:27d71971da07c280c6068d08c74720d1a25b8f20cf8494dc1765bdd28d40d435#page=42",
         "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
-        "retrieved": "2026-08-15"
+        "retrieved": "2026-11-06",
+        "note": "Section 10.1 Module Dimensions on page 42 (25.5 +/- 0.2 mm); Table 1-1 on page 3 states the size as 18.0 x 25.5 x 3.1 mm."
       }
     },
     "links": {
@@ -5759,8 +5856,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "grove-vision-ai-v2",
     "description": "Seeed Grove Vision AI Module V2 — Himax WiseEye2 (Cortex-M55 + Ethos-U55 microNPU) smart camera",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5782,8 +5879,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ili9341",
     "description": "ILITEK ILI9341 — 240x320 SPI TFT LCD controller",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5806,8 +5903,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ina260",
     "description": "TI INA260 — high/low-side current, voltage, and power monitor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5828,8 +5925,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "inmp441",
     "description": "InvenSense INMP441 — I2S MEMS microphone (audio capture)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5850,8 +5947,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "lsm6ds3",
     "description": "ST LSM6DS3 — 6-axis IMU (accelerometer + gyroscope)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5872,8 +5969,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "max17048",
     "description": "Maxim MAX17048 — LiPo battery fuel gauge (state of charge)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5894,8 +5991,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "max31855",
     "description": "Maxim MAX31855 — thermocouple-to-digital converter (K-type)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5916,8 +6013,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "max98357a",
     "description": "Maxim MAX98357A — I2S Class-D amplifier (speaker output)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5938,8 +6035,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "mcp23017",
     "description": "Microchip MCP23017 — 16-bit I2C GPIO expander",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5960,8 +6057,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "mcp4725",
     "description": "Microchip MCP4725 — 12-bit single-channel DAC",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -5982,8 +6079,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "mpu6050",
     "description": "InvenSense MPU-6050 — 6-axis accelerometer + gyroscope",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6004,8 +6101,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ov2640",
     "description": "OmniVision OV2640 — 2 MP camera image sensor (SCCB control bus)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6030,8 +6127,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "pca9685",
     "description": "NXP PCA9685 — 16-channel 12-bit I2C PWM / servo driver",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6053,8 +6150,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "pcf8574",
     "description": "NXP PCF8574 — 8-bit I2C GPIO expander",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6075,9 +6172,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Pin header, 2.54 mm pitch, 1x04, through-hole vertical",
     "description": "Generic single-row 0.1 inch pin header family. Plating, current rating and insulator height are properties of a chosen manufacturer part, not of this entry: a design says '1x04 2.54 mm vertical THT' and sourcing picks an MPN. This entry fixes pitch, pin count, rows and mounting only.",
     "source": {
-      "citation": "KiCad footprint library Connector_PinHeader_2.54mm, footprint PinHeader_1x04_P2.54mm_Vertical, descr 'Through hole straight pin header, 1x04, 2.54mm pitch, single row' (generated by kicad-footprint-generator). TODO(source): current rating, plating and insulator height belong to a chosen MPN.",
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.kicad_pcb",
       "url": "https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/master/Connector_PinHeader_2.54mm.pretty/PinHeader_1x04_P2.54mm_Vertical.kicad_mod",
-      "retrieved": "2026-11-04"
+      "retrieved": "2026-11-04",
+      "note": "Footprint PinHeader_1x04_P2.54mm_Vertical as KiCad 10.0.5 embeds it in that board file (footprint, descr and pad geometry are the library's, copied unchanged). Library origin: KiCad footprint library Connector_PinHeader_2.54mm, footprint PinHeader_1x04_P2.54mm_Vertical, descr 'Through hole straight pin header, 1x04, 2.54mm pitch, single row' (generated by kicad-footprint-generator). TODO(source): current rating, plating and insulator height belong to a chosen MPN."
     },
     "attributes": {
       "pitch_mm": 2.54,
@@ -6098,9 +6196,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Pin header, 2.54 mm pitch, 1x06, through-hole vertical",
     "description": "Generic single-row 0.1 inch pin header family. Plating, current rating and insulator height are properties of a chosen manufacturer part, not of this entry: a design says '1x06 2.54 mm vertical THT' and sourcing picks an MPN. This entry fixes pitch, pin count, rows and mounting only.",
     "source": {
-      "citation": "KiCad footprint library Connector_PinHeader_2.54mm, footprint PinHeader_1x06_P2.54mm_Vertical, descr 'Through hole straight pin header, 1x06, 2.54mm pitch, single row' (generated by kicad-footprint-generator). TODO(source): current rating, plating and insulator height belong to a chosen MPN.",
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.kicad_pcb",
       "url": "https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/master/Connector_PinHeader_2.54mm.pretty/PinHeader_1x06_P2.54mm_Vertical.kicad_mod",
-      "retrieved": "2026-11-04"
+      "retrieved": "2026-11-04",
+      "note": "Footprint PinHeader_1x06_P2.54mm_Vertical as KiCad 10.0.5 embeds it in that board file (footprint, descr and pad geometry are the library's, copied unchanged). Library origin: KiCad footprint library Connector_PinHeader_2.54mm, footprint PinHeader_1x06_P2.54mm_Vertical, descr 'Through hole straight pin header, 1x06, 2.54mm pitch, single row' (generated by kicad-footprint-generator). TODO(source): current rating, plating and insulator height belong to a chosen MPN."
     },
     "attributes": {
       "pitch_mm": 2.54,
@@ -6121,9 +6220,10 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "Resistor, 0603 (1608 metric)",
     "description": "Generic chip resistor family. Resistance, tolerance and power rating are properties of the BOM line, not of this entry: a design says '4.7k 1%' and sourcing picks a manufacturer part. This entry fixes the package only.",
     "source": {
-      "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
-      "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
-      "retrieved": "2026-08-15"
+      "citation": "repo:KiCad/kicad-footprints@0008170b644c3ba77b1f9f4eafd7a40fd624de7a:Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+      "url": "https://github.com/KiCad/kicad-footprints/blob/0008170b644c3ba77b1f9f4eafd7a40fd624de7a/Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+      "retrieved": "2026-11-06",
+      "note": "The footprint's F.Fab outline is the 1.6 x 0.8 mm body (fp_line x -0.8..0.8, y -0.4..0.4); its descr names IPC-SM-782 page 72 as the body-size source via a pcb-3d.com PDF that returned 404 on 2026-09-06 (Internet Archive snapshot of 2025-04-28: https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf). The standard itself is not archived: no licence to redistribute it. R_0603_1608Metric.kicad_mod last changed in this commit (2020-09-23); KiCad libraries are CC-BY-SA-4.0. First entered 2026-08-15 from the same footprint. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family."
     },
     "attributes": {
       "package": "0603 (1608 metric)",
@@ -6144,8 +6244,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rpi-ai-camera-imx500",
     "description": "Raspberry Pi AI Camera — Sony IMX500 12.3MP sensor with on-sensor NN inference accelerator (CSI)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6170,8 +6270,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rpi-ai-hat-plus-13t",
     "description": "Raspberry Pi AI HAT+ (13 TOPS) — Hailo-8L NPU over PCIe Gen3 (RPi 5)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6194,8 +6294,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "rpi-ai-hat-plus-2",
     "description": "Raspberry Pi AI HAT+ 2 — Hailo-10H NPU, 40 TOPS INT4 / 20 TOPS INT8, GenAI-capable (RPi 5, PCIe)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6218,8 +6318,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "scd41",
     "description": "Sensirion SCD41 — true CO2 (photoacoustic NDIR), temperature, humidity",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6240,8 +6340,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sg90",
     "description": "TowerPro SG90 — micro servo (PWM position control)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6262,8 +6362,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sgp40",
     "description": "Sensirion SGP40 — VOC air-quality gas sensor",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6284,8 +6384,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sht31",
     "description": "Sensirion SHT31 — high-accuracy temperature and humidity",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6306,8 +6406,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "sim7600",
     "description": "SIMCom SIM7600 — LTE Cat-4 cellular modem with GNSS (UART/USB)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6329,8 +6429,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "ssd1306",
     "description": "Solomon SSD1306 — 128x64 OLED display",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6349,8 +6449,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "tb6612fng",
     "description": "Toshiba TB6612FNG — dual DC motor driver (PWM + direction)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6371,8 +6471,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "vl53l1x",
     "description": "ST VL53L1X — time-of-flight distance sensor (up to 4 m)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6393,8 +6493,8 @@ export const PARTS: readonly Part[] = Object.freeze([
     "name": "xpt2046",
     "description": "XPT2046 — resistive touch-screen controller (SPI)",
     "source": {
-      "citation": "Oh-Ben-Claw registry/registry.json (generated from src/peripherals/registry.rs)",
-      "retrieved": "2026-08-15",
+      "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+      "retrieved": "2026-11-06",
       "upstream_schema_version": 1
     },
     "attributes": {
@@ -6409,6 +6509,544 @@ export const PARTS: readonly Part[] = Object.freeze([
       "connector": "bare"
     },
     "links": {}
+  },
+  {
+    "schema_version": 0,
+    "id": "material/creality-cr-petg",
+    "namespace": "material",
+    "name": "creality-cr-petg",
+    "description": "Creality CR-PETG 1.75 mm FDM filament. Facts transcribed from the vendor Technical Data Sheet v1.0 archived in the vault (attributes.tds holds the rows verbatim, attributes.normalised the typed values with the page each came from). Two rows in the document carry labels that do not match their test criteria; they are kept verbatim and flagged under attributes.review. Spool identity fields are the RFID data the Creality K2 Plus CFS reported for the loaded spools. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+    "source": {
+      "citation": "vault:sha256:ea0b2c0f7431f523d4a2615a34181b836102ac6018e55cfe035fbabb1f6328bb",
+      "retrieved": "2026-11-06"
+    },
+    "attributes": {
+      "identity": {
+        "vendor": "Creality",
+        "product": "CR-PETG",
+        "polymer": "PETG",
+        "form": "filament",
+        "diameter_mm": 1.75,
+        "net_weight_kg": 1.0,
+        "source": "vault:sha256:49e55cafc43612a1a684b77810b38a1fdedaa7053a016afa2d4f45ea01f6f443"
+      },
+      "spool_rfid": {
+        "note": "Fields as reported by the printer for CFS box MF003 slots 2 and 3 on 2026-11-06 (two spools, same tag data). 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+        "vendor": "Creality",
+        "type": "PETG",
+        "name": "CR-PETG",
+        "rfid": "06001",
+        "minTemp": 220,
+        "maxTemp": 270,
+        "pressure": 0.07,
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "tds": {
+        "title": "CR-PETG Filament Technical Data Sheet",
+        "version": "1.0",
+        "issued": "not printed in the document; the mirror file name says 2021-11",
+        "physical": [
+          {
+            "page": 1,
+            "item": "Density",
+            "testing_criteria": "ASTM D792 (ISO 1183, GB/T 1033)",
+            "parameter": "1.27 ±0.1 (g/cm3 at 21.5˚C)"
+          },
+          {
+            "page": 1,
+            "item": "GTT(Glass-transition temperature)",
+            "testing_criteria": "ASTM D648(ISO 75-2, GB/T 1634)",
+            "parameter": "70°C (@0.45Mpa)"
+          },
+          {
+            "page": 1,
+            "item": "Vicat Softening Temperature",
+            "testing_criteria": "210°C, 2.16 kg",
+            "parameter": "18-20 (g/10 min)"
+          }
+        ],
+        "mechanical": [
+          {
+            "page": 1,
+            "item": "Tensile strength (X-Y)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "46.55 MPa"
+          },
+          {
+            "page": 1,
+            "item": "Tensile strength (Z)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "11.5MPa"
+          },
+          {
+            "page": 1,
+            "item": "Elongation at break (X-Y)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "10.5%"
+          },
+          {
+            "page": 1,
+            "item": "Elongation at break (Z)",
+            "testing_criteria": "ASTM D638 (ISO 527, GB/T 1040)",
+            "parameter": "5.6%"
+          },
+          {
+            "page": 1,
+            "item": "Bending strength (X-Y)",
+            "testing_criteria": "ASTMD790 (ISO 178, GB/T 9341)",
+            "parameter": "68MPa"
+          },
+          {
+            "page": 1,
+            "item": "Bending modulus (X-Y)",
+            "testing_criteria": "ASTMD790 (ISO 178, GB/T 9341)",
+            "parameter": "1800(MPa"
+          },
+          {
+            "page": 1,
+            "item": "Charpy impact strength (X-Y)",
+            "testing_criteria": "ASTM D256 (ISO 179, GB/T 1043)",
+            "parameter": "14kJ/m2"
+          }
+        ],
+        "sample_print_conditions": {
+          "page": 1,
+          "Nozzle Temperature": "240℃",
+          "Hot Bed Temperature": "70℃",
+          "PrintingSpeed": "60mm/s",
+          "Infill": "100%"
+        },
+        "recommended_printing_parameters": {
+          "page": 2,
+          "Print Temperature": "230-250℃",
+          "Hotbed Temperature": "60-100℃",
+          "Ambient Temperature": "Normal-60℃",
+          "Print Speed": "40-80mm/s",
+          "Pumping Distance": "3-8mm"
+        },
+        "storage": {
+          "page": 2,
+          "text": "Dry and ventilated environment; not high temperature, sunny or humid conditions; use a dry box if not used up within a short time after opening."
+        },
+        "source": "vault:sha256:ea0b2c0f7431f523d4a2615a34181b836102ac6018e55cfe035fbabb1f6328bb"
+      },
+      "normalised": {
+        "note": "Typed values derived from attributes.tds by transcription only; no unit conversion was applied. Each value names its page in the cited document. Two keys are named by their test criteria rather than the document's row label; see attributes.review.",
+        "density_g_cm3": {
+          "value": 1.27,
+          "tolerance": 0.1,
+          "at_c": 21.5,
+          "standard": "ASTM D792",
+          "page": 1
+        },
+        "heat_deflection_c": {
+          "value": 70,
+          "load_mpa": 0.45,
+          "standard": "ASTM D648",
+          "label_in_document": "GTT(Glass-transition temperature)",
+          "page": 1
+        },
+        "melt_flow_rate_g_10min": {
+          "min": 18,
+          "max": 20,
+          "condition": "210 °C, 2.16 kg",
+          "label_in_document": "Vicat Softening Temperature",
+          "page": 1
+        },
+        "tensile_strength_xy_mpa": {
+          "value": 46.55,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "tensile_strength_z_mpa": {
+          "value": 11.5,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "elongation_at_break_xy_pct": {
+          "value": 10.5,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "elongation_at_break_z_pct": {
+          "value": 5.6,
+          "standard": "ASTM D638",
+          "page": 1
+        },
+        "flexural_strength_xy_mpa": {
+          "value": 68,
+          "standard": "ASTM D790",
+          "page": 1
+        },
+        "flexural_modulus_xy_mpa": {
+          "value": 1800,
+          "standard": "ASTM D790",
+          "page": 1
+        },
+        "charpy_impact_xy_kj_m2": {
+          "value": 14,
+          "standard": "ASTM D256",
+          "page": 1
+        },
+        "sample_print_nozzle_c": {
+          "value": 240,
+          "page": 1
+        },
+        "sample_print_bed_c": {
+          "value": 70,
+          "page": 1
+        },
+        "sample_print_speed_mm_s": {
+          "value": 60,
+          "page": 1
+        },
+        "sample_print_infill_pct": {
+          "value": 100,
+          "page": 1
+        },
+        "nozzle_temp_c": {
+          "min": 230,
+          "max": 250,
+          "page": 2
+        },
+        "bed_temp_c": {
+          "min": 60,
+          "max": 100,
+          "page": 2
+        },
+        "ambient_temp_c": {
+          "min": null,
+          "max": 60,
+          "as_printed": "Normal-60℃",
+          "page": 2
+        },
+        "print_speed_mm_s": {
+          "min": 40,
+          "max": 80,
+          "page": 2
+        },
+        "retraction_mm": {
+          "min": 3,
+          "max": 8,
+          "label_in_document": "Pumping Distance",
+          "page": 2
+        },
+        "shrinkage_pct": null,
+        "shrinkage_note": "The TDS says 'low shrinkage advantage of PLA' (page 1) and gives no number. A value must come from a calibration measurement in the studio ledger.",
+        "source": "vault:sha256:ea0b2c0f7431f523d4a2615a34181b836102ac6018e55cfe035fbabb1f6328bb"
+      },
+      "review": {
+        "status": "proposed",
+        "flags": [
+          "document row 'GTT(Glass-transition temperature)' cites ASTM D648 / ISO 75-2 at 0.45 MPa, which is a heat-deflection test; recorded as heat_deflection_c, not Tg",
+          "document row 'Vicat Softening Temperature' has condition 210 °C / 2.16 kg and unit g/10 min, which is a melt index; recorded as melt_flow_rate_g_10min; no Vicat value is available",
+          "TDS gives no filament diameter; 1.75 mm comes from the store page title",
+          "mirror copy: the PDF was archived from SpoolScout's asset host, not from creality.com; Creality publishes no TDS download page as of 2026-11-06"
+        ]
+      }
+    },
+    "links": {
+      "datasheet": "https://assets.spoolscout.com/tds-sds/creality/tds/creality-cr-petg-tds-v1.0-2021-11.pdf"
+    }
+  },
+  {
+    "schema_version": 0,
+    "id": "material/creality-ender-fast-pla",
+    "namespace": "material",
+    "name": "creality-ender-fast-pla",
+    "description": "Creality Ender Fast PLA 1.75 mm FDM filament, 1 kg. Creality publishes no Technical Data Sheet for this product as of 2026-11-06 (download centre, wiki.creality.com and both store pages checked), so this entry carries identity facts from Creality's own product pages and the temperature range the Creality K2 Plus CFS reported from the spool's RFID tag. No density, thermal or mechanical property is recorded; third-party aggregator values exist but are not citable. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+    "source": {
+      "citation": "vault:sha256:ed30c451ea1a8d90ef3ecbd9c7518151fc8b6f4f10f77023448685a3a40873bb",
+      "retrieved": "2026-11-06"
+    },
+    "attributes": {
+      "identity": {
+        "vendor": "Creality",
+        "product": "Ender Fast PLA",
+        "polymer": "PLA",
+        "form": "filament",
+        "diameter_mm": 1.75,
+        "net_weight_kg": 1.0,
+        "item_numbers": {
+          "White": "3301010397",
+          "Black": "3301010398",
+          "Green": "3301010429",
+          "Light Blue": "3301010431",
+          "Orange": "3301010430"
+        },
+        "source": "vault:sha256:ed30c451ea1a8d90ef3ecbd9c7518151fc8b6f4f10f77023448685a3a40873bb"
+      },
+      "marketing_claims": {
+        "note": "Store page text, not test data. Kept only so the claim can be traced; not a property.",
+        "print_speed": "300mm/s, Fast and Stable",
+        "source": "vault:sha256:16b71e5e3ecc0bfc8079d86735aa28487d5c6aa02c9e83567fadea21eeabb024"
+      },
+      "spool_rfid": {
+        "note": "Fields as reported by the printer for CFS box MF003 slot 1 on 2026-11-06. 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+        "vendor": "Creality",
+        "type": "PLA",
+        "name": "ENDER FAST PLA",
+        "rfid": "09002",
+        "minTemp": 190,
+        "maxTemp": 240,
+        "pressure": 0.04,
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "normalised": {
+        "note": "Only printer-reported values. No TDS exists; nothing here is a measured property.",
+        "nozzle_temp_c": {
+          "min": 190,
+          "max": 240,
+          "basis": "RFID tag minTemp/maxTemp as read by the CFS"
+        },
+        "shrinkage_pct": null,
+        "shrinkage_note": "No vendor number. A value must come from a calibration measurement in the studio ledger.",
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "review": {
+        "status": "proposed",
+        "flags": [
+          "no vendor TDS as of 2026-11-06; density, Tg, Vicat, tensile and flexural values are absent on purpose, never zero",
+          "aggregator sites quote density 1.19-1.25 g/cm3 and Vicat 62.3 °C for this product; unverifiable, not recorded",
+          "the mvip.creality.com page lists five item numbers; the UK store page lists more colours (3301010432, 3301010434, 3301010437, 3301010444) without naming them in extractable text"
+        ]
+      }
+    }
+  },
+  {
+    "schema_version": 0,
+    "id": "material/creality-hyper-pla",
+    "namespace": "material",
+    "name": "creality-hyper-pla",
+    "description": "Creality Hyper PLA (Hyper Series PLA) 1.75 mm FDM filament. Facts transcribed from the vendor Technical Data Sheet v1.0 archived in the vault (attributes.tds holds the rows verbatim, attributes.normalised the typed values with the page each came from). Spool identity fields are the RFID data the Creality K2 Plus CFS reported for the loaded spool. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+    "source": {
+      "citation": "vault:sha256:aff153a93c869fc70737cf70062380de0e4155ca31914698569599e49dfdf3bb",
+      "retrieved": "2026-11-06"
+    },
+    "attributes": {
+      "identity": {
+        "vendor": "Creality",
+        "product": "Hyper PLA",
+        "polymer": "PLA",
+        "form": "filament",
+        "diameter_mm": 1.75,
+        "net_weight_kg": 1.0,
+        "source": "vault:sha256:4a249560d43238426ef1a9a8e9fce98a91a4ef100f6b13db9d9c3230ffbb750e"
+      },
+      "spool_rfid": {
+        "note": "Fields as reported by the printer for CFS box MF003 slot 0 on 2026-11-06. 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+        "vendor": "Creality",
+        "type": "PLA",
+        "name": "Hyper PLA",
+        "rfid": "01001",
+        "minTemp": 190,
+        "maxTemp": 240,
+        "pressure": 0.044,
+        "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+      },
+      "tds": {
+        "title": "Hyper-PLA Filament Technical Data Sheet",
+        "version": "1.0",
+        "issued": "not printed in the document; the mirror file name says 2024-06",
+        "physical": [
+          {
+            "page": 1,
+            "item": "Density",
+            "testing_criteria": "ASTM D792 (ISO 1183, GB/T 1033)",
+            "parameter": "1.24 ±0.1 (g/cm3 at 21.5˚C)"
+          },
+          {
+            "page": 1,
+            "item": "Glass transition temperature",
+            "testing_criteria": "DSC, 10°C/min",
+            "parameter": "62 (°C)"
+          },
+          {
+            "page": 1,
+            "item": "Vicat Softening temperature",
+            "testing_criteria": "ASTM D1525 (ISO 306 GB/T 1633)",
+            "parameter": "62.3 ±0.5 (˚C)"
+          },
+          {
+            "page": 1,
+            "item": "Melt index",
+            "testing_criteria": "190°C, 2.16kg",
+            "parameter": "3-5 (g/10 min)"
+          }
+        ],
+        "mechanical": [
+          {
+            "page": 1,
+            "item": "Tensile strength (X-Y)",
+            "testing_criteria": "ISO 527, GB/T 1040",
+            "parameter": "52.99 (MPa)"
+          },
+          {
+            "page": 1,
+            "item": "Tensile modulus (X-Y)",
+            "testing_criteria": "ISO 527, GB/T 1040",
+            "parameter": "1146.06 (Mpa)"
+          },
+          {
+            "page": 1,
+            "item": "Elongation at break (X-Y)",
+            "testing_criteria": "ISO 527, GB/T 1040",
+            "parameter": "6.3 (%)"
+          },
+          {
+            "page": 1,
+            "item": "Bending strength (X-Y)",
+            "testing_criteria": "ISO 178, GB/T 9341",
+            "parameter": "92.38 (MPa)"
+          },
+          {
+            "page": 1,
+            "item": "Bending modulus (X-Y)",
+            "testing_criteria": "ISO 179, GB/T 1043",
+            "parameter": "2490.17 (MPa)"
+          },
+          {
+            "page": 1,
+            "item": "Charpy impact strength (Z)",
+            "testing_criteria": "ISO 179, GB/T 1043",
+            "parameter": "8.83 (kJ/m2)"
+          }
+        ],
+        "sample_print_conditions": {
+          "page": 1,
+          "Nozzle Temperature": "220°C",
+          "Hot Bed Temperature": "60°C",
+          "PrintingSpeed": "300mm/s",
+          "Infill": "100%"
+        },
+        "recommended_printing_conditions": {
+          "page": 2,
+          "Print Temperature": "190-230°C",
+          "Hotbed Temperature": "25-60°C",
+          "Ambient Temperature": "0-50°C",
+          "Print Speed": "40-600mm/s",
+          "Pumping Distance": "1-5mm"
+        },
+        "storage": {
+          "page": 3,
+          "text": "Dry and ventilated environment; not high temperature, sunny or humid conditions; use a dry box if not used up within a short time after opening."
+        },
+        "source": "vault:sha256:aff153a93c869fc70737cf70062380de0e4155ca31914698569599e49dfdf3bb"
+      },
+      "normalised": {
+        "note": "Typed values derived from attributes.tds by transcription only; no unit conversion was applied. Each value names its page in the cited document.",
+        "density_g_cm3": {
+          "value": 1.24,
+          "tolerance": 0.1,
+          "at_c": 21.5,
+          "standard": "ASTM D792",
+          "page": 1
+        },
+        "glass_transition_c": {
+          "value": 62,
+          "method": "DSC 10 °C/min",
+          "page": 1
+        },
+        "vicat_softening_c": {
+          "value": 62.3,
+          "tolerance": 0.5,
+          "standard": "ASTM D1525",
+          "page": 1
+        },
+        "melt_flow_rate_g_10min": {
+          "min": 3,
+          "max": 5,
+          "condition": "190 °C, 2.16 kg",
+          "page": 1
+        },
+        "tensile_strength_xy_mpa": {
+          "value": 52.99,
+          "standard": "ISO 527",
+          "page": 1
+        },
+        "tensile_modulus_xy_mpa": {
+          "value": 1146.06,
+          "standard": "ISO 527",
+          "page": 1
+        },
+        "elongation_at_break_xy_pct": {
+          "value": 6.3,
+          "standard": "ISO 527",
+          "page": 1
+        },
+        "flexural_strength_xy_mpa": {
+          "value": 92.38,
+          "standard": "ISO 178",
+          "page": 1
+        },
+        "flexural_modulus_xy_mpa": {
+          "value": 2490.17,
+          "standard": "ISO 179 as printed; ISO 179 is the Charpy standard, so this is probably a document typo for ISO 178",
+          "page": 1
+        },
+        "charpy_impact_z_kj_m2": {
+          "value": 8.83,
+          "standard": "ISO 179",
+          "page": 1
+        },
+        "sample_print_nozzle_c": {
+          "value": 220,
+          "page": 1
+        },
+        "sample_print_bed_c": {
+          "value": 60,
+          "page": 1
+        },
+        "sample_print_speed_mm_s": {
+          "value": 300,
+          "page": 1
+        },
+        "sample_print_infill_pct": {
+          "value": 100,
+          "page": 1
+        },
+        "nozzle_temp_c": {
+          "min": 190,
+          "max": 230,
+          "page": 2
+        },
+        "bed_temp_c": {
+          "min": 25,
+          "max": 60,
+          "page": 2
+        },
+        "ambient_temp_c": {
+          "min": 0,
+          "max": 50,
+          "page": 2
+        },
+        "print_speed_mm_s": {
+          "min": 40,
+          "max": 600,
+          "page": 2
+        },
+        "retraction_mm": {
+          "min": 1,
+          "max": 5,
+          "label_in_document": "Pumping Distance",
+          "page": 2
+        },
+        "shrinkage_pct": null,
+        "shrinkage_note": "The TDS states 'low shrinkage rate' (page 1) and gives no number. A value must come from a calibration measurement in the studio ledger.",
+        "source": "vault:sha256:aff153a93c869fc70737cf70062380de0e4155ca31914698569599e49dfdf3bb"
+      },
+      "review": {
+        "status": "proposed",
+        "flags": [
+          "flexural_modulus standard printed as ISO 179 (Charpy) in the document",
+          "TDS gives no filament diameter; 1.75 mm comes from the store page title",
+          "mirror copy: the PDF was archived from SpoolScout's asset host, not from creality.com; Creality publishes no TDS download page as of 2026-11-06"
+        ]
+      }
+    },
+    "links": {
+      "datasheet": "https://assets.spoolscout.com/tds-sds/creality/tds/creality-pla-hyper-tds-v1.0-2024-06.pdf"
+    }
   }
 ] as readonly Part[]);
 

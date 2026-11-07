@@ -33,8 +33,24 @@ jobs:
 
       # Structure, unit-suffix rules, and the citation gate. An uncited value is
       # invalid here, which is the rule the whole registry rests on.
-      - name: Validate every entry
-        run: python scripts/validate.py
+      #
+      # Strict citations everywhere (OpenKnowledgeCore ADR-0001): `material` was
+      # born strict (vault:sha256: forms, PR #12), ingested entries cite the
+      # Oh-Ben-Claw commit they were read from (PR #16), and the last nine
+      # hand-written citations in `boards` and `electronic` were migrated to
+      # vault:/repo: forms with the method prose moved to source.note (PR #17).
+      # schema/material.schema.json (ADR-0007) is checked with the jsonschema
+      # package; validate.py errors rather than skips when it is missing.
+      - name: Install the namespace-schema validator
+        run: pip install jsonschema
+
+      - name: Validate every entry (strict citations, schema-checked attributes)
+        run: python scripts/validate.py --strict
+
+      # ADR-0001 of OpenKnowledgeCore: SiYuan is a projection, never a source.
+      # validate.py above rejects any SiYuan reference; these tests prove it does.
+      - name: Citation gate tests
+        run: python -m unittest discover scripts
 
       # The validator's own rules for `features` (ADR-0007): the cases where a
       # block could look sourced and still tell a clearance check "nothing here".

@@ -1,0 +1,60 @@
+{
+  "schema_version": 0,
+  "id": "material/creality-ender-fast-pla",
+  "namespace": "material",
+  "name": "creality-ender-fast-pla",
+  "description": "Creality Ender Fast PLA 1.75 mm FDM filament, 1 kg. Creality publishes no Technical Data Sheet for this product as of 2026-11-06 (download centre, wiki.creality.com and both store pages checked), so this entry carries identity facts from Creality's own product pages and the temperature range the Creality K2 Plus CFS reported from the spool's RFID tag. No density, thermal or mechanical property is recorded; third-party aggregator values exist but are not citable. Proposed by OpenKnowledgeCore P0 on 2026-11-06; awaiting review.",
+  "source": {
+    "citation": "vault:sha256:ed30c451ea1a8d90ef3ecbd9c7518151fc8b6f4f10f77023448685a3a40873bb",
+    "retrieved": "2026-11-06"
+  },
+  "attributes": {
+    "identity": {
+      "vendor": "Creality",
+      "product": "Ender Fast PLA",
+      "polymer": "PLA",
+      "form": "filament",
+      "diameter_mm": 1.75,
+      "net_weight_kg": 1.0,
+      "item_numbers": {
+        "White": "3301010397",
+        "Black": "3301010398",
+        "Green": "3301010429",
+        "Light Blue": "3301010431",
+        "Orange": "3301010430"
+      },
+      "source": "vault:sha256:ed30c451ea1a8d90ef3ecbd9c7518151fc8b6f4f10f77023448685a3a40873bb"
+    },
+    "marketing_claims": {
+      "note": "Store page text, not test data. Kept only so the claim can be traced; not a property.",
+      "print_speed": "300mm/s, Fast and Stable",
+      "source": "vault:sha256:16b71e5e3ecc0bfc8079d86735aa28487d5c6aa02c9e83567fadea21eeabb024"
+    },
+    "spool_rfid": {
+      "note": "Fields as reported by the printer for CFS box MF003 slot 1 on 2026-11-06. 'pressure' is the field name on the tag data; believed to be the pressure-advance value of the Creality profile; not interpreted here.",
+      "vendor": "Creality",
+      "type": "PLA",
+      "name": "ENDER FAST PLA",
+      "rfid": "09002",
+      "minTemp": 190,
+      "maxTemp": 240,
+      "pressure": 0.04,
+      "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+    },
+    "normalised": {
+      "note": "Only printer-reported values. No TDS exists; nothing here is a measured property.",
+      "nozzle_temp_c": {"min": 190, "max": 240, "basis": "RFID tag minTemp/maxTemp as read by the CFS"},
+      "shrinkage_pct": null,
+      "shrinkage_note": "No vendor number. A value must come from a calibration measurement in the studio ledger.",
+      "source": "vault:sha256:57315add7410f0920d49e4a18742383210ced6a161841438d5683655b43c1d57"
+    },
+    "review": {
+      "status": "proposed",
+      "flags": [
+        "no vendor TDS as of 2026-11-06; density, Tg, Vicat, tensile and flexural values are absent on purpose, never zero",
+        "aggregator sites quote density 1.19-1.25 g/cm3 and Vicat 62.3 °C for this product; unverifiable, not recorded",
+        "the mvip.creality.com page lists five item numbers; the UK store page lists more colours (3301010432, 3301010434, 3301010437, 3301010444) without naming them in extractable text"
+      ]
+    }
+  }
+}

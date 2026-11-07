@@ -99,7 +99,25 @@ This is not upstream sloppiness — it is what USB actually does, since a bridge
 
 ---
 
-## ADR-0007 - A part's surface: features, each with its own source and revision
+## ADR-0007 — Material attributes have one layout, and a schema checks it
+
+**Date:** 2026-11-06
+**Status:** accepted
+
+**Context.** `part.schema.json` leaves `attributes` free ("namespace-specific facts, preserved verbatim"), which is right for ingested boards and wrong for `material/`: those entries are built, not ingested, and the three merged ones (PR #12) already shared a layout — `identity`, `spool_rfid`, `tds`, `normalised`, `review` — that lived in three files and one line of a plan. Nothing checked it. OpenKnowledgeCore's proposal pipeline (its ADR-0004) now generates that layout, so a drift between what it writes and what this registry accepts would surface only when a human read both. One difference already existed: the merged entries nested the sample print settings under `normalised.sample_print`, the pipeline writes one flat field per number (`sample_print_nozzle_c`, ...) so that each number carries its own page and row.
+
+**Options.**
+1. Keep `attributes` free and rely on review — the status quo; the layout stays a convention nobody can check.
+2. Fold the material layout into `part.schema.json` with `if namespace == material` — one schema, but every namespace's rules in one file, and the part schema stops being the small contract the bindings are generated from.
+3. `schema/<namespace>.schema.json`, applied to `attributes` by `scripts/validate.py` when the file exists. `material` is the first.
+
+**Decision.** Option 3. `schema/material.schema.json` is the authoritative layout: `identity` and `review` required; `tds` is the document row by row, every block with its page; `normalised` keys end in their unit and every field names a page in the cited document or a stated basis; `review.status` is `proposed | accepted | rejected` and `review.flags` is what a reviewer must read. Sample print settings are flat fields, one per number; the two merged entries were migrated by hand in the same change. `validate.py` stays stdlib for the structural rules but needs the `jsonschema` package for namespace schemas, and errors rather than skips when it is missing, so CI cannot pass by not looking. OpenKnowledgeCore vendors a copy of the schema and validates every proposal against it before writing it, with a drift test against this file.
+
+**Consequences.** A proposal that validates in OpenKnowledgeCore validates here, and a hand edit that breaks the layout fails CI instead of reaching a consumer. The layout is now expensive to change (two repositories, a migration), which is the point. The other namespaces keep free `attributes` until each earns a schema; `boards` never will while it is ingested verbatim from Oh-Ben-Claw.
+
+---
+
+## ADR-0008 - A part's surface: features, each with its own source and revision
 
 **Date:** 2026-09-26
 **Status:** accepted
@@ -123,3 +141,5 @@ Two further facts shaped this. The bench board is **V1.1** and the envelope came
 - `features` joins `PRESERVED_KEYS`. The TypeScript binding already embeds whole entries, so it gains a typed `PartFeatures`; the Rust binding does not hoist `features`, because nothing that consumes it reads them yet.
 
 **Consequences.** Positions from a vendor model are only as good as the model and the revision match, and the frame is the model's, not a physical datum; consumers place the part with a transform they own. Access directions read off the geometry (a connector body overhanging the board edge mates through that edge) are recorded as inferences, and say so in their `source`, until someone confirms them on the board. EasyEDA shares one STEP product between same-footprint instances, so shared passives lose their refdes; their ids are the footprint plus an ordinal, which is honest about what the model knows. The first entry is `boards/lilygo-t-camera-plus-s3` at V1.1. Its envelope note, which guessed that the tallest solid was a lens barrel, is corrected: the census names it SW3, the 6 x 6 mm tactile switch.
+
+**Addendum (2026-11-06, merging ADR-0007's strict citation gate).** `features.source.citation` is a citation like any other and takes one of the strict forms; the prose that explains how the positions were computed moves to `features.source.note`. `items[].source` and `items[].access.source` are not citations: they say where inside the cited model a box or a direction came from (`step:J1`, or an inference from the geometry), so `--strict` does not ask them for a citation form. The SiYuan rule still applies to them.

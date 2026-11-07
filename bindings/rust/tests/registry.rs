@@ -84,12 +84,12 @@ fn an_envelope_is_present_only_where_it_was_sourced() {
     let generic = by_id("boards/esp32-s3").unwrap();
     assert!(generic.envelope_mm.is_none());
 
-    // The FireBeetle 2's envelope was computed from DFRobot's STEP model and
-    // says so in its own citation, separately from the entry's.
+    // The FireBeetle 2's envelope was computed from DFRobot's STEP model, archived
+    // in the OpenKnowledgeCore vault, and cites it by hash, separately from the entry's.
     let fb = by_id("boards/dfrobot-firebeetle2-esp32s3").unwrap();
     let env = fb.envelope_mm.expect("firebeetle2 envelope was sourced 2026-09-06");
     assert!(env.x > 0.0 && env.y > 0.0 && env.z > 0.0);
-    assert!(env.citation.contains("DFR0975.stp"));
+    assert!(env.citation.starts_with("vault:sha256:6c2fa63dd92c"));
     assert_ne!(env.citation, fb.citation);
 
     for part in PARTS {

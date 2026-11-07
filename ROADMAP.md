@@ -13,7 +13,7 @@
 - [x] `envelope_mm` with its own citation (ADR-0006), preserved across re-ingest; first two entries sourced (2026-09-06)
 - [ ] OpenDesignCore reading `envelope_mm` from here instead of its private `data/parts/` — the other half of the thin thread
 - [ ] `electronic` namespace: first cited entries with KiCad footprint/symbol + atopile package links (for OpenCircuitCore)
-- [ ] `material` namespace: first filament entries (for the OpenDesignCore thin thread)
+- [x] `material` namespace: first filament entries (for the OpenDesignCore thin thread) — Creality Hyper PLA, CR-PETG, Ender Fast PLA (PR from OpenKnowledgeCore P0, 2026-11-06)
 
 ## Not ever
 - User inventory data

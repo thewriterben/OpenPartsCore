@@ -1,0 +1,36 @@
+{
+  "schema_version": 0,
+  "id": "boards/esp32-s3-wroom-cam",
+  "namespace": "boards",
+  "name": "esp32-s3-wroom-cam",
+  "description": "ESP32-S3-WROOM-1 LX7 dual-core @ 240 MHz, OV2640/OV5640 camera, microSD, 8 MB PSRAM (native USB; shared VID/PID)",
+  "source": {
+    "citation": "repo:thewriterben/Oh-Ben-Claw@3c95e2da2efd8fa9166163d2e0b94e6abb7b42f1:registry/registry.json",
+    "retrieved": "2026-11-06",
+    "upstream_schema_version": 1
+  },
+  "attributes": {
+    "usb_ids": [
+      {
+        "vid": 12346,
+        "pid": 4097,
+        "architecture": "ESP32-S3-WROOM-1 LX7 dual-core @ 240 MHz, OV2640/OV5640 camera, microSD, 8 MB PSRAM (native USB; shared VID/PID)"
+      }
+    ],
+    "capabilities": [
+      "ble",
+      "camera_capture",
+      "gpio",
+      "microsd",
+      "psram",
+      "wifi"
+    ],
+    "connectors": [
+      "bare"
+    ],
+    "vendor": "Unbranded",
+    "ecosystem": "ESP32-S3-CAM",
+    "transport": "serial"
+  },
+  "links": {}
+}

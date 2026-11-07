@@ -5,9 +5,10 @@
   "name": "Resistor, 0603 (1608 metric)",
   "description": "Generic chip resistor family. Resistance, tolerance and power rating are properties of the BOM line, not of this entry: a design says '4.7k 1%' and sourcing picks a manufacturer part. This entry fixes the package only.",
   "source": {
-    "citation": "IPC-SM-782A body size for 0603 (1608 metric), page 72, as cited by KiCad footprint Resistor_SMD:R_0603_1608Metric. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family. URL: the pcb-3d.com copy returned 404 on 2026-09-06; the url field now points at the Internet Archive snapshot of 2025-04-28 of the same file.",
-    "url": "https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf",
-    "retrieved": "2026-08-15"
+    "citation": "repo:KiCad/kicad-footprints@0008170b644c3ba77b1f9f4eafd7a40fd624de7a:Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+    "url": "https://github.com/KiCad/kicad-footprints/blob/0008170b644c3ba77b1f9f4eafd7a40fd624de7a/Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+    "retrieved": "2026-11-06",
+    "note": "The footprint's F.Fab outline is the 1.6 x 0.8 mm body (fp_line x -0.8..0.8, y -0.4..0.4); its descr names IPC-SM-782 page 72 as the body-size source via a pcb-3d.com PDF that returned 404 on 2026-09-06 (Internet Archive snapshot of 2025-04-28: https://web.archive.org/web/20250428122720/https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf). The standard itself is not archived: no licence to redistribute it. R_0603_1608Metric.kicad_mod last changed in this commit (2020-09-23); KiCad libraries are CC-BY-SA-4.0. First entered 2026-08-15 from the same footprint. TODO(source): tolerance, power and voltage ratings are vendor-specific and belong to a chosen MPN, not to the family."
   },
   "attributes": {
     "package": "0603 (1608 metric)",

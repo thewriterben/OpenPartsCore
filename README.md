@@ -7,6 +7,7 @@ The canonical parts registry for the OpenDesignCore platform: one schema, one se
 ## What it is
 
 - A **JSON Schema** (`schema/part.schema.json`) defining what a part entry is.
+- A **namespace schema** for `material` (`schema/material.schema.json`) defining what its `attributes` hold: `identity / spool_rfid / tds / normalised / marketing_claims / review` (ADR-0007).
 - **Data files** (`data/<namespace>/*.json`), one part per file, schema-validated, every entry citing its source.
 - **Generated bindings** (`bindings/`, none yet) for Rust, TypeScript, Python, and C# — consumers never hand-copy the data model. This is the fix for the registry drift documented in Oh-Ben-Claw's ECOSYSTEM-INTEGRATION.md.
 
@@ -22,8 +23,10 @@ The canonical parts registry for the OpenDesignCore platform: one schema, one se
 ## Rules
 
 - **Every entry carries a citation.** An uncited value fails validation. No plausible-looking numbers.
+- **A citation never points at SiYuan**, and in every namespace it must be a recognised form (`vault:sha256:`, `repo:`, `ledger:`, `doi:`, `arxiv:`, `standard:`; CI runs bare `--strict`). Ingested entries cite the Oh-Ben-Claw registry at the commit they were read from (`repo:thewriterben/Oh-Ben-Claw@<sha>:registry/registry.json`); hand-measured envelopes cite the vendor STEP model, archived in the OpenKnowledgeCore vault (`vault:sha256:`) or at its commit in a public repository (`repo:`); a part whose numbers come from a public repository file cites that file (KiCad footprints, the ROBOTIS e-Manual data). How the cited bytes yield the values (measurement method, page, container, caveats) lives beside the citation in `source.note`, never in the citation itself (OpenKnowledgeCore ADR-0001).
 - **Length fields are millimetres** and end in `_mm` (matches OpenDesignCore ADR-0004). Other units are named in the field (`mass_g`, `voltage_v`).
-- **An envelope carries its own source.** `envelope_mm` is optional; when present it has all three axes and a citation of its own, because the entry's citation (for ingested boards, a registry with no dimensions) does not cover it. Absent means unknown, never zero (ADR-0006).
+- **Material attributes have one layout.** `identity` and `review` are required; `tds` is the vendor data sheet row by row with pages; `normalised` holds typed values whose keys end in their unit and which each name a page or a basis; `review.flags` is what a reviewer must read. `scripts/validate.py` checks it with `schema/material.schema.json` (needs `pip install jsonschema`; ADR-0007).
+- **An envelope carries its own source.** `envelope_mm` is optional; when present it has all three axes and a citation of its own, because the entry's citation (for ingested boards, a registry with no dimensions) does not cover it. Absent means unknown, never zero (ADR-0006). Its `source.note` says how the envelope was measured from the cited model (axis permutation, meshing, what the model does and does not carry).
 - **User inventory does not live here.** Inventory is mutable user state referencing canonical part ids; this repo is reviewable reference data only (platform decision PD-2).
 
 ## Validate

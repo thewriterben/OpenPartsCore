@@ -5,9 +5,10 @@
   "name": "opencircuitcore-sensor-node",
   "description": "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0007).",
   "source": {
-    "citation": "OpenCircuitCore boards/sensor-node at commit 9546499b9965275aec90fe6469f5cc48e4d48e03: board.manifest.json (sha256 1c708612b512a67e4d74bb576a9bfe28d16d0230ce2acb68db00ed83354e9751) and README.md",
+    "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/board.manifest.json",
     "url": "https://github.com/thewriterben/OpenCircuitCore/tree/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node",
-    "retrieved": "2026-11-06"
+    "retrieved": "2026-11-06",
+    "note": "OpenCircuitCore boards/sensor-node at commit 9546499b9965275aec90fe6469f5cc48e4d48e03: board.manifest.json (sha256 1c708612b512a67e4d74bb576a9bfe28d16d0230ce2acb68db00ed83354e9751) and README.md"
   },
   "attributes": {
     "outline_mm": {
@@ -51,16 +52,18 @@
     "y": 52.0,
     "z": 11.54,
     "source": {
-      "citation": "Union of the per-component boxes of sensor-node.step (sha256 98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec) from scripts/extract_step_features.py, OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1), 2026-11-06: z from the header pin tails at -1.405 to the pin tips at 10.135."
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.step",
+      "note": "Union of the per-component boxes of sensor-node.step (sha256 98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec) from scripts/extract_step_features.py, OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1), 2026-11-06: z from the header pin tails at -1.405 to the pin tips at 10.135."
     }
   },
   "features": {
     "source": {
-      "citation": "Per-component boxes of OpenCircuitCore's own STEP export 'sensor-node.step' (kicad-cli 10.0.5 pcb export step --subst-models, 2,522,235 bytes) computed 2026-11-06 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1); 12 components, byte-identical on repeat. The model is the design, not a vendor's drawing of a product: positions are exact by construction, and the built board differs from it only by assembly tolerance.",
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.step",
       "model_sha256": "98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec",
       "revision": "OpenCircuitCore 9546499 (routed, GND pour, DRC clean)",
       "url": "https://github.com/thewriterben/OpenCircuitCore/blob/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node/sensor-node.step",
-      "retrieved": "2026-11-06"
+      "retrieved": "2026-11-06",
+      "note": "Per-component boxes of OpenCircuitCore's own STEP export 'sensor-node.step' (kicad-cli 10.0.5 pcb export step --subst-models, 2,522,235 bytes) computed 2026-11-06 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1); 12 components, byte-identical on repeat. The model is the design, not a vendor's drawing of a product: positions are exact by construction, and the built board differs from it only by assembly tolerance."
     },
     "frame": "The STEP model's own frame, unmodified: KiCad's board frame with y negated. x across the board (0 to 44, the edge nearer H1/H3 at x = 0); y along it, the antenna end at y = 0 and the header end at y = -52; z the board normal, z = 0 the bottom face and z = 1.6 the component face. Millimetres; the STEP declares MM.",
     "not_modelled": [
