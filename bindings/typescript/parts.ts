@@ -20,7 +20,7 @@ export interface PartEnvelope {
 
 export type Axis = "+x" | "-x" | "+y" | "-y" | "+z" | "-z";
 
-/** Free volume a plug, card or finger needs (ADR-0007). null = unknown: report it, never pass it. */
+/** Free volume a plug, card or finger needs (ADR-0008). null = unknown: report it, never pass it. */
 export interface FeatureAccess {
   direction: Axis | null;
   depth_mm: number | null;
@@ -37,7 +37,7 @@ export interface PartFeature {
   access?: FeatureAccess;
 }
 
-/** Where things are on the part, for one hardware revision, with its own source (ADR-0007). */
+/** Where things are on the part, for one hardware revision, with its own source (ADR-0008). */
 export interface PartFeatures {
   source: { citation: string; model_sha256: string; revision: string; url?: string; retrieved?: string };
   frame: string;
@@ -4588,7 +4588,7 @@ export const PARTS: readonly Part[] = Object.freeze([
     "id": "boards/opencircuitcore-sensor-node",
     "namespace": "boards",
     "name": "opencircuitcore-sensor-node",
-    "description": "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0007).",
+    "description": "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0008).",
     "source": {
       "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/board.manifest.json",
       "url": "https://github.com/thewriterben/OpenCircuitCore/tree/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node",

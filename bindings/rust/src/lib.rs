@@ -661,7 +661,7 @@ pub const PARTS: &[Part] = &[
         id: "boards/opencircuitcore-sensor-node",
         namespace: Namespace::Boards,
         name: "opencircuitcore-sensor-node",
-        description: "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0007).",
+        description: "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0008).",
         citation: "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/board.manifest.json",
         capabilities: &[],
         usb_ids: &[],

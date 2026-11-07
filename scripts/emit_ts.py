@@ -42,7 +42,7 @@ export interface PartEnvelope {{
 
 export type Axis = "+x" | "-x" | "+y" | "-y" | "+z" | "-z";
 
-/** Free volume a plug, card or finger needs (ADR-0007). null = unknown: report it, never pass it. */
+/** Free volume a plug, card or finger needs (ADR-0008). null = unknown: report it, never pass it. */
 export interface FeatureAccess {{
   direction: Axis | null;
   depth_mm: number | null;
@@ -59,7 +59,7 @@ export interface PartFeature {{
   access?: FeatureAccess;
 }}
 
-/** Where things are on the part, for one hardware revision, with its own source (ADR-0007). */
+/** Where things are on the part, for one hardware revision, with its own source (ADR-0008). */
 export interface PartFeatures {{
   source: {{ citation: string; model_sha256: string; revision: string; url?: string; retrieved?: string }};
   frame: string;

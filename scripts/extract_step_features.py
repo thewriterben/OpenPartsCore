@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Census of the named components in a vendor STEP, in the STEP's own frame (ADR-0007).
+"""Census of the named components in a vendor STEP, in the STEP's own frame (ADR-0008).
 
     uv run --python 3.12 --with cadquery-ocp==7.9.3.1.1 scripts/extract_step_features.py <file.step> [--out census.json]
 

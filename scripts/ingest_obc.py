@@ -71,7 +71,7 @@ def slug(name: str) -> str:
 
 # Fields the ingest does not own. Upstream has no dimensions, no features and
 # no links, so anything under these keys was added here, by hand, with its own
-# citation (ADR-0006, ADR-0007) -- a re-ingest that rewrote the file from
+# citation (ADR-0006, ADR-0008) -- a re-ingest that rewrote the file from
 # upstream alone would delete it silently, which is how a cited envelope would
 # vanish between two runs that both reported "unchanged".
 PRESERVED_KEYS = ("envelope_mm", "features", "links")

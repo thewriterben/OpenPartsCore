@@ -55,7 +55,7 @@
     },
     "features": {
       "type": "object",
-      "description": "Where things are on the part: connectors, switches, bodies, and the volume each needs kept free (ADR-0007). Carries its own source and the hardware revision it describes. Absent means undescribed, never clear.",
+      "description": "Where things are on the part: connectors, switches, bodies, and the volume each needs kept free (ADR-0008). Carries its own source and the hardware revision it describes. Absent means undescribed, never clear.",
       "required": ["source", "frame", "not_modelled", "items"],
       "properties": {
         "source": {

@@ -182,7 +182,7 @@ def _vec3(v) -> bool:
 
 
 def check_features(feat) -> list[str]:
-    """features is optional; when present it is sourced, revisioned and complete (ADR-0007).
+    """features is optional; when present it is sourced, revisioned and complete (ADR-0008).
 
     The rules that matter are the ones a consumer cannot recover from later:
     which revision and which model file the positions came from, what the
@@ -200,7 +200,7 @@ def check_features(feat) -> list[str]:
         errs.append(f"features has unknown keys {sorted(extra)}")
     src = feat.get("source")
     if not isinstance(src, dict):
-        errs.append("features.source missing - features carry their own source (ADR-0007)")
+        errs.append("features.source missing - features carry their own source (ADR-0008)")
     else:
         if not str(src.get("citation", "")).strip():
             errs.append("features.source has no citation")

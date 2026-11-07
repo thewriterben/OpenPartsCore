@@ -6,7 +6,7 @@ feature rules a consumer relies on without re-checking.
 
 Stdlib unittest, like everything else here (jsonschema is needed only for
 the namespace schemas). The FeatureRules cases are the ways a `features`
-block could look sourced and still mislead a clearance check (ADR-0007): no
+block could look sourced and still mislead a clearance check (ADR-0008): no
 revision, a connector with no access declaration at all (which reads as
 "nothing to reach"), a duplicate id, an inside-out box.
 """

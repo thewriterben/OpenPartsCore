@@ -52,7 +52,7 @@ jobs:
       - name: Citation gate tests
         run: python -m unittest discover scripts
 
-      # The validator's own rules for `features` (ADR-0007): the cases where a
+      # The validator's own rules for `features` (ADR-0008): the cases where a
       # block could look sourced and still tell a clearance check "nothing here".
       - name: Validator rules hold
         run: python scripts/test_validate.py
