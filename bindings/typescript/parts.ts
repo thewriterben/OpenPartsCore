@@ -18,6 +18,33 @@ export interface PartEnvelope {
   source: { citation: string; url?: string; retrieved?: string };
 }
 
+export type Axis = "+x" | "-x" | "+y" | "-y" | "+z" | "-z";
+
+/** Free volume a plug, card or finger needs (ADR-0008). null = unknown: report it, never pass it. */
+export interface FeatureAccess {
+  direction: Axis | null;
+  depth_mm: number | null;
+  section_mm?: [number, number];
+  source: string;
+}
+
+export interface PartFeature {
+  id: string;
+  kind: "board" | "connector" | "switch" | "card_slot" | "antenna" | "optic" | "component";
+  box_mm?: { min_mm: [number, number, number]; max_mm: [number, number, number] };
+  cylinder_mm?: { axis: Axis; base_mm: [number, number, number]; length_mm: number; diameter_mm: number };
+  source: string;
+  access?: FeatureAccess;
+}
+
+/** Where things are on the part, for one hardware revision, with its own source (ADR-0008). */
+export interface PartFeatures {
+  source: { citation: string; model_sha256: string; revision: string; url?: string; retrieved?: string };
+  frame: string;
+  not_modelled: string[];
+  items: PartFeature[];
+}
+
 export interface Part {
   schema_version: 0;
   id: string;
@@ -27,6 +54,7 @@ export interface Part {
   source: PartSource;
   attributes?: Record<string, unknown>;
   envelope_mm?: PartEnvelope;
+  features?: PartFeatures;
   links?: Record<string, string>;
 }
 
@@ -1330,6 +1358,2566 @@ export const PARTS: readonly Part[] = Object.freeze([
         "note": "Axis-aligned bounding box of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.2_202505091545.step' (sha256 b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487, 68,603,684 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-11 with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1) BRepBndLib::AddOptimal after 0.05 mm incremental meshing; the STEP declares MM. Extents 29.9999 x 69.6625 x 10.8643 mm in the model's own frame, which is board-aligned with Z as the board normal (no axis permutation applied); rounded up to 0.01. Z runs from the lowest underside feature (4.71 mm below the model's z=0) to the tallest top-side component; the model carries no pin headers. This is the **V1.2** hardware revision (2025-04, per the repo README's version table); a separate STEP exists for V1.0-V1.1 (3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step) and was not measured. The STEP is the only dimensional source: the V1.2 schematic (T-CameraPlus-S3_V1.2_20240417.pdf, sha256 5363097ad586a5bf21cdd528fa8c0213b08e6af951835b1f8533531a64a202e2) is electrical only, and neither the README nor lilygo.cc's product page states board dimensions. The product page also lists an OV5640 SKU (H703-01); the model's camera module is not identified in the file, so the OV5640 variant's height is unverified. What the model does say, from a census of all 825 solids (BRepBndLib::Add, coarse boxes, 2026-09-12): the extreme z faces belong to exactly two features. The top is a single solid 6.2995 x 6.0000 x 5.0000 mm spanning z 1.1412 to 6.1412 -- a lens-barrel shape, the tallest thing on the board by 1.80 mm over the next component (8.9500 x 7.4500 x 4.2000 mm, reaching 4.3412). The bottom is -4.7100. Those two numbers are the whole of z: 6.1412 - (-4.7100) = 10.8512, rounded up to 10.87. Which solid is the camera is still not established -- geometry alone cannot say, and no silkscreen or placement file was consulted -- so this is not a claim that the barrel is the OV2640. It does make the open question a single measurement rather than a disassembly: an OV5640 board's **overall** thickness, lowest underside feature to highest top-side feature, compared against 10.85. Above it, the envelope is wrong for that SKU and z must be re-derived; at or below it, this envelope covers both. No such measurement has been made, and no vendor publishes the module height -- LILYGO's product page, the repo README and the resellers' listings were all checked on 2026-09-12 and none states one."
       }
     },
+    "features": {
+      "source": {
+        "citation": "repo:Xinyuan-LilyGO/T-CameraPlus-S3@55764fa22a0dd2ea66715b2b5dc403a34569ba42:structure/3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step",
+        "model_sha256": "9f8e6d6c4b8c691101ddfbd29e1e08029dffe3880d1e74c67c2abf27a9582ab9",
+        "revision": "V1.0-V1.1",
+        "url": "https://github.com/Xinyuan-LilyGO/T-CameraPlus-S3/tree/55764fa22a0dd2ea66715b2b5dc403a34569ba42/structure",
+        "retrieved": "2026-09-26",
+        "note": "Per-component bounding boxes of LILYGO's vendor STEP model '3D_PCB_T-CameraPlus-S3_V1.0-V1.1_202505091545.step' (57,412,708 bytes, from github.com/Xinyuan-LilyGO/T-CameraPlus-S3 structure/ at commit 55764fa22a0dd2ea66715b2b5dc403a34569ba42), computed 2026-09-26 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1): STEPCAFControl_Reader, one box per placed component instance (the union of its bodies, full assembly location applied), BRepBndLib::AddOptimal on exact geometry, rounded to 0.001 mm; the run is byte-identical on repeat. Silkscreen and copper layers are excluded as zero-thickness artwork. This is the V1.0-V1.1 model because the bench board is V1.1; the V1.2 model used for envelope_mm differs where it matters for fit - laminate 1.14 mm instead of 1.20, CN4 and LED1 about 1 mm further from the y = 0 edge, and a slide switch (SW4) overhanging the x = 0 edge that V1.1 does not have - while USB1, CN1, CN2, CN3, CN5, FPC1, RF1, U1 and CARD1 occupy the same x-y footprint in both. Access directions marked 'inferred' are read off the geometry and are not confirmations; every depth is unknown until measured or cited."
+      },
+      "frame": "The STEP model's own frame, unmodified. x across the board (laminate 0.007 to 27.981); y along it, with the edge carrying USB1, CN1 and CN2 at y = 0.016 (laminate to 67.990); z the board normal, z = 0 being the laminate face carrying FPC1, U1 and CN3 and z = 1.200 the face carrying USB1, CN1, CN2, SW3 and CARD1. Millimetres; the STEP declares MM.",
+      "not_modelled": [
+        "The camera module and lens: neither vendor STEP contains them. The bench board's barrel measures 14.95 mm diameter with 5.10 mm free length to a 16.65 mm lip, tip 24 mm from the PCB face, axis 35.00 mm from the y = 0 edge (calipers, 2026-09-25); it stands on the z = 0 face, the face carrying FPC1 and opposite the display (confirmed on the bench board by its owner, 2026-09-26), but its position across the board is not yet measured, so it is not an item.",
+        "The display and whatever backs it: not in either model (U11 marks only its connector footprint). The bench board measures 29.40 mm overall depth (calipers, 2026-09-25) against this model's 10.91 mm.",
+        "Permanently attached cables - the camera FPC, and a twisted pair observed exiting one long edge of the bench board on 2026-09-25 - are not modelled as paths."
+      ],
+      "items": [
+        {
+          "id": "Board",
+          "kind": "board",
+          "box_mm": {
+            "min_mm": [
+              0.007,
+              0.016,
+              0.0
+            ],
+            "max_mm": [
+              27.981,
+              67.99,
+              1.2
+            ]
+          },
+          "source": "step:UIOK-Board"
+        },
+        {
+          "id": "C1/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              1.223,
+              47.125,
+              -0.5
+            ],
+            "max_mm": [
+              1.723,
+              48.125,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 1 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.107,
+              50.83,
+              -0.5
+            ],
+            "max_mm": [
+              4.107,
+              51.33,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 2 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.255,
+              53.932,
+              -0.5
+            ],
+            "max_mm": [
+              3.755,
+              54.932,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 3 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.473,
+              31.722,
+              -0.5
+            ],
+            "max_mm": [
+              4.473,
+              32.222,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 4 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/5",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.473,
+              32.972,
+              -0.5
+            ],
+            "max_mm": [
+              4.473,
+              33.472,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 5 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/6",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.916,
+              22.716,
+              -0.5
+            ],
+            "max_mm": [
+              4.416,
+              23.716,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 6 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/7",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.924,
+              25.174,
+              -0.5
+            ],
+            "max_mm": [
+              4.424,
+              26.174,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 7 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/8",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.656,
+              59.932,
+              -0.5
+            ],
+            "max_mm": [
+              5.156,
+              60.932,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 8 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/9",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.834,
+              64.901,
+              -0.5
+            ],
+            "max_mm": [
+              5.834,
+              65.401,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 9 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/10",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.658,
+              59.935,
+              -0.5
+            ],
+            "max_mm": [
+              6.158,
+              60.935,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 10 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/11",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.705,
+              52.183,
+              1.2
+            ],
+            "max_mm": [
+              6.705,
+              52.683,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 11 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/12",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.723,
+              51.185,
+              1.2
+            ],
+            "max_mm": [
+              6.723,
+              51.685,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 12 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/13",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              6.202,
+              16.823,
+              -0.5
+            ],
+            "max_mm": [
+              6.702,
+              17.823,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 13 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/14",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              6.913,
+              53.932,
+              -0.5
+            ],
+            "max_mm": [
+              7.413,
+              54.932,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 14 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/15",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              7.243,
+              16.823,
+              -0.5
+            ],
+            "max_mm": [
+              7.743,
+              17.823,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 15 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/16",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.161,
+              23.016,
+              -0.5
+            ],
+            "max_mm": [
+              9.161,
+              23.516,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 16 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/17",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.538,
+              60.79,
+              -0.5
+            ],
+            "max_mm": [
+              9.038,
+              61.79,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 17 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/18",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.554,
+              54.787,
+              1.2
+            ],
+            "max_mm": [
+              9.054,
+              55.787,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 18 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/19",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.148,
+              6.866,
+              -0.5
+            ],
+            "max_mm": [
+              9.648,
+              7.866,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 19 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/20",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.914,
+              48.543,
+              1.2
+            ],
+            "max_mm": [
+              10.914,
+              49.043,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 20 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/21",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              10.418,
+              61.806,
+              -0.5
+            ],
+            "max_mm": [
+              10.918,
+              62.806,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 21 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/22",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              10.727,
+              13.872,
+              -0.5
+            ],
+            "max_mm": [
+              11.727,
+              14.372,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 22 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/23",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.473,
+              55.525,
+              1.2
+            ],
+            "max_mm": [
+              12.473,
+              56.025,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 23 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/24",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.518,
+              54.349,
+              1.2
+            ],
+            "max_mm": [
+              12.518,
+              54.849,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 24 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/25",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.064,
+              49.661,
+              1.2
+            ],
+            "max_mm": [
+              14.064,
+              50.161,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 25 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/26",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.356,
+              61.195,
+              -0.5
+            ],
+            "max_mm": [
+              13.856,
+              62.195,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 26 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/27",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.492,
+              23.99,
+              1.2
+            ],
+            "max_mm": [
+              14.492,
+              24.49,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 27 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/28",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              14.355,
+              61.197,
+              -0.5
+            ],
+            "max_mm": [
+              14.855,
+              62.197,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 28 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/29",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              15.578,
+              55.907,
+              1.2
+            ],
+            "max_mm": [
+              16.578,
+              56.407,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 29 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/30",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.285,
+              16.162,
+              -0.5
+            ],
+            "max_mm": [
+              16.785,
+              17.162,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 30 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/31",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.289,
+              43.997,
+              -0.5
+            ],
+            "max_mm": [
+              17.289,
+              44.497,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 31 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/32",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.289,
+              45.013,
+              -0.5
+            ],
+            "max_mm": [
+              17.289,
+              45.513,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 32 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/33",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.92,
+              39.962,
+              -0.5
+            ],
+            "max_mm": [
+              17.42,
+              40.962,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 33 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/34",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              18.216,
+              61.603,
+              -0.5
+            ],
+            "max_mm": [
+              18.716,
+              62.603,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 34 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/35",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              19.25,
+              17.5,
+              -0.5
+            ],
+            "max_mm": [
+              19.75,
+              18.5,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 35 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/36",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              21.627,
+              13.5,
+              -0.5
+            ],
+            "max_mm": [
+              22.127,
+              14.5,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 36 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/37",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              22.153,
+              63.0,
+              -0.5
+            ],
+            "max_mm": [
+              22.653,
+              64.0,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 37 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/38",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              22.792,
+              25.226,
+              -0.5
+            ],
+            "max_mm": [
+              23.792,
+              25.726,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 38 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/39",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              22.97,
+              23.22,
+              -0.5
+            ],
+            "max_mm": [
+              23.97,
+              23.72,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 39 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/40",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              23.985,
+              37.483,
+              -0.5
+            ],
+            "max_mm": [
+              24.985,
+              37.983,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 40 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C1/41",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              26.14,
+              38.985,
+              -0.5
+            ],
+            "max_mm": [
+              26.64,
+              39.985,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C1-C0402 (instance 41 of 41: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C12/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.04,
+              14.869,
+              -1.3
+            ],
+            "max_mm": [
+              13.04,
+              16.169,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C12-C0805 (instance 1 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C12/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              14.463,
+              16.221,
+              -1.3
+            ],
+            "max_mm": [
+              15.763,
+              18.221,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C12-C0805 (instance 2 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C12/3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              21.53,
+              26.401,
+              -1.3
+            ],
+            "max_mm": [
+              23.53,
+              27.701,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C12-C0805 (instance 3 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C12/4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              22.85,
+              13.567,
+              -1.3
+            ],
+            "max_mm": [
+              24.15,
+              15.567,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C12-C0805 (instance 4 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C12/5",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              24.824,
+              13.559,
+              -1.3
+            ],
+            "max_mm": [
+              26.124,
+              15.559,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C12-C0805 (instance 5 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              1.84,
+              59.661,
+              -0.8
+            ],
+            "max_mm": [
+              2.64,
+              61.261,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 1 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.233,
+              30.072,
+              -0.8
+            ],
+            "max_mm": [
+              4.833,
+              30.872,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 2 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.278,
+              59.655,
+              -0.8
+            ],
+            "max_mm": [
+              4.078,
+              61.255,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 3 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              7.836,
+              21.673,
+              -0.8
+            ],
+            "max_mm": [
+              9.436,
+              22.473,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 4 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/5",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              10.495,
+              6.447,
+              -0.8
+            ],
+            "max_mm": [
+              11.295,
+              8.047,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 5 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/6",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.203,
+              52.705,
+              1.2
+            ],
+            "max_mm": [
+              12.803,
+              53.505,
+              2.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 6 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/7",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.665,
+              17.031,
+              -0.8
+            ],
+            "max_mm": [
+              12.465,
+              18.631,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 7 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/8",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.062,
+              17.031,
+              -0.8
+            ],
+            "max_mm": [
+              13.862,
+              18.631,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 8 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/9",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.195,
+              25.076,
+              1.2
+            ],
+            "max_mm": [
+              14.795,
+              25.876,
+              2.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 9 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/10",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              15.45,
+              61.202,
+              -0.8
+            ],
+            "max_mm": [
+              16.25,
+              62.802,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 10 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/11",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.872,
+              61.202,
+              -0.8
+            ],
+            "max_mm": [
+              17.672,
+              62.802,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 11 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "C7/12",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              17.99,
+              39.688,
+              -0.8
+            ],
+            "max_mm": [
+              18.79,
+              41.288,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-C7-C0603 (instance 12 of 12: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "CARD1",
+          "kind": "card_slot",
+          "box_mm": {
+            "min_mm": [
+              13.393,
+              33.021,
+              0.6
+            ],
+            "max_mm": [
+              28.643,
+              49.021,
+              3.051
+            ]
+          },
+          "source": "step:UIOK-CARD1-TF-SMD_TF-01A",
+          "access": {
+            "direction": "+x",
+            "depth_mm": null,
+            "source": "inferred from the STEP geometry, not confirmed on the board: the body overhangs the laminate's x = 27.981 edge by 0.66 mm, and a push-push TF slot (TF-01A) mates through the face that overhangs. depth_mm: TODO(source) - card withdrawal length; a microSD card's length is in the SD Association's physical specification, not consulted"
+          }
+        },
+        {
+          "id": "CN1",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              19.825,
+              -1.65,
+              1.2
+            ],
+            "max_mm": [
+              26.176,
+              3.35,
+              4.4
+            ]
+          },
+          "source": "step:UIOK-CN1-CONN-SMD_4P-P1.00_HDGC_HDGC1002WR-S-4P",
+          "access": {
+            "direction": "-y",
+            "depth_mm": null,
+            "source": "inferred from the STEP geometry, not confirmed on the board: the body overhangs the laminate's y = 0.016 edge by 1.67 mm, and a right-angle wafer (HDGC1002WR-S-4P) mates through the face that overhangs. depth_mm: TODO(source) - mating housing length, from the HDGC datasheet or a measured plug"
+          }
+        },
+        {
+          "id": "CN2",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              1.825,
+              -1.65,
+              1.2
+            ],
+            "max_mm": [
+              8.176,
+              3.35,
+              4.4
+            ]
+          },
+          "source": "step:UIOK-CN2-CONN-SMD_4P-P1.00_HDGC_HDGC1002WR-S-4P",
+          "access": {
+            "direction": "-y",
+            "depth_mm": null,
+            "source": "inferred from the STEP geometry, not confirmed on the board: the body overhangs the laminate's y = 0.016 edge by 1.67 mm, and a right-angle wafer (HDGC1002WR-S-4P) mates through the face that overhangs. depth_mm: TODO(source) - mating housing length, from the HDGC datasheet or a measured plug"
+          }
+        },
+        {
+          "id": "CN3",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              10.245,
+              0.951,
+              -3.55
+            ],
+            "max_mm": [
+              17.755,
+              6.201,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-CN3-CONN-SMD_2P-P1.25_HX1.25-2PWT",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): which way this mates is not established from the geometry; confirm on the board or from the connector datasheet"
+          }
+        },
+        {
+          "id": "CN4",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              0.188,
+              22.369,
+              -4.6
+            ],
+            "max_mm": [
+              3.398,
+              26.619,
+              2.2
+            ]
+          },
+          "source": "step:UIOK-CN4-CONN-TH_2P-P1.25_HDGC1251WV-2P",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): which way this mates is not established from the geometry; confirm on the board or from the connector datasheet"
+          }
+        },
+        {
+          "id": "CN5",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              23.288,
+              45.227,
+              -4.71
+            ],
+            "max_mm": [
+              27.588,
+              52.527,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-CN5-CONN-SMD_HC-1.25-2PLT",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): which way this mates is not established from the geometry; confirm on the board or from the connector datasheet"
+          }
+        },
+        {
+          "id": "D1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.45,
+              12.99,
+              -0.5
+            ],
+            "max_mm": [
+              21.05,
+              14.01,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-D1-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "D2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              14.552,
+              8.158,
+              1.2
+            ],
+            "max_mm": [
+              15.572,
+              8.758,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-D2-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "D3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.13,
+              8.184,
+              1.2
+            ],
+            "max_mm": [
+              14.15,
+              8.784,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-D3-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "D4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              7.607,
+              3.579,
+              1.201
+            ],
+            "max_mm": [
+              8.839,
+              5.961,
+              2.338
+            ]
+          },
+          "source": "step:UIOK-D4-SOD-323_L1.8-W1.3-LS2.5-BI"
+        },
+        {
+          "id": "D5",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.239,
+              38.905,
+              1.2
+            ],
+            "max_mm": [
+              12.37,
+              40.036,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-D5-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "D6",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              10.037,
+              47.275,
+              1.2
+            ],
+            "max_mm": [
+              11.057,
+              47.875,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-D6-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "D7",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.584,
+              46.284,
+              -0.5
+            ],
+            "max_mm": [
+              17.604,
+              46.884,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-D7-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "D8",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.089,
+              37.383,
+              1.2
+            ],
+            "max_mm": [
+              12.22,
+              38.515,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-D8-SOD-882_L1.0-W0.6-BI"
+        },
+        {
+          "id": "FPC1",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              5.175,
+              56.25,
+              -4.5
+            ],
+            "max_mm": [
+              22.825,
+              59.75,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-FPC1-CONN-SMD_0.5K-A-24PB",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): which way this mates is not established from the geometry; confirm on the board or from the connector datasheet"
+          }
+        },
+        {
+          "id": "L1/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.834,
+              53.573,
+              -0.5
+            ],
+            "max_mm": [
+              5.834,
+              54.073,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-L1-L0402 (instance 1 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "L1/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.931,
+              25.169,
+              -0.5
+            ],
+            "max_mm": [
+              5.431,
+              26.169,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-L1-L0402 (instance 2 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "L1/3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.748,
+              50.83,
+              -0.5
+            ],
+            "max_mm": [
+              6.748,
+              51.33,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-L1-L0402 (instance 3 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "L1/4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.948,
+              23.706,
+              -0.5
+            ],
+            "max_mm": [
+              6.448,
+              24.706,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-L1-L0402 (instance 4 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "L1/5",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.768,
+              54.73,
+              1.2
+            ],
+            "max_mm": [
+              10.268,
+              55.73,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-L1-L0402 (instance 5 of 5: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "L6/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.19,
+              2.629,
+              -1.1
+            ],
+            "max_mm": [
+              23.39,
+              4.225,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-L6-L1206 (instance 1 of 2: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "L6/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              21.692,
+              6.314,
+              -1.1
+            ],
+            "max_mm": [
+              24.892,
+              7.91,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-L6-L1206 (instance 2 of 2: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "LED1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.414,
+              0.378,
+              -1.011
+            ],
+            "max_mm": [
+              6.414,
+              2.418,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-LED1-LED-SMD_R6G6C-C30"
+        },
+        {
+          "id": "Q1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              0.807,
+              3.252,
+              -1.048
+            ],
+            "max_mm": [
+              3.307,
+              6.146,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-Q1-SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+        },
+        {
+          "id": "Q2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              6.013,
+              3.656,
+              -1.048
+            ],
+            "max_mm": [
+              8.907,
+              6.156,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-Q2-SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+        },
+        {
+          "id": "Q3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.215,
+              34.948,
+              -1.048
+            ],
+            "max_mm": [
+              6.109,
+              37.448,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-Q3-SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+        },
+        {
+          "id": "R3/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              2.226,
+              37.194,
+              -0.5
+            ],
+            "max_mm": [
+              2.726,
+              38.194,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 1 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              2.624,
+              6.481,
+              -0.5
+            ],
+            "max_mm": [
+              3.624,
+              6.981,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 2 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.471,
+              38.413,
+              -0.5
+            ],
+            "max_mm": [
+              3.971,
+              39.413,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 3 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.282,
+              3.626,
+              -0.5
+            ],
+            "max_mm": [
+              4.782,
+              4.626,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 4 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/5",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.481,
+              5.317,
+              -0.5
+            ],
+            "max_mm": [
+              5.481,
+              5.817,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 5 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/6",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              4.482,
+              6.325,
+              -0.5
+            ],
+            "max_mm": [
+              5.482,
+              6.825,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 6 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/7",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.376,
+              38.413,
+              -0.5
+            ],
+            "max_mm": [
+              5.876,
+              39.413,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 7 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/8",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.441,
+              9.151,
+              -0.5
+            ],
+            "max_mm": [
+              5.941,
+              10.151,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 8 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/9",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              5.474,
+              3.43,
+              -0.5
+            ],
+            "max_mm": [
+              6.474,
+              3.93,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 9 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/10",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              6.43,
+              9.152,
+              -0.5
+            ],
+            "max_mm": [
+              6.93,
+              10.152,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 10 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/11",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              7.446,
+              9.152,
+              -0.5
+            ],
+            "max_mm": [
+              7.946,
+              10.152,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 11 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/12",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.132,
+              28.202,
+              -0.5
+            ],
+            "max_mm": [
+              8.632,
+              29.202,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 12 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/13",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.441,
+              16.463,
+              -0.5
+            ],
+            "max_mm": [
+              9.441,
+              16.963,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 13 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/14",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.644,
+              9.845,
+              -0.5
+            ],
+            "max_mm": [
+              9.644,
+              10.345,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 14 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/15",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.05,
+              31.805,
+              -0.5
+            ],
+            "max_mm": [
+              10.05,
+              32.305,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 15 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/16",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.123,
+              28.202,
+              -0.5
+            ],
+            "max_mm": [
+              9.623,
+              29.202,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 16 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/17",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.359,
+              38.035,
+              1.2
+            ],
+            "max_mm": [
+              10.403,
+              39.079,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 17 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/18",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              9.787,
+              10.85,
+              -0.5
+            ],
+            "max_mm": [
+              10.787,
+              11.35,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 18 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/19",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              10.853,
+              26.963,
+              -0.5
+            ],
+            "max_mm": [
+              11.353,
+              27.963,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 19 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/20",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              10.875,
+              24.036,
+              -0.5
+            ],
+            "max_mm": [
+              11.375,
+              25.036,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 20 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/21",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.25,
+              21.634,
+              1.2
+            ],
+            "max_mm": [
+              11.75,
+              22.634,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 21 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/22",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.434,
+              60.613,
+              -0.5
+            ],
+            "max_mm": [
+              11.934,
+              61.613,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 22 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/23",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              12.048,
+              26.75,
+              -0.5
+            ],
+            "max_mm": [
+              13.048,
+              27.25,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 23 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/24",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              12.06,
+              25.746,
+              -0.5
+            ],
+            "max_mm": [
+              13.06,
+              26.246,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 24 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/25",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              12.073,
+              24.744,
+              -0.5
+            ],
+            "max_mm": [
+              13.073,
+              25.244,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 25 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/26",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              12.298,
+              7.399,
+              1.2
+            ],
+            "max_mm": [
+              12.798,
+              8.399,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 26 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/27",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              15.904,
+              7.374,
+              1.2
+            ],
+            "max_mm": [
+              16.404,
+              8.374,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 27 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/28",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.106,
+              22.018,
+              1.2
+            ],
+            "max_mm": [
+              17.106,
+              22.518,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 28 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/29",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.112,
+              19.003,
+              1.2
+            ],
+            "max_mm": [
+              17.112,
+              19.503,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 29 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/30",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.112,
+              19.994,
+              1.2
+            ],
+            "max_mm": [
+              17.112,
+              20.494,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 30 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/31",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.112,
+              21.01,
+              1.2
+            ],
+            "max_mm": [
+              17.112,
+              21.51,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 31 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/32",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.112,
+              23.016,
+              1.2
+            ],
+            "max_mm": [
+              17.112,
+              23.516,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 32 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/33",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              17.275,
+              17.148,
+              -0.5
+            ],
+            "max_mm": [
+              17.775,
+              18.148,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 33 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/34",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              18.521,
+              14.308,
+              1.2
+            ],
+            "max_mm": [
+              19.021,
+              15.308,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 34 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/35",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.212,
+              45.139,
+              -0.5
+            ],
+            "max_mm": [
+              21.212,
+              45.639,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 35 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/36",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.426,
+              51.646,
+              1.2
+            ],
+            "max_mm": [
+              20.926,
+              52.646,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 36 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/37",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.491,
+              16.278,
+              -0.5
+            ],
+            "max_mm": [
+              20.991,
+              17.278,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 37 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/38",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.811,
+              59.44,
+              -0.5
+            ],
+            "max_mm": [
+              21.811,
+              59.94,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 38 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/39",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              20.988,
+              55.986,
+              -0.5
+            ],
+            "max_mm": [
+              21.988,
+              56.486,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 39 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/40",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              21.594,
+              51.646,
+              1.2
+            ],
+            "max_mm": [
+              22.094,
+              52.646,
+              1.7
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 40 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/41",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              21.734,
+              17.23,
+              -0.5
+            ],
+            "max_mm": [
+              22.234,
+              18.23,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 41 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/42",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              23.198,
+              31.957,
+              -0.5
+            ],
+            "max_mm": [
+              24.198,
+              32.457,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 42 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R3/43",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              24.871,
+              24.544,
+              -0.5
+            ],
+            "max_mm": [
+              25.371,
+              25.544,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-R3-R0402 (instance 43 of 43: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "R30",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              19.931,
+              5.877,
+              1.2
+            ],
+            "max_mm": [
+              23.131,
+              7.478,
+              1.76
+            ]
+          },
+          "source": "step:UIOK-R30-R1206"
+        },
+        {
+          "id": "RF1",
+          "kind": "antenna",
+          "box_mm": {
+            "min_mm": [
+              0.549,
+              54.095,
+              -0.87
+            ],
+            "max_mm": [
+              2.549,
+              56.095,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-RF1-IPEX-SMD_BWIPX-3-001E-1",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): which way this mates is not established from the geometry; confirm on the board or from the connector datasheet"
+          }
+        },
+        {
+          "id": "SW2/1",
+          "kind": "switch",
+          "box_mm": {
+            "min_mm": [
+              25.22,
+              19.437,
+              -1.801
+            ],
+            "max_mm": [
+              28.77,
+              24.037,
+              0.5
+            ]
+          },
+          "source": "step:UIOK-SW2-KEY-SMD_K2-1806SA-AXXW-XX (instance 1 of 2: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)",
+          "access": {
+            "direction": "+x",
+            "depth_mm": null,
+            "source": "inferred from the STEP geometry, not confirmed on the board: the body overhangs the laminate's x = 27.981 edge by 0.79 mm, and a side-actuated key (K2-1806SA) mates through the face that overhangs. depth_mm: TODO(source) - finger or actuator clearance is a design choice, not yet made"
+          }
+        },
+        {
+          "id": "SW2/2",
+          "kind": "switch",
+          "box_mm": {
+            "min_mm": [
+              25.22,
+              28.2,
+              -1.801
+            ],
+            "max_mm": [
+              28.77,
+              32.8,
+              0.5
+            ]
+          },
+          "source": "step:UIOK-SW2-KEY-SMD_K2-1806SA-AXXW-XX (instance 2 of 2: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)",
+          "access": {
+            "direction": "+x",
+            "depth_mm": null,
+            "source": "inferred from the STEP geometry, not confirmed on the board: the body overhangs the laminate's x = 27.981 edge by 0.79 mm, and a side-actuated key (K2-1806SA) mates through the face that overhangs. depth_mm: TODO(source) - finger or actuator clearance is a design choice, not yet made"
+          }
+        },
+        {
+          "id": "SW3",
+          "kind": "switch",
+          "box_mm": {
+            "min_mm": [
+              10.701,
+              12.249,
+              1.2
+            ],
+            "max_mm": [
+              17.3,
+              18.25,
+              6.2
+            ]
+          },
+          "source": "step:UIOK-SW3-SW-SMD_L6.0-W6.0-P6.00-LS6.6",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): which way this mates is not established from the geometry; confirm on the board or from the connector datasheet"
+          }
+        },
+        {
+          "id": "U1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.362,
+              46.005,
+              -0.861
+            ],
+            "max_mm": [
+              15.362,
+              53.005,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U1-QFN-56_L7.0-W7.0-P0.40-TL-EP4.0"
+        },
+        {
+          "id": "U10",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              7.128,
+              24.22,
+              -0.761
+            ],
+            "max_mm": [
+              10.148,
+              27.24,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U10-TQFN-16_L3.0-W3.0-P0.50-BL-EP1.5"
+        },
+        {
+          "id": "U11",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              8.808,
+              29.849,
+              1.2
+            ],
+            "max_mm": [
+              11.408,
+              35.548,
+              2.01
+            ]
+          },
+          "source": "step:UIOK-U11-T-CameraPlus-S3_TFT_240x240 Pixels"
+        },
+        {
+          "id": "U13",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              22.58,
+              38.718,
+              -0.951
+            ],
+            "max_mm": [
+              25.58,
+              41.518,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U13-SOT-26_L3.0-W1.6-P0.95-LS2.8-BL"
+        },
+        {
+          "id": "U2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              11.371,
+              35.189,
+              -2.07
+            ],
+            "max_mm": [
+              16.671,
+              43.094,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U2-SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
+        },
+        {
+          "id": "U3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              16.846,
+              29.995,
+              -1.72
+            ],
+            "max_mm": [
+              21.661,
+              35.995,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U3-SOIC-8_L4.9-W3.9-P1.27-LS6.0-BL"
+        },
+        {
+          "id": "U4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              17.086,
+              13.326,
+              -1.2
+            ],
+            "max_mm": [
+              19.87,
+              16.218,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U4-SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BR"
+        },
+        {
+          "id": "U6/1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              0.827,
+              15.481,
+              -2.1
+            ],
+            "max_mm": [
+              5.227,
+              19.681,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U6-IND-SMD_L4.4-W4.2 (instance 1 of 2: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "U6/2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              17.356,
+              8.288,
+              -2.1
+            ],
+            "max_mm": [
+              21.756,
+              12.488,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U6-IND-SMD_L4.4-W4.2 (instance 2 of 2: EasyEDA names a shared product after one of its instances, so this refdes identifies the footprint, not the part)"
+        },
+        {
+          "id": "U8",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              18.987,
+              61.44,
+              -1.151
+            ],
+            "max_mm": [
+              21.907,
+              64.24,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U8-SOT-23-3L_L2.9-W1.6-P1.90-LS2.8-BL"
+        },
+        {
+          "id": "U9",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              3.805,
+              61.698,
+              -1.048
+            ],
+            "max_mm": [
+              6.305,
+              64.591,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-U9-SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+        },
+        {
+          "id": "USB1",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              9.525,
+              -1.599,
+              0.2
+            ],
+            "max_mm": [
+              18.475,
+              6.351,
+              4.401
+            ]
+          },
+          "source": "step:UIOK-USB1-USB-C-SMD_GT-USB-7010C",
+          "access": {
+            "direction": "-y",
+            "depth_mm": null,
+            "source": "inferred from the STEP geometry, not confirmed on the board: the body overhangs the laminate's y = 0.016 edge by 1.62 mm, and a mid-mount USB-C receptacle mates through the face that overhangs. depth_mm: TODO(source) - the plug body length of the cable in use; not yet measured"
+          }
+        },
+        {
+          "id": "X1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              2.734,
+              46.574,
+              -0.811
+            ],
+            "max_mm": [
+              5.234,
+              49.774,
+              0.0
+            ]
+          },
+          "source": "step:UIOK-X1-OSC-SMD_4P-L3.2-W2.5-BL_SIT8008BI"
+        }
+      ]
+    },
     "links": {
       "model_3d": "sha256:b5ac26860e33f3bd993dd62b1d48909a6dc07cad7c528cfb54852ad20fbb9487"
     }
@@ -1994,6 +4582,323 @@ export const PARTS: readonly Part[] = Object.freeze([
       "transport": "serial"
     },
     "links": {}
+  },
+  {
+    "schema_version": 0,
+    "id": "boards/opencircuitcore-sensor-node",
+    "namespace": "boards",
+    "name": "opencircuitcore-sensor-node",
+    "description": "OpenCircuitCore sensor-node: ESP32-S3-WROOM-1 with a BME280 on I2C, a 1x04 SENSOR header (J1) and a 1x06 PROG header (J2) on 2.54 mm pitch, four M3 holes. Designed in this platform; this entry exists so fixtures and enclosures can be checked against it (ADR-0008).",
+    "source": {
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/board.manifest.json",
+      "url": "https://github.com/thewriterben/OpenCircuitCore/tree/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node",
+      "retrieved": "2026-11-06",
+      "note": "OpenCircuitCore boards/sensor-node at commit 9546499b9965275aec90fe6469f5cc48e4d48e03: board.manifest.json (sha256 1c708612b512a67e4d74bb576a9bfe28d16d0230ce2acb68db00ed83354e9751) and README.md"
+    },
+    "attributes": {
+      "outline_mm": {
+        "x": 44.0,
+        "y": 52.0
+      },
+      "mounting_holes": [
+        {
+          "ref": "H1",
+          "footprint": "MountingHole_3.2mm_M3",
+          "x_mm": 3.5,
+          "y_mm": 17.0,
+          "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+        },
+        {
+          "ref": "H2",
+          "footprint": "MountingHole_3.2mm_M3",
+          "x_mm": 40.5,
+          "y_mm": 17.0,
+          "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+        },
+        {
+          "ref": "H3",
+          "footprint": "MountingHole_3.2mm_M3",
+          "x_mm": 3.5,
+          "y_mm": 48.5,
+          "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+        },
+        {
+          "ref": "H4",
+          "footprint": "MountingHole_3.2mm_M3",
+          "x_mm": 40.5,
+          "y_mm": 48.5,
+          "frame": "KiCad board frame (y down from the top edge); features use the STEP frame, y negated"
+        }
+      ],
+      "thickness_mm": 1.6
+    },
+    "envelope_mm": {
+      "x": 44.0,
+      "y": 52.0,
+      "z": 11.54,
+      "source": {
+        "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.step",
+        "note": "Union of the per-component boxes of sensor-node.step (sha256 98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec) from scripts/extract_step_features.py, OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1), 2026-11-06: z from the header pin tails at -1.405 to the pin tips at 10.135."
+      }
+    },
+    "features": {
+      "source": {
+        "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.step",
+        "model_sha256": "98d369a04085efc5c1ffa5b746c2afcecc2b9ad06f0bfb0d52311d8d18fb9eec",
+        "revision": "OpenCircuitCore 9546499 (routed, GND pour, DRC clean)",
+        "url": "https://github.com/thewriterben/OpenCircuitCore/blob/9546499b9965275aec90fe6469f5cc48e4d48e03/boards/sensor-node/sensor-node.step",
+        "retrieved": "2026-11-06",
+        "note": "Per-component boxes of OpenCircuitCore's own STEP export 'sensor-node.step' (kicad-cli 10.0.5 pcb export step --subst-models, 2,522,235 bytes) computed 2026-11-06 by scripts/extract_step_features.py with OCCT 7.9.3 (cadquery-ocp 7.9.3.1.1); 12 components, byte-identical on repeat. The model is the design, not a vendor's drawing of a product: positions are exact by construction, and the built board differs from it only by assembly tolerance."
+      },
+      "frame": "The STEP model's own frame, unmodified: KiCad's board frame with y negated. x across the board (0 to 44, the edge nearer H1/H3 at x = 0); y along it, the antenna end at y = 0 and the header end at y = -52; z the board normal, z = 0 the bottom face and z = 1.6 the component face. Millimetres; the STEP declares MM.",
+      "not_modelled": [
+        "The four M3 holes (3.2 mm NPTH at KiCad (3.5,17) (40.5,17) (3.5,48.5) (40.5,48.5), i.e. y negated here) are not items: they are absences in the Board box, listed under attributes.mounting_holes.",
+        "Solder fillets, the module's castellation solder and the header pins' solder joints on the z = 0 face are not in the STEP; only the header pin tails (to z = -1.405) are.",
+        "Cables or sockets plugged into J1 and J2: their housings' length is unknown (access depth_mm null)."
+      ],
+      "items": [
+        {
+          "id": "Board",
+          "kind": "board",
+          "box_mm": {
+            "min_mm": [
+              0.0,
+              -52.0,
+              0.0
+            ],
+            "max_mm": [
+              44.0,
+              0.0,
+              1.6
+            ]
+          },
+          "source": "step:sensor-node_PCB for x and y. z max is 1.6 from sensor-node.kicad_pcb '(thickness 1.6)': the STEP's laminate solid ends at z = 1.51 while every component seats at z = 1.595, so the exported solid omits the outer copper and mask; the stackup figure is used because an enclosure clamps on the real face."
+        },
+        {
+          "id": "C1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              12.2,
+              -38.4,
+              1.595
+            ],
+            "max_mm": [
+              13.8,
+              -37.6,
+              2.395
+            ]
+          },
+          "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C1 matched to it by footprint and by board.manifest.json position (13, 38) lying inside this box with y negated)"
+        },
+        {
+          "id": "C2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              32.2,
+              -38.4,
+              1.595
+            ],
+            "max_mm": [
+              33.8,
+              -37.6,
+              2.395
+            ]
+          },
+          "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C2 matched to it by footprint and by board.manifest.json position (33, 38) lying inside this box with y negated)"
+        },
+        {
+          "id": "C3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              12.2,
+              -43.4,
+              1.595
+            ],
+            "max_mm": [
+              13.8,
+              -42.6,
+              2.395
+            ]
+          },
+          "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C3 matched to it by footprint and by board.manifest.json position (13, 43) lying inside this box with y negated)"
+        },
+        {
+          "id": "C4",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              27.2,
+              -43.4,
+              1.595
+            ],
+            "max_mm": [
+              28.8,
+              -42.6,
+              2.395
+            ]
+          },
+          "source": "step:C_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; C4 matched to it by footprint and by board.manifest.json position (28, 43) lying inside this box with y negated)"
+        },
+        {
+          "id": "J1",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              7.73,
+              -49.77,
+              -1.405
+            ],
+            "max_mm": [
+              17.89,
+              -47.23,
+              10.135
+            ]
+          },
+          "source": "step:PinHeader_1x04_P2.54mm_Vertical (KiCad names the solid after its footprint, not its refdes; J1 matched to it by footprint and by board.manifest.json position (9, 48.5) lying inside this box with y negated)",
+          "access": {
+            "direction": "+z",
+            "depth_mm": null,
+            "source": "Direction from the footprint: PinHeader_1x04_P2.54mm_Vertical is a straight header on the z = 1.6 face with pins along +z, so a socket housing mates from +z down onto the insulator. depth_mm: TODO(source) - mating housing length belongs to a chosen socket MPN, which this design does not fix (electronic/pinheader-2.54-1x04 says the same of the header). Section absent: the header's own face."
+          }
+        },
+        {
+          "id": "J2",
+          "kind": "connector",
+          "box_mm": {
+            "min_mm": [
+              19.73,
+              -49.77,
+              -1.405
+            ],
+            "max_mm": [
+              34.97,
+              -47.23,
+              10.135
+            ]
+          },
+          "source": "step:PinHeader_1x06_P2.54mm_Vertical (KiCad names the solid after its footprint, not its refdes; J2 matched to it by footprint and by board.manifest.json position (21, 48.5) lying inside this box with y negated)",
+          "access": {
+            "direction": "+z",
+            "depth_mm": null,
+            "source": "Direction from the footprint: PinHeader_1x06_P2.54mm_Vertical is a straight header on the z = 1.6 face with pins along +z, so a socket housing mates from +z down onto the insulator. depth_mm: TODO(source) - mating housing length belongs to a chosen socket MPN, which this design does not fix (electronic/pinheader-2.54-1x06 says the same of the header). Section absent: the header's own face."
+          }
+        },
+        {
+          "id": "R1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              17.2,
+              -38.4,
+              1.595
+            ],
+            "max_mm": [
+              18.8,
+              -37.6,
+              2.045
+            ]
+          },
+          "source": "step:R_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; R1 matched to it by footprint and by board.manifest.json position (18, 38) lying inside this box with y negated)"
+        },
+        {
+          "id": "R2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              22.2,
+              -38.4,
+              1.595
+            ],
+            "max_mm": [
+              23.8,
+              -37.6,
+              2.045
+            ]
+          },
+          "source": "step:R_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; R2 matched to it by footprint and by board.manifest.json position (23, 38) lying inside this box with y negated)"
+        },
+        {
+          "id": "R3",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              27.2,
+              -38.4,
+              1.595
+            ],
+            "max_mm": [
+              28.8,
+              -37.6,
+              2.045
+            ]
+          },
+          "source": "step:R_0603_1608Metric (KiCad names the solid after its footprint, not its refdes; R3 matched to it by footprint and by board.manifest.json position (28, 38) lying inside this box with y negated)"
+        },
+        {
+          "id": "U1",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              13.0,
+              -32.75,
+              1.595
+            ],
+            "max_mm": [
+              31.0,
+              -7.25,
+              4.695
+            ]
+          },
+          "source": "step:ESP32-S3-WROOM-1 (KiCad names the solid after its footprint, not its refdes; U1 matched to it by footprint and by board.manifest.json position (22, 20) lying inside this box with y negated)"
+        },
+        {
+          "id": "U2",
+          "kind": "component",
+          "box_mm": {
+            "min_mm": [
+              6.765,
+              -39.285,
+              1.595
+            ],
+            "max_mm": [
+              9.265,
+              -36.785,
+              2.375
+            ]
+          },
+          "source": "step:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinNumbering (KiCad names the solid after its footprint, not its refdes; U2 matched to it by footprint and by board.manifest.json position (8, 38) lying inside this box with y negated)"
+        },
+        {
+          "id": "U1-ANT",
+          "kind": "antenna",
+          "box_mm": {
+            "min_mm": [
+              13.0,
+              -13.25,
+              1.595
+            ],
+            "max_mm": [
+              31.0,
+              -7.25,
+              4.695
+            ]
+          },
+          "source": "U1's STEP box (step:ESP32-S3-WROOM-1) cut at y = -13.25, the edge of the module footprint's antenna keepout rule area (README: the GND pour stops at the antenna keepout y = 13.25 mm in KiCad's frame). The region from there to the module's y = -7.25 end carries the PCB antenna.",
+          "access": {
+            "direction": null,
+            "depth_mm": null,
+            "source": "TODO(source): the clearance Espressif requires around the WROOM-1 PCB antenna (ESP32-S3 Hardware Design Guidelines, antenna placement) is not pinned here. An antenna has no plug; what it needs is metal kept away, which a box of free air does not express. Unknown until cited."
+          }
+        }
+      ]
+    },
+    "links": {
+      "kicad_pcb": "OpenCircuitCore/boards/sensor-node/sensor-node.kicad_pcb",
+      "model_3d": "OpenCircuitCore/boards/sensor-node/sensor-node.step"
+    }
   },
   {
     "schema_version": 0,
@@ -2908,7 +5813,25 @@ export const PARTS: readonly Part[] = Object.freeze([
       "capabilities": [
         "ble",
         "wifi"
-      ]
+      ],
+      "strapping_pins": {
+        "gpios": [
+          0,
+          3,
+          45,
+          46
+        ],
+        "usb_gpios": [
+          19,
+          20
+        ],
+        "source": {
+          "citation": "vault:sha256:27d71971da07c280c6068d08c74720d1a25b8f20cf8494dc1765bdd28d40d435#page=13",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+          "retrieved": "2026-11-06",
+          "note": "Datasheet v1.8, Chapter 4 Boot Configurations on page 13 (strapping pins GPIO0, GPIO3, GPIO45, GPIO46); USB_D- / USB_D+ on GPIO19 / GPIO20 (module pads 13, 14) are from the pin description table on page 11. Entered from: Espressif ESP32-S3-WROOM-1/1U Datasheet, section 'Strapping Pins' (GPIO0, GPIO3, GPIO45, GPIO46 sampled at reset to set boot mode, ROM log, VDD_SPI voltage and JTAG source). USB_D- / USB_D+ are GPIO19 / GPIO20 per the pin description table (module pads 13, 14). A design that drives a sensor bus on any of these pins is refused by OpenCircuitCore scripts/make_firmware.py."
+        }
+      }
     },
     "envelope_mm": {
       "x": 18.0,
@@ -3241,6 +6164,54 @@ export const PARTS: readonly Part[] = Object.freeze([
       "connector": "bare"
     },
     "links": {}
+  },
+  {
+    "schema_version": 0,
+    "id": "electronic/pinheader-2.54-1x04",
+    "namespace": "electronic",
+    "name": "Pin header, 2.54 mm pitch, 1x04, through-hole vertical",
+    "description": "Generic single-row 0.1 inch pin header family. Plating, current rating and insulator height are properties of a chosen manufacturer part, not of this entry: a design says '1x04 2.54 mm vertical THT' and sourcing picks an MPN. This entry fixes pitch, pin count, rows and mounting only.",
+    "source": {
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.kicad_pcb",
+      "url": "https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/master/Connector_PinHeader_2.54mm.pretty/PinHeader_1x04_P2.54mm_Vertical.kicad_mod",
+      "retrieved": "2026-11-04",
+      "note": "Footprint PinHeader_1x04_P2.54mm_Vertical as KiCad 10.0.5 embeds it in that board file (footprint, descr and pad geometry are the library's, copied unchanged). Library origin: KiCad footprint library Connector_PinHeader_2.54mm, footprint PinHeader_1x04_P2.54mm_Vertical, descr 'Through hole straight pin header, 1x04, 2.54mm pitch, single row' (generated by kicad-footprint-generator). TODO(source): current rating, plating and insulator height belong to a chosen MPN."
+    },
+    "attributes": {
+      "pitch_mm": 2.54,
+      "pins": 4,
+      "rows": 1,
+      "mounting": "tht",
+      "orientation": "vertical"
+    },
+    "links": {
+      "kicad_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "kicad_symbol": "Connector_Generic:Conn_01x04"
+    }
+  },
+  {
+    "schema_version": 0,
+    "id": "electronic/pinheader-2.54-1x06",
+    "namespace": "electronic",
+    "name": "Pin header, 2.54 mm pitch, 1x06, through-hole vertical",
+    "description": "Generic single-row 0.1 inch pin header family. Plating, current rating and insulator height are properties of a chosen manufacturer part, not of this entry: a design says '1x06 2.54 mm vertical THT' and sourcing picks an MPN. This entry fixes pitch, pin count, rows and mounting only.",
+    "source": {
+      "citation": "repo:thewriterben/OpenCircuitCore@9546499b9965275aec90fe6469f5cc48e4d48e03:boards/sensor-node/sensor-node.kicad_pcb",
+      "url": "https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/master/Connector_PinHeader_2.54mm.pretty/PinHeader_1x06_P2.54mm_Vertical.kicad_mod",
+      "retrieved": "2026-11-04",
+      "note": "Footprint PinHeader_1x06_P2.54mm_Vertical as KiCad 10.0.5 embeds it in that board file (footprint, descr and pad geometry are the library's, copied unchanged). Library origin: KiCad footprint library Connector_PinHeader_2.54mm, footprint PinHeader_1x06_P2.54mm_Vertical, descr 'Through hole straight pin header, 1x06, 2.54mm pitch, single row' (generated by kicad-footprint-generator). TODO(source): current rating, plating and insulator height belong to a chosen MPN."
+    },
+    "attributes": {
+      "pitch_mm": 2.54,
+      "pins": 6,
+      "rows": 1,
+      "mounting": "tht",
+      "orientation": "vertical"
+    },
+    "links": {
+      "kicad_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical",
+      "kicad_symbol": "Connector_Generic:Conn_01x06"
+    }
   },
   {
     "schema_version": 0,

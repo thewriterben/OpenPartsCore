@@ -1,10 +1,21 @@
-"""Tests for the citation gate in validate.py. Run: python -m unittest discover scripts"""
-import json, sys, tempfile, unittest
+#!/usr/bin/env python3
+"""Tests for validate.py: the citation gate, the namespace schemas, and the
+feature rules a consumer relies on without re-checking.
+
+    python -m unittest discover scripts
+
+Stdlib unittest, like everything else here (jsonschema is needed only for
+the namespace schemas). The FeatureRules cases are the ways a `features`
+block could look sourced and still mislead a clearance check (ADR-0008): no
+revision, a connector with no access declaration at all (which reads as
+"nothing to reach"), a duplicate id, an inside-out box.
+"""
+import copy, json, sys, tempfile, unittest
 from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import validate
+import validate  # noqa: E402
 
 VAULT = "vault:sha256:" + "ab" * 32
 BLOCK_ID = "20260106123456-abcdefg"
@@ -55,6 +66,20 @@ class CitationGate(unittest.TestCase):
         e = entry(VAULT, {"tds": {"source": "some free text"}})
         self.assertEqual(run(e), [])
         self.assertTrue(run(e, strict=True))
+
+    def test_feature_item_sources_are_locators_not_citations(self):
+        # ADR-0008: items[].source and access.source point inside the model
+        # that features.source cites; strict asks a form of features.source only.
+        f = copy.deepcopy(GOOD)
+        f["source"]["citation"] = VAULT
+        e = entry(VAULT)
+        e["features"] = f
+        self.assertEqual(run(e, strict=True), [])
+        f["source"]["citation"] = "free text"
+        self.assertTrue(any("$.features.source.citation is free text" in x for x in run(e, strict=True)))
+        f["source"]["citation"] = VAULT
+        f["items"][1]["access"]["source"] = "see siyuan://blocks/" + BLOCK_ID
+        self.assertTrue(any("SiYuan" in x for x in run(e, strict=True)))
 
     def test_every_committed_entry_passes_strict_mode(self):
         """CI runs bare --strict: no namespace may regress to free-text citations."""
@@ -125,6 +150,76 @@ class NamespaceSchema(unittest.TestCase):
 
     def test_namespaces_without_a_schema_keep_free_attributes(self):
         self.assertEqual(run(entry(VAULT, {"anything": [1, {"goes": None}]})), [])
+
+
+GOOD = {
+    "source": {"citation": "test fixture - synthetic", "model_sha256": "0" * 64, "revision": "T1"},
+    "frame": "synthetic frame",
+    "not_modelled": [],
+    "items": [
+        {"id": "Board", "kind": "board", "source": "synthetic",
+         "box_mm": {"min_mm": [0, 0, 0], "max_mm": [10, 20, 1]}},
+        {"id": "USB1", "kind": "connector", "source": "synthetic",
+         "box_mm": {"min_mm": [3, -1, 1], "max_mm": [7, 4, 4]},
+         "access": {"direction": "-y", "depth_mm": None, "source": "synthetic"}},
+        {"id": "lens", "kind": "optic", "source": "synthetic",
+         "cylinder_mm": {"axis": "-z", "base_mm": [5, 10, 0], "length_mm": 5, "diameter_mm": 4},
+         "access": {"direction": None, "depth_mm": None, "source": "synthetic"}},
+    ],
+}
+
+
+def errs(mutate):
+    f = copy.deepcopy(GOOD)
+    mutate(f)
+    return validate.check_features(f)
+
+
+class FeatureRules(unittest.TestCase):
+    def test_the_good_fixture_is_valid(self):
+        self.assertEqual(validate.check_features(GOOD), [])
+
+    def test_absent_features_is_fine(self):
+        self.assertEqual(validate.check_features(None), [])
+
+    def test_revision_is_required(self):
+        self.assertTrue(any("revision" in e for e in errs(lambda f: f["source"].pop("revision"))))
+
+    def test_model_hash_must_be_a_sha256(self):
+        self.assertTrue(any("model_sha256" in e for e in errs(
+            lambda f: f["source"].__setitem__("model_sha256", "abc"))))
+
+    def test_not_modelled_is_required_even_when_empty(self):
+        self.assertTrue(any("not_modelled" in e for e in errs(lambda f: f.pop("not_modelled"))))
+
+    def test_a_connector_without_access_is_rejected(self):
+        # The failure this schema exists for: silence read as clearance.
+        self.assertTrue(any("must declare access" in e for e in errs(
+            lambda f: f["items"][1].pop("access"))))
+
+    def test_unknown_access_is_spelled_null_and_accepted(self):
+        self.assertEqual(errs(lambda f: None), [])
+
+    def test_zero_depth_is_not_unknown(self):
+        self.assertTrue(any("depth_mm" in e for e in errs(
+            lambda f: f["items"][1]["access"].__setitem__("depth_mm", 0))))
+
+    def test_duplicate_ids_are_rejected(self):
+        self.assertTrue(any("duplicate" in e for e in errs(
+            lambda f: f["items"][2].__setitem__("id", "USB1"))))
+
+    def test_an_inside_out_box_is_rejected(self):
+        self.assertTrue(any("below max_mm" in e for e in errs(
+            lambda f: f["items"][0]["box_mm"].__setitem__("min_mm", [0, 30, 0]))))
+
+    def test_exactly_one_shape(self):
+        def both(f):
+            f["items"][0]["cylinder_mm"] = copy.deepcopy(GOOD["items"][2]["cylinder_mm"])
+        self.assertTrue(any("exactly one" in e for e in errs(both)))
+
+    def test_cylinders_are_axis_aligned(self):
+        self.assertTrue(any("cylinder_mm" in e for e in errs(
+            lambda f: f["items"][2]["cylinder_mm"].__setitem__("axis", "diagonal"))))
 
 
 if __name__ == "__main__":

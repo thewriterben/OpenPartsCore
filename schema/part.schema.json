@@ -53,6 +53,38 @@
       },
       "additionalProperties": false
     },
+    "features": {
+      "type": "object",
+      "description": "Where things are on the part: connectors, switches, bodies, and the volume each needs kept free (ADR-0008). Carries its own source and the hardware revision it describes. Absent means undescribed, never clear.",
+      "required": ["source", "frame", "not_modelled", "items"],
+      "properties": {
+        "source": {
+          "type": "object",
+          "required": ["citation", "model_sha256", "revision"],
+          "properties": {
+            "citation": { "type": "string", "minLength": 1 },
+            "model_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "revision": { "type": "string", "minLength": 1 },
+            "note": { "type": "string", "description": "How the cited model yields the positions: tool, version, method, caveats. It explains the citation and never replaces it." },
+            "url": { "type": "string" },
+            "retrieved": { "type": "string", "format": "date" }
+          },
+          "additionalProperties": false
+        },
+        "frame": { "type": "string", "minLength": 1, "description": "Origin and axes of every coordinate below, in words. Millimetres." },
+        "not_modelled": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Regions of the physical part the items do not describe. A clearance check must report these."
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/feature" }
+        }
+      },
+      "additionalProperties": false
+    },
     "links": {
       "type": "object",
       "properties": {
@@ -64,5 +96,55 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "vec3_mm": {
+      "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3
+    },
+    "axis": { "enum": ["+x", "-x", "+y", "-y", "+z", "-z"] },
+    "feature": {
+      "type": "object",
+      "required": ["id", "kind", "source"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["board", "connector", "switch", "card_slot", "antenna", "optic", "component"] },
+        "box_mm": {
+          "type": "object",
+          "required": ["min_mm", "max_mm"],
+          "properties": { "min_mm": { "$ref": "#/$defs/vec3_mm" }, "max_mm": { "$ref": "#/$defs/vec3_mm" } },
+          "additionalProperties": false
+        },
+        "cylinder_mm": {
+          "type": "object",
+          "description": "Axis-aligned cylinder: base_mm is the centre of the face it starts from; it extends length_mm along axis.",
+          "required": ["axis", "base_mm", "length_mm", "diameter_mm"],
+          "properties": {
+            "axis": { "$ref": "#/$defs/axis" },
+            "base_mm": { "$ref": "#/$defs/vec3_mm" },
+            "length_mm": { "type": "number", "exclusiveMinimum": 0 },
+            "diameter_mm": { "type": "number", "exclusiveMinimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "source": { "type": "string", "minLength": 1, "description": "'step:<solid name>' or the measurement, with date and instrument." },
+        "access": {
+          "type": "object",
+          "description": "Volume that must stay free for a plug, card or finger, extruded from the item's face on the direction side. null direction or depth means unknown: consumers report the item as unverified.",
+          "required": ["direction", "depth_mm", "source"],
+          "properties": {
+            "direction": { "oneOf": [{ "$ref": "#/$defs/axis" }, { "type": "null" }] },
+            "depth_mm": { "oneOf": [{ "type": "number", "exclusiveMinimum": 0 }, { "type": "null" }] },
+            "section_mm": {
+              "type": "array", "items": { "type": "number", "exclusiveMinimum": 0 }, "minItems": 2, "maxItems": 2,
+              "description": "Cross-section perpendicular to direction, centred on the item's face, in the order of the remaining axes x,y,z. Absent means the item's own face."
+            },
+            "source": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [{ "required": ["box_mm"] }, { "required": ["cylinder_mm"] }],
+      "additionalProperties": false
+    }
+  }
 }

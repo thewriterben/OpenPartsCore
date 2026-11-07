@@ -114,3 +114,32 @@ This is not upstream sloppiness — it is what USB actually does, since a bridge
 **Decision.** Option 3. `schema/material.schema.json` is the authoritative layout: `identity` and `review` required; `tds` is the document row by row, every block with its page; `normalised` keys end in their unit and every field names a page in the cited document or a stated basis; `review.status` is `proposed | accepted | rejected` and `review.flags` is what a reviewer must read. Sample print settings are flat fields, one per number; the two merged entries were migrated by hand in the same change. `validate.py` stays stdlib for the structural rules but needs the `jsonschema` package for namespace schemas, and errors rather than skips when it is missing, so CI cannot pass by not looking. OpenKnowledgeCore vendors a copy of the schema and validates every proposal against it before writing it, with a drift test against this file.
 
 **Consequences.** A proposal that validates in OpenKnowledgeCore validates here, and a hand edit that breaks the layout fails CI instead of reaching a consumer. The layout is now expensive to change (two repositories, a migration), which is the point. The other namespaces keep free `attributes` until each earns a schema; `boards` never will while it is ingested verbatim from Oh-Ben-Claw.
+
+---
+
+## ADR-0008 - A part's surface: features, each with its own source and revision
+
+**Date:** 2026-09-26
+**Status:** accepted
+
+**Context.** OpenDesignCore cut two bench fixtures for `boards/lilygo-t-camera-plus-s3` and neither could be used. v0.1 gripped the board's long edges and collided with the two JST connectors at the bottom corners; v0.2 held it by the lens barrel and put a solid base under the USB-C port, which overhangs the board edge by 1.6 mm. Both were cut from an *outline* - three numbers and a few caliper readings - and every check passed, because every check compared the fixture with its own parameters. Nothing anywhere recorded where the connectors are. The vendor STEP did: `envelope_mm` was already derived from it, and its solids are named `<prefix>-<refdes>-<footprint>` by EasyEDA. The information existed and was thrown away at the envelope.
+
+Two further facts shaped this. The bench board is **V1.1** and the envelope came from the **V1.2** STEP; comparing both models (2026-09-26) shows the bottom-edge connectors identical but the laminate 1.20 vs 1.14 mm thick, CN4 and LED1 moved by about 1 mm, and a slide switch (SW4) that V1.1 does not have. A feature therefore belongs to one revision, and saying so is not optional. And neither STEP contains the camera module or the display, so a feature set can be incomplete in ways that matter; that has to be stated in the data, not discovered by a third failed print.
+
+**Options.**
+1. More numbers under `envelope_mm` - rejected: an envelope is a box, and a box is precisely the description that failed twice.
+2. A `links.model_3d` pointer and let each consumer parse the STEP - pushes OCCT into every consumer and gives none of them the revision, the gaps, or which way a plug goes in.
+3. Optional top-level `features {source, frame, not_modelled, items[]}`, following ADR-0006's precedent: a fact from a different source gets its own key and its own citation.
+
+**Decision.** Option 3.
+- `features.source` requires a `citation`, the `model_sha256` of the file the positions were read from, and the board `revision` they describe.
+- `features.frame` states the origin and axes in words. Coordinates are in that frame, millimetres.
+- `features.not_modelled` is a required list, which may be empty, of regions the items do *not* describe (here: the camera module, lens beyond the measured barrel, and the display). A consumer that checks clearance must surface it, because "no collision" against an incomplete description is a weaker claim than it looks.
+- Each item has a unique `id`, a `kind` (`board | connector | switch | card_slot | antenna | optic | component`), exactly one of `box_mm {min_mm, max_mm}` or an axis-aligned `cylinder_mm {axis, base_mm, length_mm, diameter_mm}`, and a `source` naming the STEP solid (`step:<name>`) or the measurement.
+- Items of kind `connector`, `switch`, `card_slot`, `antenna` and `optic` must carry `access {direction, depth_mm, section_mm?, source}`: the volume that must stay free for a plug, a card or a finger, extruded from the item's face. `direction` and `depth_mm` may be **null, meaning unknown**; a consumer reports those items as unverified rather than passing them. Unknown is not zero here any more than it is for an envelope.
+- `scripts/extract_step_features.py` produces the per-component census from a STEP (OCCT via `uv run --with cadquery-ocp`, run by hand like `ingest_obc.py`). It is not in CI: the registry keeps no heavy dependencies, and its output is reviewed and committed, not regenerated.
+- `features` joins `PRESERVED_KEYS`. The TypeScript binding already embeds whole entries, so it gains a typed `PartFeatures`; the Rust binding does not hoist `features`, because nothing that consumes it reads them yet.
+
+**Consequences.** Positions from a vendor model are only as good as the model and the revision match, and the frame is the model's, not a physical datum; consumers place the part with a transform they own. Access directions read off the geometry (a connector body overhanging the board edge mates through that edge) are recorded as inferences, and say so in their `source`, until someone confirms them on the board. EasyEDA shares one STEP product between same-footprint instances, so shared passives lose their refdes; their ids are the footprint plus an ordinal, which is honest about what the model knows. The first entry is `boards/lilygo-t-camera-plus-s3` at V1.1. Its envelope note, which guessed that the tallest solid was a lens barrel, is corrected: the census names it SW3, the 6 x 6 mm tactile switch.
+
+**Addendum (2026-11-06, merging main's strict citation gate).** `features.source.citation` is a citation like any other and takes one of the strict forms; the prose that explains how the positions were computed moves to `features.source.note`. `items[].source` and `items[].access.source` are not citations: they say where inside the cited model a box or a direction came from (`step:J1`, or an inference from the geometry), so `--strict` does not ask them for a citation form. The SiYuan rule still applies to them.

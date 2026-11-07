@@ -52,6 +52,11 @@ jobs:
       - name: Citation gate tests
         run: python -m unittest discover scripts
 
+      # The validator's own rules for `features` (ADR-0008): the cases where a
+      # block could look sourced and still tell a clearance check "nothing here".
+      - name: Validator rules hold
+        run: python scripts/test_validate.py
+
       # Regenerate and diff. Byte-identical or red — the discipline ADR-0003
       # borrowed from OBC-Prime's parity fixtures. A data change without a
       # regenerated binding fails here rather than reaching a consumer.
