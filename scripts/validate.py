@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Validate all entries in data/ against the structural rules of schema v0.
 
-Stdlib only (no jsonschema dependency): checks required fields, id/namespace
-agreement, citation presence, and the unit-suffix convention for length.
-The JSON Schema in schema/ remains the authoritative definition for tooling
-that can consume it.
+The structural rules are stdlib only: required fields, id/namespace agreement,
+citation presence, and the unit-suffix convention for length. The JSON Schema in
+schema/ remains the authoritative definition for tooling that can consume it.
+
+Namespace schemas (ADR-0007): when schema/<namespace>.schema.json exists, every
+entry's `attributes` is validated against it with the jsonschema package. Only
+`material` has one so far. Its absence is an error, not a skip, so CI cannot
+pass by not looking.
 
 Citation gate (OpenKnowledgeCore ADR-0001): SiYuan is a projection, never a
 source. In every run, any string anywhere in an entry that references SiYuan is
@@ -121,6 +125,37 @@ def check_envelope(env) -> list[str]:
     return errs
 
 
+
+# --- namespace schemas (ADR-0007) ---------------------------------------------
+
+_SCHEMAS: dict[str, dict | None] = {}
+
+
+def namespace_schema(namespace: str):
+    """schema/<namespace>.schema.json parsed, or None when the namespace has no schema."""
+    if namespace not in _SCHEMAS:
+        path = ROOT / "schema" / f"{namespace}.schema.json"
+        _SCHEMAS[namespace] = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+    return _SCHEMAS[namespace]
+
+
+def check_attributes(e) -> list[str]:
+    """Validate `attributes` against the namespace schema, when there is one."""
+    schema = namespace_schema(e["namespace"])
+    if schema is None:
+        return []
+    try:
+        import jsonschema
+    except ImportError:
+        return [f"schema/{e['namespace']}.schema.json exists but the jsonschema package is not installed "
+                "(pip install jsonschema)"]
+    validator = jsonschema.Draft202012Validator(schema)
+    errs = []
+    for err in sorted(validator.iter_errors(e.get("attributes", {})), key=lambda x: x.json_path):
+        where = "attributes" + err.json_path[1:]
+        errs.append(f"{where}: {err.message}")
+    return errs
+
 def check(path: Path, strict: bool = False) -> list[str]:
     errs = []
     try:
@@ -145,6 +180,8 @@ def check(path: Path, strict: bool = False) -> list[str]:
     if not str(e.get("source", {}).get("citation", "")).strip():
         errs.append("empty citation — uncited entries are invalid")
     errs.extend(check_envelope(e.get("envelope_mm")))
+    if e["namespace"] in NAMESPACES:
+        errs.extend(check_attributes(e))
     errs.extend(check_citations(e, strict))
     # unit-suffix convention: numeric leaf keys about length must end in _mm
     def walk(obj, crumb=""):

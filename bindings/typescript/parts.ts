@@ -3624,11 +3624,20 @@ export const PARTS: readonly Part[] = Object.freeze([
           "standard": "ASTM D256",
           "page": 1
         },
-        "sample_print": {
-          "nozzle_c": 240,
-          "bed_c": 70,
-          "speed_mm_s": 60,
-          "infill_pct": 100,
+        "sample_print_nozzle_c": {
+          "value": 240,
+          "page": 1
+        },
+        "sample_print_bed_c": {
+          "value": 70,
+          "page": 1
+        },
+        "sample_print_speed_mm_s": {
+          "value": 60,
+          "page": 1
+        },
+        "sample_print_infill_pct": {
+          "value": 100,
           "page": 1
         },
         "nozzle_temp_c": {
@@ -3916,11 +3925,20 @@ export const PARTS: readonly Part[] = Object.freeze([
           "standard": "ISO 179",
           "page": 1
         },
-        "sample_print": {
-          "nozzle_c": 220,
-          "bed_c": 60,
-          "speed_mm_s": 300,
-          "infill_pct": 100,
+        "sample_print_nozzle_c": {
+          "value": 220,
+          "page": 1
+        },
+        "sample_print_bed_c": {
+          "value": 60,
+          "page": 1
+        },
+        "sample_print_speed_mm_s": {
+          "value": 300,
+          "page": 1
+        },
+        "sample_print_infill_pct": {
+          "value": 100,
           "page": 1
         },
         "nozzle_temp_c": {
