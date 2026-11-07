@@ -33,8 +33,13 @@ jobs:
 
       # Structure, unit-suffix rules, and the citation gate. An uncited value is
       # invalid here, which is the rule the whole registry rests on.
-      - name: Validate every entry
-        run: python scripts/validate.py
+      #
+      # `material` was born with strict citations (vault:sha256: forms, PR #12),
+      # so strict mode is on for that namespace from the start. The older
+      # namespaces still carry free-text citations; each one joins this list
+      # when its citations have been migrated (OpenKnowledgeCore ADR-0001).
+      - name: Validate every entry (strict citations in material/)
+        run: python scripts/validate.py --strict material
 
       # ADR-0001 of OpenKnowledgeCore: SiYuan is a projection, never a source.
       # validate.py above rejects any SiYuan reference; these tests prove it does.
